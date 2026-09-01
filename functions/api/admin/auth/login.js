@@ -9,8 +9,8 @@
 //   3. Confirma email + password contra a tabela `admins`
 //   4. Se válido, emite cookie de sessão HttpOnly assinado
 
-import { validarTurnstile } from "../../_lib/turnstile.js";
-import { verificarPassword, criarCookieSessao } from "../../_lib/auth.js";
+import { validarTurnstile } from "../../../_lib/turnstile.js";
+import { verificarPassword, criarCookieSessao } from "../../../_lib/auth.js";
 
 const MAX_TENTATIVAS = 5;
 const JANELA_BLOQUEIO_MINUTOS = 15;
