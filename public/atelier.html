@@ -1,0 +1,142 @@
+<!-- public/atelier.html — Sobre o Atelier + próximos eventos/vagas -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Atelier | Atelier by Rita</title>
+  <meta name="description" content="Conheça o Atelier by Rita: o espaço, o que lá se faz, e os próximos workshops e eventos com vagas disponíveis para o público." />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body class="textura-papel">
+
+  <header class="site-header">
+    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/#percurso">Percurso</a>
+      <a href="/atelier" aria-current="page">Atelier</a>
+      <a href="/eventos">Eventos &amp; Workshops</a>
+      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero do Atelier: fotografia do espaço real, não stock photo ===== -->
+  <section class="hero-atelier">
+    <div class="hero-atelier-imagem">
+      <!-- PLACEHOLDER IMAGEM REAL: fachada ou sala principal do atelier, luz natural -->
+      <img src="/images/placeholder-atelier-hero.jpg" alt="Interior do Atelier by Rita" />
+    </div>
+    <div class="hero-atelier-texto">
+      <p class="hero-etiqueta">O espaço</p>
+      <h1>Atelier by Rita</h1>
+      <p class="hero-lead">
+        Um espaço pensado para reunir pessoas à volta da mesa — para aprender,
+        provar e criar. [Morada completa, código postal, cidade].
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== O que é o Atelier / O que lá se faz ===== -->
+  <section class="secao-sobre-atelier">
+    <div class="bloco-texto-imagem">
+      <img src="/images/placeholder-atelier-1.jpg" alt="" />
+      <div>
+        <h2>O que é o Atelier</h2>
+        <p>
+          [Texto: descrição do espaço físico — cozinha equipada, sala de
+          workshops, capacidade, ambiente, filosofia do projeto.]
+        </p>
+      </div>
+    </div>
+
+    <div class="bloco-texto-imagem inverso">
+      <img src="/images/placeholder-atelier-2.jpg" alt="" />
+      <div>
+        <h2>O que lá se faz</h2>
+        <p>
+          [Texto: workshops temáticos, jantares privados, gravações de
+          conteúdo, colaborações com marcas, aulas para grupos e empresas.]
+        </p>
+        <ul class="lista-servicos">
+          <li>Workshops abertos ao público, com vagas limitadas</li>
+          <li>Eventos privados e jantares por encomenda</li>
+          <li>Experiências para empresas e team buildings</li>
+          <li>Produção de conteúdo e colaborações de marca</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Galeria do espaço ===== -->
+  <section class="secao-galeria-atelier" aria-label="Galeria do Atelier">
+    <h2>O espaço em imagens</h2>
+    <div class="grid-galeria-atelier">
+      <!-- PLACEHOLDER: 6 a 8 fotos reais do espaço, equipamento, detalhes -->
+      <img src="/images/placeholder-atelier-galeria-1.jpg" alt="" />
+      <img src="/images/placeholder-atelier-galeria-2.jpg" alt="" />
+      <img src="/images/placeholder-atelier-galeria-3.jpg" alt="" />
+      <img src="/images/placeholder-atelier-galeria-4.jpg" alt="" />
+    </div>
+  </section>
+
+  <!-- ===== Próximos eventos/workshops com vagas disponíveis ===== -->
+  <section class="secao-proximos-eventos" id="proximos-eventos">
+    <div class="cabecalho-secao">
+      <h2>Próximos workshops &amp; eventos no Atelier</h2>
+      <a href="/eventos">Ver todos →</a>
+    </div>
+    <p class="lead">
+      Estas são as próximas datas com vagas abertas ao público. Reserve o seu
+      lugar diretamente através da página de cada evento.
+    </p>
+    <div id="grid-proximos-eventos" class="grid-eventos" aria-live="polite">
+      <p class="estado-vazio">A carregar próximos eventos…</p>
+    </div>
+  </section>
+
+  <!-- ===== CTA para eventos privados/empresas ===== -->
+  <section class="secao-cta-orcamento">
+    <div>
+      <h2>Quer um workshop ou jantar privado à sua medida?</h2>
+      <p>Empresas, aniversários, despedidas de solteira(o) ou simplesmente um jantar diferente — conte-nos o que precisa.</p>
+    </div>
+    <a href="/orcamento" class="botao botao-primario">Pedir orçamento</a>
+  </section>
+
+  <footer class="site-footer">
+    <nav aria-label="Rodapé legal">
+      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
+      <a href="/legal/privacidade">Política de Privacidade</a>
+      <a href="/legal/cookies">Política de Cookies</a>
+      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
+      <a href="/legal/aviso-legal">Aviso Legal</a>
+      <a href="/suporte">Suporte</a>
+    </nav>
+    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+  </footer>
+
+  <template id="template-cartao-evento">
+    <article class="cartao-evento">
+      <a class="cartao-evento-link" href="#">
+        <div class="cartao-evento-imagem">
+          <img loading="lazy" alt="" />
+          <span class="etiqueta-tematica"></span>
+        </div>
+        <div class="cartao-evento-corpo">
+          <h3 class="cartao-evento-titulo"></h3>
+          <p class="cartao-evento-data"></p>
+          <p class="cartao-evento-local"></p>
+          <div class="cartao-evento-rodape">
+            <span class="cartao-evento-preco"></span>
+            <span class="cartao-evento-vagas"></span>
+          </div>
+        </div>
+      </a>
+    </article>
+  </template>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/atelier-proximos-eventos.js" defer></script>
+</body>
+</html>

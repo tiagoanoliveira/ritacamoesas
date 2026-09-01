@@ -1,0 +1,72 @@
+/* css/tokens.css
+   Design tokens do "Atelier by Rita".
+   Substitui os valores HEX abaixo pelos tons exatos definidos nas páginas
+   8 do documento técnico (Cores primárias/secundárias/terciárias) — aqui
+   ficam apenas placeholders com uma paleta terrosa/editorial coerente com
+   um atelier gastronómico de autor, para NÃO cair no visual "IA genérica"
+   (gradientes roxo/azul, cards flutuantes com sombra pesada, emojis).
+
+   Princípios de direção de arte:
+   - Tipografia com carácter: um serifado editorial para títulos + um
+     sans-serif humanista para texto corrido. Evitar Inter/Poppins puro
+     em títulos grandes — usar peso variável e tracking negativo.
+   - Paleta quente e terrosa (tons de manteiga, terracota, verde-oliva)
+     em vez de branco/cinza + azul corporativo.
+   - Texturas discretas (grão de papel, linha desenhada à mão) em vez de
+     glassmorphism ou gradientes tipo "aurora".
+   - Fotografia real em grande escala como protagonista — o layout deve
+     ser desenhado ao REDOR das imagens, não o inverso.
+*/
+
+:root {
+  /* Primárias — preencher com o HEX exato do documento */
+  --cor-primaria-900: #3B2314;   /* castanho torrado, texto/headers */
+  --cor-primaria-500: #8C5A3C;   /* terracota */
+  --cor-primaria-100: #F4E9DD;   /* creme/manteiga, fundo geral */
+
+  /* Secundárias — realce de elementos importantes (CTAs, badges) */
+  --cor-secundaria-600: #A6612C; /* âmbar queimado */
+  --cor-secundaria-300: #E8C79E;
+
+  /* Terciárias — acentos pontuais (tags de temática, ícones) */
+  --cor-terciaria-500: #5B6B4A;  /* verde-oliva */
+  --cor-terciaria-300: #C7D3B8;
+
+  /* Estados funcionais (não decorativos) */
+  --cor-sucesso: #4C7A47;
+  --cor-aviso:   #B8862F;
+  --cor-erro:    #A23B2E;
+
+  /* Tipografia */
+  --fonte-titulo: "Fraunces", "Georgia", serif;      /* carregar via self-host, não Google Fonts CDN direto para RGPD */
+  --fonte-corpo:  "Inter", "Segoe UI", sans-serif;
+  --fonte-destaque: "Caveat", cursive;                /* toque manuscrito pontual em assinaturas/citações */
+
+  /* Espaçamento e ritmo vertical (escala modular, não múltiplos de 4 genéricos) */
+  --espaco-xs: 0.5rem;
+  --espaco-sm: 1rem;
+  --espaco-md: 2rem;
+  --espaco-lg: 4rem;
+  --espaco-xl: 7rem;
+
+  /* Raios e sombras — suaves, nunca "card flutuante" com blur exagerado */
+  --raio-padrao: 2px;
+  --sombra-suave: 0 1px 3px rgba(59, 35, 20, 0.12);
+
+  --largura-conteudo: 1180px;
+}
+
+/* Textura de fundo sutil em papel — substitui gradientes artificiais */
+.textura-papel {
+  background-color: var(--cor-primaria-100);
+  background-image: url("/images/textura-papel.png"); /* placeholder: textura leve real */
+  background-size: 600px;
+}
+
+/* Linha desenhada à mão para separar secções — usar SVG real, não CSS gradient */
+.separador-manual {
+  background-image: url("/images/separador-tracado.svg"); /* placeholder */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 24px;
+}

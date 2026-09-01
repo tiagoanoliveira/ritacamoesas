@@ -1,0 +1,121 @@
+<!-- public/orcamento.html — Pedido de orçamento para eventos privados/workshops (US14) -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedir Orçamento | Atelier by Rita</title>
+  <meta name="description" content="Peça um orçamento para eventos privados, jantares ou workshops à medida com a Rita Camoesas." />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="textura-papel">
+
+  <header class="site-header">
+    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/#percurso">Percurso</a>
+      <a href="/atelier">Atelier</a>
+      <a href="/eventos">Eventos &amp; Workshops</a>
+      <a href="/orcamento" aria-current="page" class="nav-cta">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <section class="pagina-cabecalho">
+    <p class="hero-etiqueta">Eventos privados &amp; workshops à medida</p>
+    <h1>Vamos criar a sua experiência</h1>
+    <p class="lead">
+      Jantares privados, workshops para empresas, aniversários ou qualquer
+      celebração à sua medida. Conte-nos os detalhes e a Rita responde
+      pessoalmente com uma proposta.
+    </p>
+  </section>
+
+  <div class="layout-orcamento">
+    <!-- Bloco lateral com contexto real — evita o formulário "a solo" e frio -->
+    <aside class="orcamento-contexto">
+      <!-- PLACEHOLDER IMAGEM REAL: Rita a preparar um jantar privado / workshop em grupo -->
+      <img src="/images/placeholder-orcamento.jpg" alt="Rita Camoesas a preparar um evento privado" />
+      <h2>Como funciona</h2>
+      <ol class="lista-passos">
+        <li>Preenche o formulário com os detalhes do que precisa.</li>
+        <li>A Rita analisa o pedido e responde por email, normalmente em 2 a 3 dias úteis.</li>
+        <li>Combinam os detalhes finais e a data é reservada.</li>
+      </ol>
+    </aside>
+
+    <form id="form-orcamento" class="formulario-orcamento" novalidate>
+      <div class="campo">
+        <label for="nome">Nome do responsável *</label>
+        <input type="text" id="nome" name="nome" required autocomplete="name" />
+      </div>
+
+      <div class="campo-grupo">
+        <div class="campo">
+          <label for="email">Email de contacto *</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+        <div class="campo">
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" required autocomplete="tel" />
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="tipo_evento">Tipo de evento *</label>
+        <select id="tipo_evento" name="tipo_evento" required>
+          <option value="">Selecione…</option>
+          <option value="Jantar privado">Jantar privado</option>
+          <option value="Workshop para empresa">Workshop para empresa</option>
+          <option value="Workshop para grupo/particular">Workshop para grupo/particular</option>
+          <option value="Aniversário / celebração">Aniversário / celebração</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="campo-grupo">
+        <div class="campo">
+          <label for="num_pessoas">Número de pessoas *</label>
+          <input type="number" id="num_pessoas" name="num_pessoas" min="1" required />
+        </div>
+        <div class="campo">
+          <label for="data_pretendida">Data pretendida (opcional)</label>
+          <input type="date" id="data_pretendida" name="data_pretendida" />
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="tematica">Temática (opcional)</label>
+        <input type="text" id="tematica" name="tematica" placeholder="Ex: cozinha regional, doçaria, festa temática…" />
+      </div>
+
+      <div class="campo">
+        <label for="observacoes">Observações</label>
+        <textarea id="observacoes" name="observacoes" rows="4" placeholder="Local pretendido, orçamento aproximado, restrições alimentares, etc."></textarea>
+      </div>
+
+      <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+
+      <button type="submit" class="botao botao-primario botao-full">Enviar pedido de orçamento</button>
+
+      <div id="resultado-orcamento" class="resultado-reserva" hidden></div>
+    </form>
+  </div>
+
+  <footer class="site-footer">
+    <nav aria-label="Rodapé legal">
+      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
+      <a href="/legal/privacidade">Política de Privacidade</a>
+      <a href="/legal/cookies">Política de Cookies</a>
+      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
+      <a href="/legal/aviso-legal">Aviso Legal</a>
+      <a href="/suporte">Suporte</a>
+    </nav>
+    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/orcamento.js" defer></script>
+</body>
+</html>

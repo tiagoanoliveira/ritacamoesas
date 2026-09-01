@@ -1,0 +1,111 @@
+<!-- public/index.html — Página inicial (US01) -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5" />
+  <title>Rita Camoesas | Atelier by Rita</title>
+  <meta name="description" content="Rita Camoesas, finalista do MasterChef Portugal 2022 — conheça o percurso, o Atelier by Rita e os próximos workshops e eventos gastronómicos." />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/main.css" /> <!-- Tailwind build (via CLI, sem CDN) -->
+  <link rel="canonical" href="https://atelierbyrita.pt/" />
+</head>
+<body class="textura-papel">
+
+  <!-- Header fixo, minimalista: logo (assinatura manuscrita real da Rita) + nav -->
+  <header class="site-header">
+    <a href="/" class="logo">
+      <img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" />
+      <!-- Placeholder: substituir por assinatura/rúbrica real digitalizada da Rita -->
+    </a>
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/#percurso">Percurso</a>
+      <a href="/atelier">Atelier</a>
+      <a href="/eventos">Eventos &amp; Workshops</a>
+      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <!-- Layout assimétrico: imagem de retrato grande à direita, texto à esquerda.
+       EVITAR: hero centrado com gradiente + botão genérico "Saber mais". -->
+  <section class="hero" aria-labelledby="hero-titulo">
+    <div class="hero-texto">
+      <p class="hero-etiqueta">Finalista MasterChef Portugal 2022</p>
+      <h1 id="hero-titulo">Rita Camoesas</h1>
+      <p class="hero-lead">
+        Da paixão pela cozinha de família ao palco do MasterChef, até à criação
+        do Atelier by Rita — um espaço onde a comida se transforma em memória.
+      </p>
+      <div class="hero-acoes">
+        <a href="/eventos" class="botao botao-primario">Ver próximos workshops</a>
+        <a href="/#historia" class="botao botao-texto">Conhecer a história →</a>
+      </div>
+    </div>
+    <div class="hero-imagem">
+      <!-- PLACEHOLDER IMAGEM REAL: retrato editorial da Rita, fundo do atelier -->
+      <img src="/images/placeholder-hero-rita.jpg" alt="Rita Camoesas no Atelier by Rita" />
+    </div>
+  </section>
+
+  <!-- ============ QUEM É A RITA / PERCURSO ============ -->
+  <section id="historia" class="secao-historia">
+    <h2>O percurso</h2>
+    <div class="linha-tempo">
+      <!-- Cada marco tem imagem real associada — timeline editorial, não ícones genéricos -->
+      <article class="marco">
+        <img src="/images/placeholder-percurso-1.jpg" alt="" />
+        <h3>As raízes</h3>
+        <p>[Texto: infância, tradição familiar, primeiras memórias na cozinha.]</p>
+      </article>
+      <article class="marco">
+        <img src="/images/placeholder-percurso-2.jpg" alt="" />
+        <h3>MasterChef Portugal 2022</h3>
+        <p>[Texto: percurso no concurso, marcos, chegada à final.]</p>
+      </article>
+      <article class="marco">
+        <img src="/images/placeholder-percurso-3.jpg" alt="" />
+        <h3>O nascimento do Atelier</h3>
+        <p>[Texto: motivação para criar o Atelier by Rita e o que representa hoje.]</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ O QUE FAZ ============ -->
+  <section class="secao-o-que-faz">
+    <h2>O que faço</h2>
+    <div class="grid-servicos">
+      <article><h3>Workshops abertos ao público</h3><p>Experiências gastronómicas no Atelier, com vagas limitadas.</p></article>
+      <article><h3>Eventos privados</h3><p>Jantares e experiências à medida, em espaços próprios ou do cliente.</p></article>
+      <article><h3>Conteúdo &amp; parcerias</h3><p>Colaborações de marca, conteúdo digital e presença em eventos.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ PRÓXIMOS EVENTOS (preview) ============ -->
+  <section class="secao-proximos-eventos">
+    <div class="cabecalho-secao">
+      <h2>Próximos workshops no Atelier</h2>
+      <a href="/eventos">Ver todos →</a>
+    </div>
+    <div id="preview-eventos" class="grid-eventos" data-limite="3">
+      <!-- Preenchido via JS (fetch GET /api/eventos?limite=3&futuros=1) -->
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <!-- links legais obrigatórios: US02, US04, US05, US06 -->
+    <nav aria-label="Rodapé legal">
+      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
+      <a href="/legal/privacidade">Política de Privacidade</a>
+      <a href="/legal/cookies">Política de Cookies</a>
+      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
+      <a href="/legal/aviso-legal">Aviso Legal</a>
+      <a href="/suporte">Suporte</a>
+    </nav>
+    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/eventos-preview.js" defer></script>
+</body>
+</html>

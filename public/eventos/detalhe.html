@@ -1,0 +1,123 @@
+<!-- public/eventos/detalhe.html — Detalhe de evento + reserva (US12) -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="titulo-pagina">Evento | Atelier by Rita</title>
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="textura-papel">
+
+  <header class="site-header">
+    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/#percurso">Percurso</a>
+      <a href="/atelier">Atelier</a>
+      <a href="/eventos" aria-current="page">Eventos &amp; Workshops</a>
+      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <p class="fio-migalhas"><a href="/eventos">← Voltar a eventos</a></p>
+
+  <!-- Estado de carregamento / erro -->
+  <p id="estado-carregando" class="estado-vazio">A carregar evento…</p>
+  <p id="estado-erro" class="estado-vazio" hidden>Evento não encontrado.</p>
+
+  <main id="conteudo-evento" hidden>
+
+    <!-- ===== Galeria: imagens reais protagonistas, não thumbnails pequenas ===== -->
+    <section class="galeria-evento" aria-label="Galeria de imagens do evento">
+      <div class="galeria-principal">
+        <img id="galeria-imagem-atual" src="" alt="" />
+      </div>
+      <div class="galeria-miniaturas" id="galeria-miniaturas"></div>
+      <!-- PLACEHOLDER: cada evento precisa de pelo menos 3-4 fotos reais do espaço/prato -->
+    </section>
+
+    <div class="corpo-evento">
+      <div class="corpo-evento-info">
+        <span class="etiqueta-tematica" id="evento-tematica"></span>
+        <h1 id="evento-titulo"></h1>
+        <p class="evento-meta" id="evento-data"></p>
+        <p class="evento-meta" id="evento-duracao"></p>
+        <p class="evento-meta" id="evento-local"></p>
+
+        <div class="evento-descricao" id="evento-descricao"></div>
+      </div>
+
+      <!-- ===== Painel de reserva, fixo lateralmente em desktop ===== -->
+      <aside class="painel-reserva" aria-labelledby="titulo-reserva">
+        <h2 id="titulo-reserva">Reservar vaga</h2>
+        <p class="painel-preco" id="evento-preco"></p>
+        <p class="painel-vagas" id="evento-vagas"></p>
+
+        <div id="aviso-reservas-fechadas" class="aviso" hidden>
+          As reservas para este evento não estão atualmente disponíveis.
+        </div>
+
+        <form id="form-reserva" novalidate>
+          <input type="hidden" id="evento_id" name="evento_id" />
+
+          <label for="nome">Nome do responsável *</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name" />
+
+          <label for="email">Email de contacto *</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" required autocomplete="tel" />
+
+          <label for="num_pessoas">Número de pessoas *</label>
+          <input type="number" id="num_pessoas" name="num_pessoas" min="1" value="1" required />
+
+          <fieldset class="fieldset-pagamento">
+            <legend>Método de pagamento preferido *</legend>
+            <label class="opcao-radio">
+              <input type="radio" name="metodo_pagamento" value="mbway" required /> MB WAY
+            </label>
+            <label class="opcao-radio">
+              <input type="radio" name="metodo_pagamento" value="transferencia" required /> Transferência bancária
+            </label>
+          </fieldset>
+
+          <label for="observacoes">Observações (alergias, pedidos especiais, etc.)</label>
+          <textarea id="observacoes" name="observacoes" rows="3"></textarea>
+
+          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+
+          <p class="nota-pagamento">
+            Após confirmar, receberá um email com os dados para pagamento e um
+            <strong>código único de reserva</strong>. O pagamento deve ser
+            concluído nas <strong>24 horas seguintes</strong>, incluindo
+            obrigatoriamente esse código na descrição do pagamento — caso
+            contrário, a reserva poderá ser cancelada.
+          </p>
+
+          <button type="submit" class="botao botao-primario botao-full">Confirmar reserva</button>
+        </form>
+
+        <div id="resultado-reserva" class="resultado-reserva" hidden></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Rodapé legal">
+      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
+      <a href="/legal/privacidade">Política de Privacidade</a>
+      <a href="/legal/cookies">Política de Cookies</a>
+      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
+      <a href="/legal/aviso-legal">Aviso Legal</a>
+      <a href="/suporte">Suporte</a>
+    </nav>
+    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/evento-detalhe.js" defer></script>
+</body>
+</html>

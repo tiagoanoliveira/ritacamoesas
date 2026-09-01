@@ -1,0 +1,102 @@
+<!-- public/eventos/index.html — Listagem de eventos e workshops (US11) -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos &amp; Workshops | Atelier by Rita</title>
+  <meta name="description" content="Consulte os próximos workshops e eventos gastronómicos no Atelier by Rita e reserve a sua vaga." />
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body class="textura-papel">
+
+  <header class="site-header">
+    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/#percurso">Percurso</a>
+      <a href="/atelier">Atelier</a>
+      <a href="/eventos" aria-current="page">Eventos &amp; Workshops</a>
+      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <!-- Cabeçalho editorial em vez do banner genérico com título centrado sobre imagem -->
+  <section class="pagina-cabecalho">
+    <p class="hero-etiqueta">Atelier by Rita</p>
+    <h1>Próximos workshops &amp; eventos</h1>
+    <p class="lead">
+      Experiências gastronómicas com vagas limitadas, no espaço do Atelier
+      [morada completa] — consulte datas, temáticas e reserve o seu lugar.
+    </p>
+  </section>
+
+  <!-- Barra de filtros e pesquisa (US11) -->
+  <section class="barra-filtros" aria-label="Filtros de eventos">
+    <div class="filtros-toggle" role="tablist">
+      <button type="button" class="filtro-toggle ativo" data-periodo="futuros" role="tab" aria-selected="true">
+        Próximos
+      </button>
+      <button type="button" class="filtro-toggle" data-periodo="passados" role="tab" aria-selected="false">
+        Já realizados
+      </button>
+    </div>
+
+    <label class="filtro-select" for="filtro-tematica">
+      Temática
+      <select id="filtro-tematica">
+        <option value="">Todas</option>
+        <!-- Preenchido dinamicamente com temáticas existentes -->
+      </select>
+    </label>
+
+    <label class="filtro-pesquisa" for="filtro-pesquisa">
+      <span class="sr-only">Pesquisar eventos</span>
+      <input type="search" id="filtro-pesquisa" placeholder="Pesquisar por título ou descrição…" />
+    </label>
+  </section>
+
+  <!-- Grelha de eventos, preenchida via JS a partir de GET /api/eventos -->
+  <section class="grid-eventos" id="grid-eventos" aria-live="polite">
+    <p class="estado-vazio" id="estado-carregando">A carregar eventos…</p>
+  </section>
+
+  <nav class="paginacao" id="paginacao" aria-label="Paginação de eventos"></nav>
+
+  <footer class="site-footer">
+    <nav aria-label="Rodapé legal">
+      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
+      <a href="/legal/privacidade">Política de Privacidade</a>
+      <a href="/legal/cookies">Política de Cookies</a>
+      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
+      <a href="/legal/aviso-legal">Aviso Legal</a>
+      <a href="/suporte">Suporte</a>
+    </nav>
+    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+  </footer>
+
+  <template id="template-cartao-evento">
+    <!-- Cartão de evento: imagem grande + faixa de vagas, sem sombra pesada -->
+    <article class="cartao-evento">
+      <a class="cartao-evento-link" href="#">
+        <div class="cartao-evento-imagem">
+          <img loading="lazy" alt="" />
+          <span class="etiqueta-tematica"></span>
+        </div>
+        <div class="cartao-evento-corpo">
+          <h3 class="cartao-evento-titulo"></h3>
+          <p class="cartao-evento-data"></p>
+          <p class="cartao-evento-local"></p>
+          <div class="cartao-evento-rodape">
+            <span class="cartao-evento-preco"></span>
+            <span class="cartao-evento-vagas"></span>
+          </div>
+        </div>
+      </a>
+    </article>
+  </template>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/eventos-listagem.js" defer></script>
+</body>
+</html>
