@@ -2,8 +2,8 @@
 // POST /api/orcamentos — submissão pública de pedido de orçamento (US14)
 // GET  /api/orcamentos — listagem para o dashboard (Admin, US24)
 
-import { verificarTurnstile } from "../_lib/turnstile.js";
-import { exigirSessaoAdmin } from "../_lib/auth.js";
+import { verificarTurnstile } from "../../_lib/turnstile.js";
+import { exigirSessaoAdmin } from "../../_lib/auth.js";
 
 export async function onRequestPost({ request, env }) {
   const body = await request.json();

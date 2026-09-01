@@ -7,7 +7,7 @@
 // automaticamente cancelada e a vaga volta a ficar disponível (o trigger SQL
 // trg_reserva_update_para_cancelada já decrementa vagas_ocupadas).
 
-import { exigirSessaoAdmin } from "../../_lib/auth.js";
+import { exigirSessaoAdmin } from "../../../_lib/auth.js";
 
 export async function onRequestPatch({ request, env, params }) {
   const admin = await exigirSessaoAdmin(request, env);

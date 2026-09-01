@@ -6,7 +6,7 @@
 // Não precisa de validar a sessão atual — mesmo que já esteja inválida,
 // expirar de novo não tem efeitos secundários.
 
-import { SESSION_COOKIE_NAME } from "../../_lib/auth.js";
+import { SESSION_COOKIE_NAME } from "../../../_lib/auth.js";
 
 export async function onRequestPost() {
   const cookieExpirado = [

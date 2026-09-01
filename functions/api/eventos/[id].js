@@ -3,7 +3,7 @@
 // PUT  /api/eventos/:id    -> editar evento (Admin, US22)
 // DELETE /api/eventos/:id  -> remover evento (Admin, US22)
 
-import { exigirSessaoAdmin } from "../_lib/auth.js";
+import { exigirSessaoAdmin } from "../../_lib/auth.js";
 
 export async function onRequestGet({ env, params }) {
   const chave = params.id;

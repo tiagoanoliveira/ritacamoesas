@@ -6,7 +6,7 @@
 // confirmar se a sessão ainda é válida. Não faz login nem logout —
 // apenas lê e valida o cookie existente.
 
-import { verificarCookieSessao } from "../../_lib/auth.js";
+import { verificarCookieSessao } from "../../../_lib/auth.js";
 
 export async function onRequestGet({ request, env }) {
   const sessao = await verificarCookieSessao(request, env);

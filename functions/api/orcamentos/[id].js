@@ -2,8 +2,8 @@
 // PUT /api/orcamentos/:id — Admin responde a um pedido de orçamento (US24)
 // Marca o pedido como respondido e envia o email com a resposta ao cliente.
 
-import { exigirSessaoAdmin } from "../_lib/auth.js";
-import { enviarEmailRespostaOrcamento } from "../_lib/email.js";
+import { exigirSessaoAdmin } from "../../_lib/auth.js";
+import { enviarEmailRespostaOrcamento } from "../../_lib/email.js";
 
 export async function onRequestPut({ request, env, params }) {
   const admin = await exigirSessaoAdmin(request, env);
