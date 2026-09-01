@@ -8,7 +8,7 @@
  * @param {Request} request - request original, usada para obter o IP do cliente.
  * @returns {Promise<boolean>}
  */
-export async function verificarTurnstile(token, secretKey, request) {
+export async function validarTurnstile(token, secretKey, request) {
   if (!token || !secretKey) return false;
 
   const ip = request.headers.get("CF-Connecting-IP") || "";

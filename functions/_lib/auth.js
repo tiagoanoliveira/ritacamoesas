@@ -3,7 +3,7 @@
 // (Web Crypto nativo do runtime Workers — sem dependências externas, cumpre RT05).
 // Passwords guardadas com PBKDF2 (nunca texto simples nem hash fraco tipo MD5/SHA1 isolado).
 
-const NOME_COOKIE = "atelier_sessao";
+const SESSION_COOKIE_NAME = "atelier_sessao";
 const DURACAO_SESSAO_SEGUNDOS = 60 * 60 * 8; // 8 horas
 
 // ---------- Hash de password (registo/alteração de password do admin) ----------
