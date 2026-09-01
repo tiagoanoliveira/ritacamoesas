@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+
+# CSS gerado pelo Tailwind
+public/css/main.css
+
+# Ambiente
+.env
+.env.*
+.dev.vars
+
+# Wrangler
+.wrangler/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

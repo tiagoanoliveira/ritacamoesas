@@ -1,0 +1,15 @@
+{
+  "name": "ritacamoesas-atelier",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:css": "tailwindcss -i ./src/css/app.css -o ./public/css/main.css --watch",
+    "build:css": "tailwindcss -i ./src/css/app.css -o ./public/css/main.css --minify",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
