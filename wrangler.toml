@@ -4,12 +4,12 @@ pages_build_output_dir = "public"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "atelier-db"
-database_id = "<PREENCHER_APOS_CRIAR_A_BASE_D1>"
+database_name = "atelier-rita-db"
+database_id = "c5d8bf56-0e0d-4d75-b81b-e2c783eccac1"
 
 [[r2_buckets]]
 binding = "MEDIA"
-bucket_name = "atelier-media"
+bucket_name = "atelier-rita-r2"
 
 [vars]
 SITE_URL = "https://ritacamoesas.pt"

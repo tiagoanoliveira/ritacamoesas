@@ -1,69 +1,214 @@
-// public/js/atelier-proximos-eventos.js
-// Preenche a secção "Próximos eventos" na página do Atelier e na homepage
-// (o elemento com id="grid-proximos-eventos" ou "preview-eventos" — ambos
-// suportados, para reaproveitar este script nas duas páginas).
+(() => {
+  const grid =
+    document.getElementById("grid-proximos-eventos") ||
+    document.getElementById("preview-eventos");
 
-const grid = document.getElementById("grid-proximos-eventos") || document.getElementById("preview-eventos");
-const template = document.getElementById("template-cartao-evento");
+  const template = document.getElementById(
+    "template-cartao-evento",
+  );
 
-function formatarPreco(centimos) {
-  return (centimos / 100).toLocaleString("pt-PT", { style: "currency", currency: "EUR" });
-}
-function formatarData(iso) {
-  return new Date(iso).toLocaleDateString("pt-PT", {
-    weekday: "short", day: "2-digit", month: "long", hour: "2-digit", minute: "2-digit",
-  });
-}
-
-async function carregarProximosEventos() {
   if (!grid || !template) return;
-  const limite = grid.dataset.limite || 3;
 
-  try {
-    const resposta = await fetch(`/api/eventos?futuros=1&limite=${limite}`);
-    const dados = await resposta.json();
-    renderizar(dados.eventos);
-  } catch {
-    grid.innerHTML = `<p class="estado-vazio">Não foi possível carregar os próximos eventos.</p>`;
-  }
-}
+  const classeEstado =
+    "col-span-full border-y border-ink/15 py-12 text-center text-ink/60";
 
-function renderizar(eventos) {
-  grid.innerHTML = "";
-  if (!eventos.length) {
-    grid.innerHTML = `<p class="estado-vazio">Não há workshops agendados neste momento. Volte a consultar em breve.</p>`;
-    return;
-  }
+  function formatarPreco(centimos) {
+    const valor = Number(centimos);
 
-  for (const evento of eventos) {
-    const clone = template.content.cloneNode(true);
-    const link = clone.querySelector(".cartao-evento-link");
-    const img = clone.querySelector("img");
-    const etiqueta = clone.querySelector(".etiqueta-tematica");
-
-    link.href = `/eventos/detalhe.html?slug=${evento.slug}`;
-    img.src = evento.imagem_capa || "/images/placeholder-evento.jpg";
-    img.alt = evento.titulo;
-    if (evento.tematica) etiqueta.textContent = evento.tematica; else etiqueta.remove();
-
-    clone.querySelector(".cartao-evento-titulo").textContent = evento.titulo;
-    clone.querySelector(".cartao-evento-data").textContent = formatarData(evento.data_evento);
-    clone.querySelector(".cartao-evento-local").textContent = evento.localizacao;
-    clone.querySelector(".cartao-evento-preco").textContent = formatarPreco(evento.preco_centimos);
-
-    const vagasEl = clone.querySelector(".cartao-evento-vagas");
-    if (evento.vagas_disponiveis <= 0) {
-      vagasEl.textContent = "Esgotado";
-      vagasEl.classList.add("vagas-esgotadas");
-    } else if (evento.vagas_disponiveis <= 3) {
-      vagasEl.textContent = `Últimas ${evento.vagas_disponiveis} vagas`;
-      vagasEl.classList.add("vagas-poucas");
-    } else {
-      vagasEl.textContent = `${evento.vagas_disponiveis} vagas disponíveis`;
+    if (!Number.isFinite(valor)) {
+      return "Preço sob consulta";
     }
 
-    grid.appendChild(clone);
+    return (valor / 100).toLocaleString("pt-PT", {
+      style: "currency",
+      currency: "EUR",
+    });
   }
-}
 
-carregarProximosEventos();
+  function formatarData(dataISO) {
+    const data = new Date(dataISO);
+
+    if (Number.isNaN(data.getTime())) {
+      return "Data a anunciar";
+    }
+
+    return data.toLocaleString("pt-PT", {
+      weekday: "short",
+      day: "2-digit",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  function apresentarEstado(mensagem) {
+    grid.innerHTML = "";
+
+    const paragrafo = document.createElement("p");
+    paragrafo.className = classeEstado;
+    paragrafo.textContent = mensagem;
+
+    grid.appendChild(paragrafo);
+  }
+
+  function configurarVagas(elemento, vagasDisponiveis) {
+    const vagas = Number(vagasDisponiveis);
+
+    elemento.classList.remove(
+      "text-olive",
+      "text-warning",
+      "text-danger",
+    );
+
+    if (!Number.isFinite(vagas) || vagas <= 0) {
+      elemento.textContent = "Esgotado";
+      elemento.classList.add("text-danger");
+      return;
+    }
+
+    if (vagas <= 3) {
+      elemento.textContent =
+        vagas === 1 ? "Última vaga" : `Últimas ${vagas} vagas`;
+
+      elemento.classList.add("text-warning");
+      return;
+    }
+
+    elemento.textContent = `${vagas} vagas disponíveis`;
+    elemento.classList.add("text-olive");
+  }
+
+  function criarCartao(evento) {
+    const fragmento = template.content.cloneNode(true);
+
+    const link = fragmento.querySelector(
+      ".cartao-evento-link",
+    );
+
+    const imagem = fragmento.querySelector("img");
+
+    const etiqueta = fragmento.querySelector(
+      ".etiqueta-tematica",
+    );
+
+    const titulo = fragmento.querySelector(
+      ".cartao-evento-titulo",
+    );
+
+    const data = fragmento.querySelector(
+      ".cartao-evento-data",
+    );
+
+    const local = fragmento.querySelector(
+      ".cartao-evento-local",
+    );
+
+    const preco = fragmento.querySelector(
+      ".cartao-evento-preco",
+    );
+
+    const vagas = fragmento.querySelector(
+      ".cartao-evento-vagas",
+    );
+
+    link.href =
+      `/eventos/detalhe.html?slug=${encodeURIComponent(evento.slug)}`;
+
+    imagem.src =
+      evento.imagem_capa || "/images/placeholder-evento.jpg";
+
+    imagem.alt = evento.titulo || "Evento do Atelier by Rita";
+
+    if (evento.tematica) {
+      etiqueta.textContent = evento.tematica;
+    } else {
+      etiqueta.remove();
+    }
+
+    titulo.textContent = evento.titulo || "Evento";
+    data.textContent = formatarData(evento.data_evento);
+    local.textContent =
+      evento.localizacao || "Atelier by Rita";
+
+    preco.textContent = formatarPreco(
+      evento.preco_centimos,
+    );
+
+    configurarVagas(
+      vagas,
+      evento.vagas_disponiveis,
+    );
+
+    return fragmento;
+  }
+
+  function renderizarEventos(eventos) {
+    grid.innerHTML = "";
+
+    if (!Array.isArray(eventos) || eventos.length === 0) {
+      apresentarEstado(
+        "Não há workshops agendados neste momento. Volte a consultar em breve.",
+      );
+
+      return;
+    }
+
+    const fragmento = document.createDocumentFragment();
+
+    eventos.forEach((evento) => {
+      fragmento.appendChild(criarCartao(evento));
+    });
+
+    grid.appendChild(fragmento);
+  }
+
+  async function carregarProximosEventos() {
+    const limite = Number.parseInt(
+      grid.dataset.limite || "3",
+      10,
+    );
+
+    grid.setAttribute("aria-busy", "true");
+
+    try {
+      const parametros = new URLSearchParams({
+        futuros: "1",
+        limite: String(
+          Number.isFinite(limite) ? limite : 3,
+        ),
+      });
+
+      const resposta = await fetch(
+        `/api/eventos?${parametros.toString()}`,
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        },
+      );
+
+      if (!resposta.ok) {
+        throw new Error(
+          `A API respondeu com o estado ${resposta.status}.`,
+        );
+      }
+
+      const dados = await resposta.json();
+
+      renderizarEventos(dados.eventos);
+    } catch (erro) {
+      console.error(
+        "Erro ao carregar os próximos eventos:",
+        erro,
+      );
+
+      apresentarEstado(
+        "Não foi possível carregar os próximos eventos. Tente novamente mais tarde.",
+      );
+    } finally {
+      grid.setAttribute("aria-busy", "false");
+    }
+  }
+
+  carregarProximosEventos();
+})();
