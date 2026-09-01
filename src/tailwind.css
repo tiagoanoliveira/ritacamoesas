@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@source "../public";
+
+@font-face {
+  font-family: "Fraunces Variable";
+  src: url("/fonts/fraunces-latin-wght-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope Variable";
+  src: url("/fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Manrope Variable", "Segoe UI", sans-serif;
+
+  --color-ink: #3b2314;
+  --color-terracotta: #8c5a3c;
+  --color-cream: #f4e9dd;
+  --color-amber: #a6612c;
+  --color-sand: #e8c79e;
+  --color-olive: #5b6b4a;
+  --color-sage: #c7d3b8;
+  --color-paper: #fbf7f1;
+  --color-white: #ffffff;
+
+  --color-success: #4c7a47;
+  --color-warning: #9a6a20;
+  --color-danger: #a23b2e;
+
+  --shadow-soft:
+    0 1px 2px rgb(59 35 20 / 0.06),
+    0 8px 24px rgb(59 35 20 / 0.07);
+
+  --shadow-raised:
+    0 2px 4px rgb(59 35 20 / 0.08),
+    0 18px 48px rgb(59 35 20 / 0.1);
+
+  --breakpoint-xs: 30rem;
+}

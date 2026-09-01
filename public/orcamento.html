@@ -1,118 +1,223 @@
-<!-- public/orcamento.html — Pedido de orçamento para eventos privados/workshops (US14) -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedir Orçamento | Atelier by Rita</title>
-  <meta name="description" content="Peça um orçamento para eventos privados, jantares ou workshops à medida com a Rita Camoesas." />
-  <link rel="stylesheet" href="/css/tokens.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-</head>
-<body class="textura-papel">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <header class="site-header">
-    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
-    <nav class="nav-principal" aria-label="Navegação principal">
-      <a href="/#percurso">Percurso</a>
-      <a href="/atelier">Atelier</a>
-      <a href="/eventos">Eventos &amp; Workshops</a>
-      <a href="/orcamento" aria-current="page" class="nav-cta">Pedir Orçamento</a>
-    </nav>
+  <title>Pedir orçamento | Atelier by Rita</title>
+
+  <meta
+    name="description"
+    content="Peça um orçamento para eventos privados, jantares ou workshops à medida com Rita Camoesas."
+  />
+
+  <link rel="canonical" href="https://ritacamoesas.pt/orcamento" />
+  <link rel="stylesheet" href="/css/tailwind.css" />
+
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer
+  ></script>
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
+  <a href="#conteudo" class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0">
+    Saltar para o conteúdo
+  </a>
+
+  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+    <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
+      <a href="/" class="inline-flex min-h-11 items-center" aria-label="Rita Camoesas — página inicial">
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" class="h-10 w-auto" />
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink hover:bg-ink hover:text-cream active:bg-amber md:hidden"
+        aria-expanded="false"
+        aria-controls="navegacao-principal"
+        aria-label="Abrir menu"
+        data-menu-button
+      >
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav
+        id="navegacao-principal"
+        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        aria-label="Navegação principal"
+      >
+        <a href="/#historia" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Percurso</a>
+        <a href="/atelier" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Atelier</a>
+        <a href="/eventos" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Eventos &amp; Workshops</a>
+        <a href="/orcamento" aria-current="page" class="mt-3 inline-flex min-h-11 items-center justify-center bg-amber px-5 py-2.5 text-sm font-bold text-cream hover:bg-terracotta md:mt-0">Pedir orçamento</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="pagina-cabecalho">
-    <p class="hero-etiqueta">Eventos privados &amp; workshops à medida</p>
-    <h1>Vamos criar a sua experiência</h1>
-    <p class="lead">
-      Jantares privados, workshops para empresas, aniversários ou qualquer
-      celebração à sua medida. Conte-nos os detalhes e a Rita responde
-      pessoalmente com uma proposta.
-    </p>
-  </section>
+  <main id="conteudo">
+    <section class="mx-auto max-w-[1180px] px-4 pb-12 pt-16 lg:px-6 lg:pt-24">
+      <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+        Eventos privados e workshops à medida
+      </p>
 
-  <div class="layout-orcamento">
-    <!-- Bloco lateral com contexto real — evita o formulário "a solo" e frio -->
-    <aside class="orcamento-contexto">
-      <!-- PLACEHOLDER IMAGEM REAL: Rita a preparar um jantar privado / workshop em grupo -->
-      <img src="/images/placeholder-orcamento.jpg" alt="Rita Camoesas a preparar um evento privado" />
-      <h2>Como funciona</h2>
-      <ol class="lista-passos">
-        <li>Preenche o formulário com os detalhes do que precisa.</li>
-        <li>A Rita analisa o pedido e responde por email, normalmente em 2 a 3 dias úteis.</li>
-        <li>Combinam os detalhes finais e a data é reservada.</li>
-      </ol>
-    </aside>
+      <h1 class="mt-3 max-w-4xl font-display text-[clamp(3.25rem,7vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.045em]">
+        Vamos criar a sua experiência
+      </h1>
 
-    <form id="form-orcamento" class="formulario-orcamento" novalidate>
-      <div class="campo">
-        <label for="nome">Nome do responsável *</label>
-        <input type="text" id="nome" name="nome" required autocomplete="name" />
+      <p class="mt-7 max-w-2xl leading-8 text-ink/70">
+        Conte-nos o que está a imaginar. A Rita analisa pessoalmente cada
+        pedido e prepara uma proposta adequada ao grupo e à ocasião.
+      </p>
+    </section>
+
+    <div class="mx-auto grid max-w-[1180px] gap-12 px-4 pb-24 lg:grid-cols-[0.8fr_1.2fr] lg:items-start lg:px-6">
+      <aside class="lg:sticky lg:top-24">
+        <img
+          src="/images/placeholder-orcamento.jpg"
+          alt="Rita Camoesas a preparar um evento privado"
+          width="760"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[4/5] w-full bg-sand object-cover"
+        />
+
+        <h2 class="mt-8 font-display text-3xl font-semibold">
+          Como funciona
+        </h2>
+
+        <ol class="mt-5 border-t border-ink/15">
+          <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-ink/15 py-5">
+            <span class="text-sm font-extrabold text-amber">01</span>
+            <span>Partilha os detalhes do evento através do formulário.</span>
+          </li>
+
+          <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-ink/15 py-5">
+            <span class="text-sm font-extrabold text-amber">02</span>
+            <span>A Rita analisa o pedido e responde por email.</span>
+          </li>
+
+          <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-ink/15 py-5">
+            <span class="text-sm font-extrabold text-amber">03</span>
+            <span>Depois de acertados os detalhes, a data fica reservada.</span>
+          </li>
+        </ol>
+      </aside>
+
+      <div>
+        <form id="form-orcamento" class="grid gap-6 bg-paper p-6 shadow-soft sm:p-10" novalidate>
+          <div>
+            <label for="nome" class="block text-sm font-bold">Nome do responsável *</label>
+            <input type="text" id="nome" name="nome" required autocomplete="name" class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20" />
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="email" class="block text-sm font-bold">Email de contacto *</label>
+              <input type="email" id="email" name="email" required autocomplete="email" class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20" />
+            </div>
+
+            <div>
+              <label for="telefone" class="block text-sm font-bold">Telefone *</label>
+              <input type="tel" id="telefone" name="telefone" required autocomplete="tel" class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20" />
+            </div>
+          </div>
+
+          <div>
+            <label for="tipo_evento" class="block text-sm font-bold">Tipo de evento *</label>
+            <select id="tipo_evento" name="tipo_evento" required class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20">
+              <option value="">Selecione…</option>
+              <option value="Jantar privado">Jantar privado</option>
+              <option value="Workshop para empresa">Workshop para empresa</option>
+              <option value="Workshop para grupo/particular">Workshop para grupo ou particular</option>
+              <option value="Aniversário / celebração">Aniversário ou celebração</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="num_pessoas" class="block text-sm font-bold">Número de pessoas *</label>
+              <input type="number" id="num_pessoas" name="num_pessoas" min="1" required class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20" />
+            </div>
+
+            <div>
+              <label for="data_pretendida" class="block text-sm font-bold">
+                Data pretendida
+                <span class="font-normal text-ink/55">(opcional)</span>
+              </label>
+
+              <input type="date" id="data_pretendida" name="data_pretendida" class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20" />
+            </div>
+          </div>
+
+          <div>
+            <label for="tematica" class="block text-sm font-bold">
+              Temática
+              <span class="font-normal text-ink/55">(opcional)</span>
+            </label>
+
+            <input
+              type="text"
+              id="tematica"
+              name="tematica"
+              placeholder="Ex.: cozinha regional, doçaria ou celebração temática"
+              class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none placeholder:text-ink/40 focus:border-amber focus:ring-2 focus:ring-amber/20"
+            />
+          </div>
+
+          <div>
+            <label for="observacoes" class="block text-sm font-bold">
+              O que gostaria de preparar?
+            </label>
+
+            <textarea
+              id="observacoes"
+              name="observacoes"
+              rows="5"
+              placeholder="Indique o local, o formato pretendido, restrições alimentares ou outras informações relevantes."
+              class="mt-2 w-full resize-y border border-ink/20 bg-white/60 px-3 py-2 outline-none placeholder:text-ink/40 focus:border-amber focus:ring-2 focus:ring-amber/20"
+            ></textarea>
+          </div>
+
+          <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
+
+          <button type="submit" class="inline-flex min-h-12 w-full items-center justify-center bg-ink px-6 py-3 text-sm font-extrabold text-cream hover:bg-amber disabled:cursor-wait disabled:opacity-50">
+            Enviar pedido de orçamento
+          </button>
+        </form>
+
+        <div id="resultado-orcamento" role="status" aria-live="polite" hidden></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-ink/15 bg-ink text-cream">
+    <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
+      <div>
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" loading="lazy" class="h-10 w-auto brightness-0 invert" />
+        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">Workshops, eventos e experiências gastronómicas pensados à volta da mesa.</p>
       </div>
 
-      <div class="campo-grupo">
-        <div class="campo">
-          <label for="email">Email de contacto *</label>
-          <input type="email" id="email" name="email" required autocomplete="email" />
-        </div>
-        <div class="campo">
-          <label for="telefone">Telefone *</label>
-          <input type="tel" id="telefone" name="telefone" required autocomplete="tel" />
-        </div>
-      </div>
+      <nav class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3" aria-label="Rodapé legal">
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+      </nav>
+    </div>
 
-      <div class="campo">
-        <label for="tipo_evento">Tipo de evento *</label>
-        <select id="tipo_evento" name="tipo_evento" required>
-          <option value="">Selecione…</option>
-          <option value="Jantar privado">Jantar privado</option>
-          <option value="Workshop para empresa">Workshop para empresa</option>
-          <option value="Workshop para grupo/particular">Workshop para grupo/particular</option>
-          <option value="Aniversário / celebração">Aniversário / celebração</option>
-          <option value="Outro">Outro</option>
-        </select>
-      </div>
-
-      <div class="campo-grupo">
-        <div class="campo">
-          <label for="num_pessoas">Número de pessoas *</label>
-          <input type="number" id="num_pessoas" name="num_pessoas" min="1" required />
-        </div>
-        <div class="campo">
-          <label for="data_pretendida">Data pretendida (opcional)</label>
-          <input type="date" id="data_pretendida" name="data_pretendida" />
-        </div>
-      </div>
-
-      <div class="campo">
-        <label for="tematica">Temática (opcional)</label>
-        <input type="text" id="tematica" name="tematica" placeholder="Ex: cozinha regional, doçaria, festa temática…" />
-      </div>
-
-      <div class="campo">
-        <label for="observacoes">Observações</label>
-        <textarea id="observacoes" name="observacoes" rows="4" placeholder="Local pretendido, orçamento aproximado, restrições alimentares, etc."></textarea>
-      </div>
-
-      <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__"></div>
-
-      <button type="submit" class="botao botao-primario botao-full">Enviar pedido de orçamento</button>
-
-      <div id="resultado-orcamento" class="resultado-reserva" hidden></div>
-    </form>
-  </div>
-
-  <footer class="site-footer">
-    <nav aria-label="Rodapé legal">
-      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
-      <a href="/legal/privacidade">Política de Privacidade</a>
-      <a href="/legal/cookies">Política de Cookies</a>
-      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
-      <a href="/legal/aviso-legal">Aviso Legal</a>
-      <a href="/suporte">Suporte</a>
-    </nav>
-    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+    <div class="border-t border-cream/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+        &copy; 2026 Atelier by Rita. Todos os direitos reservados.
+      </p>
+    </div>
   </footer>
 
   <script src="/js/main.js" defer></script>

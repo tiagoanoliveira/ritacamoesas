@@ -1,95 +1,179 @@
-<!-- public/eventos/index.html — Listagem de eventos e workshops (US11) -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eventos &amp; Workshops | Atelier by Rita</title>
-  <meta name="description" content="Consulte os próximos workshops e eventos gastronómicos no Atelier by Rita e reserve a sua vaga." />
-  <link rel="stylesheet" href="/css/tokens.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<body class="textura-papel">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <header class="site-header">
-    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
-    <nav class="nav-principal" aria-label="Navegação principal">
-      <a href="/#percurso">Percurso</a>
-      <a href="/atelier">Atelier</a>
-      <a href="/eventos" aria-current="page">Eventos &amp; Workshops</a>
-      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
-    </nav>
+  <title>Eventos &amp; Workshops | Atelier by Rita</title>
+
+  <meta
+    name="description"
+    content="Consulte os próximos workshops e eventos gastronómicos no Atelier by Rita e reserve a sua vaga."
+  />
+
+  <link rel="canonical" href="https://ritacamoesas.pt/eventos" />
+  <link rel="stylesheet" href="/css/tailwind.css" />
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
+  <a href="#conteudo" class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0">
+    Saltar para o conteúdo
+  </a>
+
+  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+    <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
+      <a href="/" class="inline-flex min-h-11 items-center" aria-label="Rita Camoesas — página inicial">
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" class="h-10 w-auto" />
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink hover:bg-ink hover:text-cream active:bg-amber md:hidden"
+        aria-expanded="false"
+        aria-controls="navegacao-principal"
+        aria-label="Abrir menu"
+        data-menu-button
+      >
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav
+        id="navegacao-principal"
+        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        aria-label="Navegação principal"
+      >
+        <a href="/#historia" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Percurso</a>
+        <a href="/atelier" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Atelier</a>
+        <a href="/eventos" aria-current="page" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold text-amber md:border-0">Eventos &amp; Workshops</a>
+        <a href="/orcamento" class="mt-3 inline-flex min-h-11 items-center justify-center bg-ink px-5 py-2.5 text-sm font-bold text-cream hover:bg-amber md:mt-0">Pedir orçamento</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Cabeçalho editorial em vez do banner genérico com título centrado sobre imagem -->
-  <section class="pagina-cabecalho">
-    <p class="hero-etiqueta">Atelier by Rita</p>
-    <h1>Próximos workshops &amp; eventos</h1>
-    <p class="lead">
-      Experiências gastronómicas com vagas limitadas, no espaço do Atelier
-      [morada completa] — consulte datas, temáticas e reserve o seu lugar.
-    </p>
-  </section>
+  <main id="conteudo">
+    <section class="mx-auto max-w-[1180px] px-4 pb-12 pt-16 lg:px-6 lg:pt-24">
+      <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+        Atelier by Rita
+      </p>
 
-  <!-- Barra de filtros e pesquisa (US11) -->
-  <section class="barra-filtros" aria-label="Filtros de eventos">
-    <div class="filtros-toggle" role="tablist">
-      <button type="button" class="filtro-toggle ativo" data-periodo="futuros" role="tab" aria-selected="true">
-        Próximos
-      </button>
-      <button type="button" class="filtro-toggle" data-periodo="passados" role="tab" aria-selected="false">
-        Já realizados
-      </button>
+      <h1 class="mt-3 max-w-4xl font-display text-[clamp(3.25rem,7vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.045em]">
+        Próximos workshops &amp; eventos
+      </h1>
+
+      <p class="mt-7 max-w-2xl leading-8 text-ink/70">
+        Experiências gastronómicas com vagas limitadas. Consulte as datas,
+        descubra cada temática e reserve diretamente o seu lugar.
+      </p>
+    </section>
+
+    <section
+      class="border-y border-ink/15"
+      aria-label="Filtros de eventos"
+    >
+      <div class="mx-auto grid max-w-[1180px] gap-5 px-4 py-6 md:grid-cols-[auto_14rem_1fr] md:items-end lg:px-6">
+        <div class="flex gap-2" role="tablist" aria-label="Período dos eventos">
+          <button
+            type="button"
+            class="filtro-toggle min-h-11 border border-ink px-5 py-2 text-sm font-bold text-ink aria-selected:bg-ink aria-selected:text-cream"
+            data-periodo="futuros"
+            role="tab"
+            aria-selected="true"
+          >
+            Próximos
+          </button>
+
+          <button
+            type="button"
+            class="filtro-toggle min-h-11 border border-ink px-5 py-2 text-sm font-bold text-ink aria-selected:bg-ink aria-selected:text-cream"
+            data-periodo="passados"
+            role="tab"
+            aria-selected="false"
+          >
+            Já realizados
+          </button>
+        </div>
+
+        <label for="filtro-tematica" class="block text-sm font-bold">
+          Temática
+          <select
+            id="filtro-tematica"
+            class="mt-2 min-h-11 w-full border border-ink/20 bg-paper px-3 py-2 text-base outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+          >
+            <option value="">Todas</option>
+          </select>
+        </label>
+
+        <label for="filtro-pesquisa" class="block text-sm font-bold">
+          Pesquisar
+          <input
+            type="search"
+            id="filtro-pesquisa"
+            placeholder="Título ou descrição"
+            class="mt-2 min-h-11 w-full border border-ink/20 bg-paper px-3 py-2 text-base outline-none placeholder:text-ink/40 focus:border-amber focus:ring-2 focus:ring-amber/20"
+          />
+        </label>
+      </div>
+    </section>
+
+    <section
+      id="grid-eventos"
+      class="mx-auto grid min-h-80 max-w-[1180px] gap-x-6 gap-y-12 px-4 py-14 sm:grid-cols-2 lg:grid-cols-3 lg:px-6"
+      aria-live="polite"
+    >
+      <p id="estado-carregando" class="col-span-full border-y border-ink/15 py-12 text-center text-ink/60">
+        A carregar eventos…
+      </p>
+    </section>
+
+    <nav
+      id="paginacao"
+      class="mx-auto flex max-w-[1180px] justify-between gap-4 px-4 pb-20 lg:px-6"
+      aria-label="Paginação de eventos"
+    ></nav>
+  </main>
+
+  <footer class="border-t border-ink/15 bg-ink text-cream">
+    <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
+      <div>
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" loading="lazy" class="h-10 w-auto brightness-0 invert" />
+        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">Workshops, eventos e experiências gastronómicas pensados à volta da mesa.</p>
+      </div>
+
+      <nav class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3" aria-label="Rodapé legal">
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+      </nav>
     </div>
 
-    <label class="filtro-select" for="filtro-tematica">
-      Temática
-      <select id="filtro-tematica">
-        <option value="">Todas</option>
-        <!-- Preenchido dinamicamente com temáticas existentes -->
-      </select>
-    </label>
-
-    <label class="filtro-pesquisa" for="filtro-pesquisa">
-      <span class="sr-only">Pesquisar eventos</span>
-      <input type="search" id="filtro-pesquisa" placeholder="Pesquisar por título ou descrição…" />
-    </label>
-  </section>
-
-  <!-- Grelha de eventos, preenchida via JS a partir de GET /api/eventos -->
-  <section class="grid-eventos" id="grid-eventos" aria-live="polite">
-    <p class="estado-vazio" id="estado-carregando">A carregar eventos…</p>
-  </section>
-
-  <nav class="paginacao" id="paginacao" aria-label="Paginação de eventos"></nav>
-
-  <footer class="site-footer">
-    <nav aria-label="Rodapé legal">
-      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
-      <a href="/legal/privacidade">Política de Privacidade</a>
-      <a href="/legal/cookies">Política de Cookies</a>
-      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
-      <a href="/legal/aviso-legal">Aviso Legal</a>
-      <a href="/suporte">Suporte</a>
-    </nav>
-    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+    <div class="border-t border-cream/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+        &copy; 2026 Atelier by Rita. Todos os direitos reservados.
+      </p>
+    </div>
   </footer>
 
   <template id="template-cartao-evento">
-    <!-- Cartão de evento: imagem grande + faixa de vagas, sem sombra pesada -->
-    <article class="cartao-evento">
-      <a class="cartao-evento-link" href="#">
-        <div class="cartao-evento-imagem">
-          <img loading="lazy" alt="" />
-          <span class="etiqueta-tematica"></span>
+    <article class="cartao-evento group min-w-0">
+      <a class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber" href="#">
+        <div class="relative overflow-hidden bg-sand">
+          <img loading="lazy" decoding="async" width="640" height="480" alt="" class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]" />
+          <span class="etiqueta-tematica absolute left-3 top-3 bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ink"></span>
         </div>
-        <div class="cartao-evento-corpo">
-          <h3 class="cartao-evento-titulo"></h3>
-          <p class="cartao-evento-data"></p>
-          <p class="cartao-evento-local"></p>
-          <div class="cartao-evento-rodape">
-            <span class="cartao-evento-preco"></span>
-            <span class="cartao-evento-vagas"></span>
+
+        <div class="pt-5">
+          <h2 class="cartao-evento-titulo font-display text-2xl font-semibold leading-tight"></h2>
+          <p class="cartao-evento-data mt-3 text-sm font-semibold text-ink/75"></p>
+          <p class="cartao-evento-local mt-1 text-sm text-ink/60"></p>
+
+          <div class="mt-5 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
+            <span class="cartao-evento-preco text-lg font-extrabold"></span>
+            <span class="cartao-evento-vagas text-right text-xs font-bold text-olive"></span>
           </div>
         </div>
       </a>

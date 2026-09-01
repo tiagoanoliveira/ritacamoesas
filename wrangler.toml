@@ -1,115 +1,17 @@
-
-
-
-index
-HTML
-Agora sim, aqui está o plano completo de arquitetura e os primeiros ficheiros gerados.
-
-Stack e Arquitetura
-Segui rigorosamente o que já defini no documento técnico: Cloudflare Pages + Pages Functions (Workers runtime), D1 (SQLite) para dados, R2 para imagens, Turnstile para anti-bot nos formulários, e Resend para emails — HTML5, CSS (Tailwind compilado via CLI, não CDN) e JavaScript puro no cliente, sem framework pesado (React/Vue), o que cumpre o RT03 e mantém o projeto leve e fácil de manter sem conhecimento técnico avançado.
-
-Cloudflare Pages foi escolhido em vez de Workers "puros" porque permite servir HTML estático e API (/functions/api/**) no mesmo deploy, com os bindings D1/R2/Turnstile disponíveis diretamente no env de cada função — simplifica o deploy único referido no documento.
-
-Estrutura de Pastas
-text
-atelier-by-rita/
-├── public/                    # tudo o que é servido estaticamente
-│   ├── index.html             # home
-│   ├── atelier.html           # US01-adjacente: sobre o atelier
-│   ├── eventos/index.html     # listagem (US11)
-│   ├── eventos/detalhe.html   # detalhe + reserva (US12), carrega slug via JS
-│   ├── orcamento.html         # formulário de orçamento (US14)
-│   ├── reserva/consultar.html # US13
-│   ├── legal/*.html           # US02, US04, US05, US06
-│   ├── suporte.html           # US07
-│   ├── admin/                 # dashboard (US21-US24), protegido por auth
-│   ├── css/ (tokens.css, main.css)
-│   ├── js/
-│   └── images/                # placeholders reais a substituir
-├── functions/api/
-│   ├── eventos/ (index.js, [id].js)
-│   ├── reservas/ (index.js, [codigo].js)
-│   ├── orcamentos/ (index.js, [id].js)
-│   ├── admin/ (reservas/[id].js, eventos/*, orcamentos/*, auth/*)
-│   └── _lib/ (turnstile.js, email.js, codigo.js, auth.js)
-├── migrations/0001_init.sql
-└── wrangler.toml
-Já criei os ficheiros: 0001_init.sql (schema completo com triggers que atualizam vagas automaticamente), wrangler.toml, reservas_index.js (POST de reserva pública), reservas_admin.js (gestão de reservas no dashboard, incluindo a lógica de "Sem pagamento" → cancelar → libertar vaga), tokens.css (sistema de design) e index.html (homepage).
-
-Modelo de Dados
-Tabela	Campos-chave
-eventos	slug, titulo, descrição, temática, duração, data, preço (cêntimos), vagas_max/ocupadas, localização (+ flag de excepção), janela de abertura/fecho de reservas
-evento_imagens	referência R2 por evento, com posição para carrossel
-reservas	código único, dados do responsável, nº pessoas, método (mbway/transferência), estado (pendente/confirmada/sem_pagamento/cancelada), prazo de 24h
-pedidos_orcamento	tipo de evento, nº pessoas, temática opcional, contacto, observações, estado e resposta do admin
-admins	login do dashboard
-Os triggers SQL garantem que vagas_ocupadas nunca desincroniza manualmente: ao inserir uma reserva pendente/confirmada, soma; ao cancelar ou marcar "sem pagamento", subtrai — implementando a RN04 sem lógica extra em cada endpoint.
-
-Fluxo de Reserva (passo a passo)
-Cliente escolhe evento, preenche formulário (nome, email, telefone, nº pessoas, observações, método de pagamento) e passa o Turnstile.
-
-POST /api/reservas valida vagas disponíveis e janela de reservas, gera código único (ex: RB-7F3A2K), grava com estado = pendente e prazo_pagamento = agora + 24h.
-
-Resend envia email com os dados de pagamento (MB Way / IBAN) e instrução explícita: o código tem de constar na descrição do pagamento.
-
-Passado o prazo, é a Rita (dashboard) que decide: confirma pagamento → estado = confirmada; ou marca sem_pagamento → a reserva é automaticamente cancelada e a vaga volta ao público (a menos que a data limite de reservas já tenha passado, conforme RN04/RN05).
-
-Design — Para Não Parecer "Feito por IA"
-No tokens.css já deixei o raciocínio documentado: paleta terrosa (terracota, âmbar, verde-oliva) em vez do azul/roxo corporativo genérico, tipografia serifada editorial (Fraunces) para títulos em vez de sans-serif neutro, texturas de papel/traço manual em vez de glassmorphism, e — o mais importante — layout construído em torno da fotografia real, com hero assimétrico (texto + retrato grande) em vez do clichê "hero centrado + gradiente + botão".
-
-Deixei marcadores <!-- PLACEHOLDER IMAGEM REAL --> na homepage nos pontos onde as fotos reais da Rita e do atelier devem substituir os placeholders — retrato hero, timeline do percurso, e galeria de eventos.
-
-Próximos Passos
-Confirmar as cores exatas da paleta (páginas 8 do documento têm swatches em imagem que não extraí em texto) para preencher o tokens.css definitivo.
-
-Construir atelier.html, eventos/index.html e eventos/detalhe.html com o fluxo de reserva completo.
-
-Implementar _lib/email.js (templates Resend) e _lib/auth.js (sessão admin via JWT/cookie).
-
-Construir o dashboard admin (US21-US24): resumo de lotação, CRUD de eventos, gestão de reservas, resposta a orçamentos.
-
-Páginas legais (RGPD, Termos, Aviso Legal) — o texto do Aviso Legal já está praticamente pronto no teu documento, só falta preencher os dados da entidade.
-
-Queres que avance agora para o CRUD de eventos no admin ou para as páginas de listagem/detalhe de eventos no lado público?
-
-Avança com as páginas de listagem/detalhes de eventos do lado público
-
-A ver uma sessão partilhada. As suas perguntas de seguimento serão privadas.
-
-
-# wrangler.toml
-# Configuração do projeto Cloudflare Pages (com Pages Functions) para o
-# website "Atelier by Rita". Publicar via: wrangler pages deploy ./public
-
 name = "atelier-by-rita"
 compatibility_date = "2026-08-01"
 pages_build_output_dir = "public"
 
-# ---------- Base de dados D1 ----------
 [[d1_databases]]
 binding = "DB"
 database_name = "atelier-db"
-database_id = "<PREENCHER_APOS_CRIAR_COM_wrangler_d1_create>"
+database_id = "<PREENCHER_APOS_CRIAR_A_BASE_D1>"
 
-# ---------- Armazenamento de imagens/ficheiros ----------
 [[r2_buckets]]
 binding = "MEDIA"
 bucket_name = "atelier-media"
 
-# ---------- Variáveis e segredos ----------
-# Definir os segredos reais com:
-#   wrangler pages secret put RESEND_API_KEY
-#   wrangler pages secret put TURNSTILE_SECRET_KEY
-#   wrangler pages secret put JWT_SECRET
-# Nunca colocar chaves reais neste ficheiro (fica no repositório).
 [vars]
-SITE_URL = "https://atelierbyrita.pt"
-EMAIL_FROM = "reservas@atelierbyrita.pt"
+SITE_URL = "https://ritacamoesas.pt"
+EMAIL_FROM = "reservas@ritacamoesas.pt"
 RESERVA_PRAZO_HORAS = "24"
-
-# ---------- Cron trigger (opcional, fase 2) ----------
-# Usado apenas para enviar EMAIL DE AVISO 2h antes do fim do prazo de
-# pagamento (o cancelamento em si é sempre uma decisão manual do Admin,
-# conforme especificado — nunca cancelamos automaticamente por código).
-[triggers]
-crons = ["0 * * * *"]

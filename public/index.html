@@ -1,111 +1,425 @@
-<!-- public/index.html — Página inicial (US01) -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5" />
-  <title>Rita Camoesas | Atelier by Rita</title>
-  <meta name="description" content="Rita Camoesas, finalista do MasterChef Portugal 2022 — conheça o percurso, o Atelier by Rita e os próximos workshops e eventos gastronómicos." />
-  <link rel="stylesheet" href="/css/tokens.css" />
-  <link rel="stylesheet" href="/css/main.css" /> <!-- Tailwind build (via CLI, sem CDN) -->
-  <link rel="canonical" href="https://atelierbyrita.pt/" />
-</head>
-<body class="textura-papel">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Header fixo, minimalista: logo (assinatura manuscrita real da Rita) + nav -->
-  <header class="site-header">
-    <a href="/" class="logo">
-      <img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" />
-      <!-- Placeholder: substituir por assinatura/rúbrica real digitalizada da Rita -->
-    </a>
-    <nav class="nav-principal" aria-label="Navegação principal">
-      <a href="/#percurso">Percurso</a>
-      <a href="/atelier">Atelier</a>
-      <a href="/eventos">Eventos &amp; Workshops</a>
-      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
-    </nav>
+  <title>Rita Camoesas | Atelier by Rita</title>
+
+  <meta
+    name="description"
+    content="Conheça o percurso de Rita Camoesas, o Atelier by Rita e os próximos workshops e eventos gastronómicos."
+  />
+
+  <link rel="canonical" href="https://ritacamoesas.pt/" />
+  <link rel="stylesheet" href="/css/tailwind.css" />
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
+  <a
+    href="#conteudo"
+    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
+  >
+    Saltar para o conteúdo
+  </a>
+
+  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+    <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
+      <a
+        href="/"
+        class="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+        aria-label="Rita Camoesas — página inicial"
+      >
+        <img
+          src="/images/rita.svg"
+          alt="Rita Camoesas"
+          width="150"
+          height="42"
+          class="h-10 w-auto"
+        />
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-cream active:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:hidden"
+        aria-expanded="false"
+        aria-controls="navegacao-principal"
+        aria-label="Abrir menu"
+        data-menu-button
+      >
+        <svg
+          aria-hidden="true"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav
+        id="navegacao-principal"
+        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        aria-label="Navegação principal"
+      >
+        <a
+          href="/#historia"
+          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+        >
+          Percurso
+        </a>
+
+        <a
+          href="/atelier"
+          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+        >
+          Atelier
+        </a>
+
+        <a
+          href="/eventos"
+          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+        >
+          Eventos &amp; Workshops
+        </a>
+
+        <a
+          href="/orcamento"
+          class="mt-3 inline-flex min-h-11 items-center justify-center bg-ink px-5 py-2.5 text-sm font-bold text-cream transition-colors hover:bg-amber active:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:mt-0"
+        >
+          Pedir orçamento
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ============ HERO ============ -->
-  <!-- Layout assimétrico: imagem de retrato grande à direita, texto à esquerda.
-       EVITAR: hero centrado com gradiente + botão genérico "Saber mais". -->
-  <section class="hero" aria-labelledby="hero-titulo">
-    <div class="hero-texto">
-      <p class="hero-etiqueta">Finalista MasterChef Portugal 2022</p>
-      <h1 id="hero-titulo">Rita Camoesas</h1>
-      <p class="hero-lead">
-        Da paixão pela cozinha de família ao palco do MasterChef, até à criação
-        do Atelier by Rita — um espaço onde a comida se transforma em memória.
-      </p>
-      <div class="hero-acoes">
-        <a href="/eventos" class="botao botao-primario">Ver próximos workshops</a>
-        <a href="/#historia" class="botao botao-texto">Conhecer a história →</a>
+  <main id="conteudo">
+    <section
+      class="mx-auto grid min-h-[calc(100svh-4.5rem)] max-w-[1180px] items-center gap-10 px-4 py-14 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-6 lg:py-20"
+      aria-labelledby="hero-titulo"
+    >
+      <div class="max-w-xl md:pr-6">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          Finalista MasterChef Portugal 2022
+        </p>
+
+        <h1
+          id="hero-titulo"
+          class="font-display text-[clamp(3.5rem,9vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.055em]"
+        >
+          Rita<br />Camoesas
+        </h1>
+
+        <p class="mt-7 max-w-[55ch] text-base leading-8 text-ink/75">
+          Da cozinha de família ao MasterChef, até à criação do Atelier by
+          Rita — um lugar onde se cozinha, aprende e celebra à volta da mesa.
+        </p>
+
+        <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <a
+            href="/eventos"
+            class="inline-flex min-h-11 items-center justify-center bg-ink px-6 py-3 text-sm font-bold text-cream transition-colors hover:bg-amber active:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+          >
+            Ver próximos workshops
+          </a>
+
+          <a
+            href="#historia"
+            class="inline-flex min-h-11 items-center border-b border-ink/40 text-sm font-bold transition-colors hover:border-amber hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+          >
+            Conhecer a história
+            <span aria-hidden="true" class="ml-2">→</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="hero-imagem">
-      <!-- PLACEHOLDER IMAGEM REAL: retrato editorial da Rita, fundo do atelier -->
-      <img src="/images/placeholder-hero-rita.jpg" alt="Rita Camoesas no Atelier by Rita" />
-    </div>
-  </section>
 
-  <!-- ============ QUEM É A RITA / PERCURSO ============ -->
-  <section id="historia" class="secao-historia">
-    <h2>O percurso</h2>
-    <div class="linha-tempo">
-      <!-- Cada marco tem imagem real associada — timeline editorial, não ícones genéricos -->
-      <article class="marco">
-        <img src="/images/placeholder-percurso-1.jpg" alt="" />
-        <h3>As raízes</h3>
-        <p>[Texto: infância, tradição familiar, primeiras memórias na cozinha.]</p>
-      </article>
-      <article class="marco">
-        <img src="/images/placeholder-percurso-2.jpg" alt="" />
-        <h3>MasterChef Portugal 2022</h3>
-        <p>[Texto: percurso no concurso, marcos, chegada à final.]</p>
-      </article>
-      <article class="marco">
-        <img src="/images/placeholder-percurso-3.jpg" alt="" />
-        <h3>O nascimento do Atelier</h3>
-        <p>[Texto: motivação para criar o Atelier by Rita e o que representa hoje.]</p>
-      </article>
-    </div>
-  </section>
+      <figure class="relative md:-mr-6">
+        <div
+          class="absolute -bottom-4 -left-4 h-1/2 w-1/2 bg-sand"
+          aria-hidden="true"
+        ></div>
 
-  <!-- ============ O QUE FAZ ============ -->
-  <section class="secao-o-que-faz">
-    <h2>O que faço</h2>
-    <div class="grid-servicos">
-      <article><h3>Workshops abertos ao público</h3><p>Experiências gastronómicas no Atelier, com vagas limitadas.</p></article>
-      <article><h3>Eventos privados</h3><p>Jantares e experiências à medida, em espaços próprios ou do cliente.</p></article>
-      <article><h3>Conteúdo &amp; parcerias</h3><p>Colaborações de marca, conteúdo digital e presença em eventos.</p></article>
-    </div>
-  </section>
+        <img
+          src="/images/atelier-hero.webp"
+          alt="Rita Camoesas no Atelier by Rita"
+          width="760"
+          height="920"
+          fetchpriority="high"
+          decoding="async"
+          class="relative aspect-[4/5] w-full bg-sand object-cover"
+        />
+      </figure>
+    </section>
 
-  <!-- ============ PRÓXIMOS EVENTOS (preview) ============ -->
-  <section class="secao-proximos-eventos">
-    <div class="cabecalho-secao">
-      <h2>Próximos workshops no Atelier</h2>
-      <a href="/eventos">Ver todos →</a>
-    </div>
-    <div id="preview-eventos" class="grid-eventos" data-limite="3">
-      <!-- Preenchido via JS (fetch GET /api/eventos?limite=3&futuros=1) -->
-    </div>
-  </section>
+    <section
+      id="historia"
+      class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28"
+      aria-labelledby="titulo-percurso"
+    >
+      <div class="grid gap-6 border-b border-ink/15 pb-8 md:grid-cols-[1fr_1.2fr] md:items-end">
+        <h2
+          id="titulo-percurso"
+          class="font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]"
+        >
+          O percurso
+        </h2>
 
-  <footer class="site-footer">
-    <!-- links legais obrigatórios: US02, US04, US05, US06 -->
-    <nav aria-label="Rodapé legal">
-      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
-      <a href="/legal/privacidade">Política de Privacidade</a>
-      <a href="/legal/cookies">Política de Cookies</a>
-      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
-      <a href="/legal/aviso-legal">Aviso Legal</a>
-      <a href="/suporte">Suporte</a>
-    </nav>
-    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
+        <p class="max-w-xl text-base leading-7 text-ink/70 md:justify-self-end">
+          Uma relação com a cozinha construída entre memória, curiosidade e
+          vontade de reunir pessoas.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-12">
+        <article class="group md:col-span-5">
+          <img
+            src="/images/placeholder-percurso-1.jpg"
+            alt=""
+            width="640"
+            height="760"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/5] w-full bg-sand object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+          />
+
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-amber">
+            Primeiro capítulo
+          </p>
+
+          <h3 class="mt-2 font-display text-3xl font-semibold">
+            As raízes
+          </h3>
+
+          <p class="mt-3 leading-7 text-ink/70">
+            [Texto sobre a infância, a tradição familiar e as primeiras
+            memórias vividas na cozinha.]
+          </p>
+        </article>
+
+        <article class="group md:col-span-7 md:pt-24">
+          <img
+            src="/images/placeholder-percurso-2.jpg"
+            alt=""
+            width="900"
+            height="650"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[7/5] w-full bg-sand object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+          />
+
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-amber">
+            2022
+          </p>
+
+          <h3 class="mt-2 font-display text-3xl font-semibold">
+            MasterChef Portugal
+          </h3>
+
+          <p class="mt-3 max-w-2xl leading-7 text-ink/70">
+            [Texto sobre o percurso no concurso, as aprendizagens e a chegada
+            à final.]
+          </p>
+        </article>
+
+        <article class="grid gap-8 border-t border-ink/15 pt-10 md:col-span-12 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.16em] text-amber">
+              Um lugar próprio
+            </p>
+
+            <h3 class="mt-2 font-display text-4xl font-semibold">
+              O nascimento do Atelier
+            </h3>
+
+            <p class="mt-4 max-w-xl leading-7 text-ink/70">
+              [Texto sobre a vontade de criar o Atelier by Rita e sobre aquilo
+              que o espaço representa hoje.]
+            </p>
+
+            <a
+              href="/atelier"
+              class="mt-6 inline-flex min-h-11 items-center border-b border-ink/40 text-sm font-bold hover:border-amber hover:text-amber"
+            >
+              Conhecer o Atelier
+              <span aria-hidden="true" class="ml-2">→</span>
+            </a>
+          </div>
+
+          <img
+            src="/images/placeholder-percurso-3.jpg"
+            alt=""
+            width="900"
+            height="600"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/2] w-full bg-sand object-cover"
+          />
+        </article>
+      </div>
+    </section>
+
+    <section class="bg-ink text-cream" aria-labelledby="titulo-servicos">
+      <div class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-24">
+        <div class="grid gap-10 md:grid-cols-12">
+          <div class="md:col-span-7">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-sand">
+              À volta da mesa
+            </p>
+
+            <h2
+              id="titulo-servicos"
+              class="mt-3 max-w-2xl font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]"
+            >
+              Experiências com tempo, sabor e intenção.
+            </h2>
+          </div>
+
+          <div class="grid gap-0 md:col-span-5">
+            <article class="border-t border-cream/20 py-6">
+              <h3 class="text-lg font-bold">
+                Workshops abertos ao público
+              </h3>
+              <p class="mt-2 leading-7 text-cream/70">
+                Experiências gastronómicas no Atelier, em grupos pequenos e
+                com vagas limitadas.
+              </p>
+            </article>
+
+            <article class="border-t border-cream/20 py-6">
+              <h3 class="text-lg font-bold">Eventos privados</h3>
+              <p class="mt-2 leading-7 text-cream/70">
+                Jantares e momentos preparados à medida, no Atelier ou no
+                espaço do cliente.
+              </p>
+            </article>
+
+            <article class="border-y border-cream/20 py-6">
+              <h3 class="text-lg font-bold">Conteúdo e parcerias</h3>
+              <p class="mt-2 leading-7 text-cream/70">
+                Desenvolvimento de receitas, colaborações de marca e presença
+                em eventos.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28"
+      aria-labelledby="titulo-proximos"
+    >
+      <div class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+            Agenda
+          </p>
+
+          <h2
+            id="titulo-proximos"
+            class="mt-3 max-w-3xl font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]"
+          >
+            Próximos workshops
+          </h2>
+        </div>
+
+        <a
+          href="/eventos"
+          class="inline-flex min-h-11 items-center text-sm font-bold hover:text-amber"
+        >
+          Consultar agenda
+          <span aria-hidden="true" class="ml-2">→</span>
+        </a>
+      </div>
+
+      <div
+        id="preview-eventos"
+        class="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+        data-limite="3"
+        aria-live="polite"
+      >
+        <p class="col-span-full border-y border-ink/15 py-12 text-center text-ink/60">
+          A carregar próximos eventos…
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-ink/15 bg-ink text-cream">
+    <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
+      <div>
+        <img
+          src="/images/rita.svg"
+          alt="Rita Camoesas"
+          width="150"
+          height="42"
+          loading="lazy"
+          class="h-10 w-auto brightness-0 invert"
+        />
+
+        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">
+          Workshops, eventos e experiências gastronómicas pensados à volta da
+          mesa.
+        </p>
+      </div>
+
+      <nav
+        class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3"
+        aria-label="Rodapé legal"
+      >
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+      </nav>
+    </div>
+
+    <div class="border-t border-cream/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+        &copy; 2026 Atelier by Rita. Todos os direitos reservados.
+      </p>
+    </div>
   </footer>
 
+  <template id="template-cartao-evento">
+    <article class="cartao-evento group min-w-0">
+      <a
+        class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+        href="#"
+      >
+        <div class="relative overflow-hidden bg-sand">
+          <img
+            loading="lazy"
+            decoding="async"
+            width="640"
+            height="480"
+            alt=""
+            class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
+          />
+
+          <span class="etiqueta-tematica absolute left-3 top-3 bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ink"></span>
+        </div>
+
+        <div class="pt-5">
+          <h3 class="cartao-evento-titulo font-display text-2xl font-semibold leading-tight"></h3>
+          <p class="cartao-evento-data mt-3 text-sm font-semibold text-ink/75"></p>
+          <p class="cartao-evento-local mt-1 text-sm text-ink/60"></p>
+
+          <div class="mt-5 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
+            <span class="cartao-evento-preco text-lg font-extrabold"></span>
+            <span class="cartao-evento-vagas text-right text-xs font-bold text-olive"></span>
+          </div>
+        </div>
+      </a>
+    </article>
+  </template>
+
   <script src="/js/main.js" defer></script>
-  <script src="/js/eventos-preview.js" defer></script>
+  <script src="/js/atelier-proximos-eventos.js" defer></script>
 </body>
 </html>

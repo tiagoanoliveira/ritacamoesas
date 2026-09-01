@@ -1,135 +1,301 @@
-<!-- public/atelier.html — Sobre o Atelier + próximos eventos/vagas -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>O Atelier | Atelier by Rita</title>
-  <meta name="description" content="Conheça o Atelier by Rita: o espaço, o que lá se faz, e os próximos workshops e eventos com vagas disponíveis para o público." />
-  <link rel="stylesheet" href="/css/tokens.css" />
-  <link rel="stylesheet" href="/css/main.css" />
-</head>
-<body class="textura-papel">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <header class="site-header">
-    <a href="/" class="logo"><img src="/images/assinatura-rita.svg" alt="Rita Camoesas" height="42" /></a>
-    <nav class="nav-principal" aria-label="Navegação principal">
-      <a href="/#percurso">Percurso</a>
-      <a href="/atelier" aria-current="page">Atelier</a>
-      <a href="/eventos">Eventos &amp; Workshops</a>
-      <a href="/orcamento" class="nav-cta">Pedir Orçamento</a>
-    </nav>
+  <title>O Atelier | Atelier by Rita</title>
+
+  <meta
+    name="description"
+    content="Conheça o Atelier by Rita, o espaço, as experiências e os próximos workshops com vagas disponíveis."
+  />
+
+  <link rel="canonical" href="https://ritacamoesas.pt/atelier" />
+  <link rel="stylesheet" href="/css/tailwind.css" />
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
+  <a
+    href="#conteudo"
+    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
+  >
+    Saltar para o conteúdo
+  </a>
+
+  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+    <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
+      <a href="/" class="inline-flex min-h-11 items-center" aria-label="Rita Camoesas — página inicial">
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" class="h-10 w-auto" />
+      </a>
+
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink hover:bg-ink hover:text-cream active:bg-amber md:hidden"
+        aria-expanded="false"
+        aria-controls="navegacao-principal"
+        aria-label="Abrir menu"
+        data-menu-button
+      >
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav
+        id="navegacao-principal"
+        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        aria-label="Navegação principal"
+      >
+        <a href="/#historia" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Percurso</a>
+        <a href="/atelier" aria-current="page" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold text-amber md:border-0">Atelier</a>
+        <a href="/eventos" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Eventos &amp; Workshops</a>
+        <a href="/orcamento" class="mt-3 inline-flex min-h-11 items-center justify-center bg-ink px-5 py-2.5 text-sm font-bold text-cream hover:bg-amber md:mt-0">Pedir orçamento</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ===== Hero do Atelier: fotografia do espaço real, não stock photo ===== -->
-  <section class="hero-atelier">
-    <div class="hero-atelier-imagem">
-      <!-- PLACEHOLDER IMAGEM REAL: fachada ou sala principal do atelier, luz natural -->
-      <img src="/images/placeholder-atelier-hero.jpg" alt="Interior do Atelier by Rita" />
+  <main id="conteudo">
+    <section class="mx-auto grid max-w-[1180px] items-end gap-8 px-4 py-12 md:grid-cols-[1.25fr_0.75fr] lg:px-6 lg:py-20">
+      <div class="md:row-start-1">
+        <img
+          src="/images/atelier-hero.webp"
+          alt="Interior do Atelier by Rita"
+          width="920"
+          height="720"
+          fetchpriority="high"
+          decoding="async"
+          class="aspect-[5/4] w-full bg-sand object-cover"
+        />
+      </div>
+
+      <div class="md:row-start-1 md:-ml-20 md:bg-cream md:p-10">
+        <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          O espaço
+        </p>
+
+        <h1 class="mt-3 font-display text-[clamp(3.2rem,7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
+          Atelier<br />by Rita
+        </h1>
+
+        <p class="mt-6 max-w-lg leading-8 text-ink/70">
+          Um espaço pensado para reunir pessoas à volta da mesa — para
+          aprender, provar e criar. [Morada completa, código postal, cidade].
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[1180px] space-y-24 px-4 py-20 lg:px-6 lg:py-28">
+      <article class="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+        <img
+          src="/images/placeholder-atelier-1.jpg"
+          alt=""
+          width="760"
+          height="620"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[5/4] w-full bg-sand object-cover"
+        />
+
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+            A casa
+          </p>
+
+          <h2 class="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]">
+            O que é o Atelier
+          </h2>
+
+          <p class="mt-6 max-w-xl leading-8 text-ink/70">
+            [Descrição do espaço físico, da cozinha equipada, da sala de
+            workshops, da capacidade e da filosofia do projeto.]
+          </p>
+        </div>
+      </article>
+
+      <article class="grid items-start gap-10 border-t border-ink/15 pt-16 md:grid-cols-2 md:gap-16">
+        <img
+          src="/images/placeholder-atelier-2.jpg"
+          alt=""
+          width="760"
+          height="620"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[5/4] w-full bg-sand object-cover md:order-2"
+        />
+
+        <div class="md:order-1">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+            A programação
+          </p>
+
+          <h2 class="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]">
+            O que acontece aqui
+          </h2>
+
+          <p class="mt-6 leading-8 text-ink/70">
+            [Texto sobre workshops temáticos, jantares privados, produção de
+            conteúdos, colaborações e experiências para grupos.]
+          </p>
+
+          <ul class="mt-8 border-t border-ink/15">
+            <li class="border-b border-ink/15 py-4">Workshops abertos ao público, com vagas limitadas</li>
+            <li class="border-b border-ink/15 py-4">Eventos privados e jantares por encomenda</li>
+            <li class="border-b border-ink/15 py-4">Experiências para empresas e equipas</li>
+            <li class="border-b border-ink/15 py-4">Produção de conteúdo e colaborações de marca</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="bg-ink px-4 py-20 text-cream lg:py-28" aria-labelledby="titulo-galeria">
+      <div class="mx-auto max-w-[1180px]">
+        <h2 id="titulo-galeria" class="font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]">
+          O espaço em imagens
+        </h2>
+
+        <div class="mt-10 grid grid-cols-2 gap-2 md:grid-cols-4 md:grid-rows-2">
+          <img
+            src="/images/placeholder-atelier-galeria-1.jpg"
+            alt=""
+            width="900"
+            height="900"
+            loading="lazy"
+            decoding="async"
+            class="col-span-2 row-span-2 aspect-square h-full w-full bg-terracotta object-cover"
+          />
+
+          <img
+            src="/images/placeholder-atelier-galeria-2.jpg"
+            alt=""
+            width="600"
+            height="400"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/2] h-full w-full bg-terracotta object-cover"
+          />
+
+          <img
+            src="/images/placeholder-atelier-galeria-3.jpg"
+            alt=""
+            width="600"
+            height="400"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/2] h-full w-full bg-terracotta object-cover"
+          />
+
+          <img
+            src="/images/placeholder-atelier-galeria-4.jpg"
+            alt=""
+            width="1200"
+            height="400"
+            loading="lazy"
+            decoding="async"
+            class="col-span-2 aspect-[3/1] h-full w-full bg-terracotta object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="proximos-eventos" class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28">
+      <div class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+            Agenda
+          </p>
+
+          <h2 class="mt-3 max-w-3xl font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]">
+            Próximos workshops no Atelier
+          </h2>
+        </div>
+
+        <a href="/eventos" class="inline-flex min-h-11 items-center text-sm font-bold hover:text-amber">
+          Ver todos <span aria-hidden="true" class="ml-2">→</span>
+        </a>
+      </div>
+
+      <p class="mt-6 max-w-2xl leading-7 text-ink/70">
+        Consulte as próximas datas com inscrições abertas e reserve diretamente
+        na página de cada evento.
+      </p>
+
+      <div
+        id="grid-proximos-eventos"
+        class="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+        data-limite="3"
+        aria-live="polite"
+      >
+        <p class="col-span-full border-y border-ink/15 py-12 text-center text-ink/60">
+          A carregar próximos eventos…
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-sand">
+      <div class="mx-auto grid max-w-[1180px] gap-8 px-4 py-16 md:grid-cols-[1fr_auto] md:items-end lg:px-6 lg:py-20">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta">
+            Experiências privadas
+          </p>
+
+          <h2 class="mt-3 max-w-3xl font-display text-[clamp(2.5rem,5vw,4.25rem)] font-semibold leading-none tracking-[-0.035em]">
+            Uma mesa pensada para o seu grupo.
+          </h2>
+
+          <p class="mt-5 max-w-2xl leading-7 text-ink/70">
+            Jantares, aniversários, encontros de equipa ou workshops preparados
+            de acordo com o contexto e o número de participantes.
+          </p>
+        </div>
+
+        <a href="/orcamento" class="inline-flex min-h-12 items-center justify-center bg-ink px-6 py-3 text-sm font-bold text-cream hover:bg-amber">
+          Pedir orçamento
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-ink/15 bg-ink text-cream">
+    <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
+      <div>
+        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" loading="lazy" class="h-10 w-auto brightness-0 invert" />
+        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">Workshops, eventos e experiências gastronómicas pensados à volta da mesa.</p>
+      </div>
+
+      <nav class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3" aria-label="Rodapé legal">
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+      </nav>
     </div>
-    <div class="hero-atelier-texto">
-      <p class="hero-etiqueta">O espaço</p>
-      <h1>Atelier by Rita</h1>
-      <p class="hero-lead">
-        Um espaço pensado para reunir pessoas à volta da mesa — para aprender,
-        provar e criar. [Morada completa, código postal, cidade].
+
+    <div class="border-t border-cream/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+        &copy; 2026 Atelier by Rita. Todos os direitos reservados.
       </p>
     </div>
-  </section>
-
-  <!-- ===== O que é o Atelier / O que lá se faz ===== -->
-  <section class="secao-sobre-atelier">
-    <div class="bloco-texto-imagem">
-      <img src="/images/placeholder-atelier-1.jpg" alt="" />
-      <div>
-        <h2>O que é o Atelier</h2>
-        <p>
-          [Texto: descrição do espaço físico — cozinha equipada, sala de
-          workshops, capacidade, ambiente, filosofia do projeto.]
-        </p>
-      </div>
-    </div>
-
-    <div class="bloco-texto-imagem inverso">
-      <img src="/images/placeholder-atelier-2.jpg" alt="" />
-      <div>
-        <h2>O que lá se faz</h2>
-        <p>
-          [Texto: workshops temáticos, jantares privados, gravações de
-          conteúdo, colaborações com marcas, aulas para grupos e empresas.]
-        </p>
-        <ul class="lista-servicos">
-          <li>Workshops abertos ao público, com vagas limitadas</li>
-          <li>Eventos privados e jantares por encomenda</li>
-          <li>Experiências para empresas e team buildings</li>
-          <li>Produção de conteúdo e colaborações de marca</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Galeria do espaço ===== -->
-  <section class="secao-galeria-atelier" aria-label="Galeria do Atelier">
-    <h2>O espaço em imagens</h2>
-    <div class="grid-galeria-atelier">
-      <!-- PLACEHOLDER: 6 a 8 fotos reais do espaço, equipamento, detalhes -->
-      <img src="/images/placeholder-atelier-galeria-1.jpg" alt="" />
-      <img src="/images/placeholder-atelier-galeria-2.jpg" alt="" />
-      <img src="/images/placeholder-atelier-galeria-3.jpg" alt="" />
-      <img src="/images/placeholder-atelier-galeria-4.jpg" alt="" />
-    </div>
-  </section>
-
-  <!-- ===== Próximos eventos/workshops com vagas disponíveis ===== -->
-  <section class="secao-proximos-eventos" id="proximos-eventos">
-    <div class="cabecalho-secao">
-      <h2>Próximos workshops &amp; eventos no Atelier</h2>
-      <a href="/eventos">Ver todos →</a>
-    </div>
-    <p class="lead">
-      Estas são as próximas datas com vagas abertas ao público. Reserve o seu
-      lugar diretamente através da página de cada evento.
-    </p>
-    <div id="grid-proximos-eventos" class="grid-eventos" aria-live="polite">
-      <p class="estado-vazio">A carregar próximos eventos…</p>
-    </div>
-  </section>
-
-  <!-- ===== CTA para eventos privados/empresas ===== -->
-  <section class="secao-cta-orcamento">
-    <div>
-      <h2>Quer um workshop ou jantar privado à sua medida?</h2>
-      <p>Empresas, aniversários, despedidas de solteira(o) ou simplesmente um jantar diferente — conte-nos o que precisa.</p>
-    </div>
-    <a href="/orcamento" class="botao botao-primario">Pedir orçamento</a>
-  </section>
-
-  <footer class="site-footer">
-    <nav aria-label="Rodapé legal">
-      <a href="/legal/termos-e-condicoes">Termos e Condições</a>
-      <a href="/legal/privacidade">Política de Privacidade</a>
-      <a href="/legal/cookies">Política de Cookies</a>
-      <a href="/legal/ral">Resolução Alternativa de Litígios</a>
-      <a href="/legal/aviso-legal">Aviso Legal</a>
-      <a href="/suporte">Suporte</a>
-    </nav>
-    <p>&copy; 2026 Atelier by Rita. Todos os direitos reservados.</p>
   </footer>
 
   <template id="template-cartao-evento">
-    <article class="cartao-evento">
-      <a class="cartao-evento-link" href="#">
-        <div class="cartao-evento-imagem">
-          <img loading="lazy" alt="" />
-          <span class="etiqueta-tematica"></span>
+    <article class="cartao-evento group min-w-0">
+      <a class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber" href="#">
+        <div class="relative overflow-hidden bg-sand">
+          <img loading="lazy" decoding="async" width="640" height="480" alt="" class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]" />
+          <span class="etiqueta-tematica absolute left-3 top-3 bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ink"></span>
         </div>
-        <div class="cartao-evento-corpo">
-          <h3 class="cartao-evento-titulo"></h3>
-          <p class="cartao-evento-data"></p>
-          <p class="cartao-evento-local"></p>
-          <div class="cartao-evento-rodape">
-            <span class="cartao-evento-preco"></span>
-            <span class="cartao-evento-vagas"></span>
+
+        <div class="pt-5">
+          <h3 class="cartao-evento-titulo font-display text-2xl font-semibold leading-tight"></h3>
+          <p class="cartao-evento-data mt-3 text-sm font-semibold text-ink/75"></p>
+          <p class="cartao-evento-local mt-1 text-sm text-ink/60"></p>
+
+          <div class="mt-5 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
+            <span class="cartao-evento-preco text-lg font-extrabold"></span>
+            <span class="cartao-evento-vagas text-right text-xs font-bold text-olive"></span>
           </div>
         </div>
       </a>

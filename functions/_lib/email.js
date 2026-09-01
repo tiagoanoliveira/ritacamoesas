@@ -42,7 +42,7 @@ function moldura(conteudoHtml) {
       <hr style="border:none; border-top:1px solid #E8C79E; margin:24px 0;" />
       <p style="font-size:12px; color:#8C5A3C;">
         Este email foi enviado automaticamente. Para qualquer dúvida, contacte-nos
-        através da <a href="https://atelierbyrita.pt/suporte" style="color:#A6612C;">página de suporte</a>.
+        através da <a href="https://ritacamoesas.pt/suporte" style="color:#A6612C;">página de suporte</a>.
       </p>
     </div>
   </div>`;

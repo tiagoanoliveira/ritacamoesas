@@ -1,15 +1,21 @@
 {
-  "name": "ritacamoesas-atelier",
+  "name": "rita-camoesas-atelier",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "description": "Website da Rita Camoesas e do Atelier by Rita",
   "scripts": {
-    "dev:css": "tailwindcss -i ./src/css/app.css -o ./public/css/main.css --watch",
-    "build:css": "tailwindcss -i ./src/css/app.css -o ./public/css/main.css --minify",
+    "copy:fonts": "node ./scripts/copy-fonts.mjs",
+    "dev:css": "npm run copy:fonts && tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css --watch",
+    "build:css": "npm run copy:fonts && tailwindcss -i ./src/tailwind.css -o ./public/css/tailwind.css --minify",
     "build": "npm run build:css"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
-    "tailwindcss": "^4.3.3"
+    "@fontsource-variable/fraunces": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

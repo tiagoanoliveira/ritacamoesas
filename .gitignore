@@ -1,25 +1,13 @@
-# Dependências
 node_modules/
-
-# CSS gerado pelo Tailwind
-public/css/main.css
-
-# Ambiente
-.env
-.env.*
 .dev.vars
-
-# Wrangler
 .wrangler/
-
-# Sistema operativo
 .DS_Store
-Thumbs.db
 
-# Editores
-.vscode/
-.idea/
+# Resultado do build Tailwind
+public/css/tailwind.css
+public/fonts/*.woff2
 
 # Logs
-*.log
 npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
