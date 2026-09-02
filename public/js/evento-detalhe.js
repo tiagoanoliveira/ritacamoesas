@@ -106,6 +106,9 @@ function renderizarGaleria(imagens) {
 
 el.form.addEventListener("submit", async (evento) => {
   evento.preventDefault();
+  if (!el.form.reportValidity()) {
+    return;
+  }
   const botao = el.form.querySelector("button[type=submit]");
   botao.disabled = true;
   botao.textContent = "A processar…";
@@ -130,17 +133,43 @@ el.form.addEventListener("submit", async (evento) => {
     });
     const resultado = await resposta.json();
 
-    if (!resposta.ok) {
-      exibirResultado(resultado.erro || "Não foi possível concluir a reserva.", "erro");
-    } else {
-      el.form.hidden = true;
-      exibirResultado(
-        `Reserva efetuada com sucesso! O seu código é <strong>${resultado.codigo}</strong>.
-         Consulte o seu email para os dados de pagamento — tem até
-         <strong>${new Date(resultado.prazo_pagamento).toLocaleString("pt-PT")}</strong> para concluir o pagamento.`,
-        "sucesso"
-      );
+   if (!resposta.ok) {
+    exibirResultado(
+      resultado.erro ||
+        "Não foi possível concluir a reserva.",
+      "erro"
+    );
+
+    if (window.turnstile) {
+      window.turnstile.reset();
     }
+  } else {
+    el.form.hidden = true;
+
+    const avisoEmail = resultado.email_enviado
+      ? "Enviámos também os dados de pagamento por email."
+      : "A reserva ficou registada, mas o email não foi enviado. Guarda o código abaixo e contacta o suporte.";
+
+    exibirResultado(
+      `Reserva efetuada com sucesso! O seu código é
+      <strong>${resultado.codigo}</strong>.
+      ${avisoEmail}
+      Tem até
+      <strong>${new Date(
+        resultado.prazo_pagamento
+      ).toLocaleString("pt-PT")}</strong>
+      para concluir o pagamento.
+      <a
+        class="mt-4 inline-flex min-h-11 items-center font-bold text-amber underline"
+        href="/reserva/consultar.html?codigo=${encodeURIComponent(
+          resultado.codigo
+        )}"
+      >
+        Consultar esta reserva
+      </a>`,
+      "sucesso"
+    );
+  }
   } catch {
     exibirResultado("Erro de ligação. Tente novamente.", "erro");
   } finally {

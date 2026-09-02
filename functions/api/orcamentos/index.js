@@ -2,7 +2,7 @@
 // POST /api/orcamentos — submissão pública de pedido de orçamento (US14)
 // GET  /api/orcamentos — listagem para o dashboard (Admin, US24)
 
-import { verificarTurnstile } from "../../_lib/turnstile.js";
+import { validarTurnstile } from "../../_lib/turnstile.js";
 import { exigirSessaoAdmin } from "../../_lib/auth.js";
 
 export async function onRequestPost({ request, env }) {
@@ -12,7 +12,7 @@ export async function onRequestPost({ request, env }) {
     tematica, data_pretendida, observacoes, turnstile_token,
   } = body;
 
-  const humano = await verificarTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, request);
+  const humano = await validarTurnstile(turnstile_token, env.TURNSTILE_SECRET_KEY, request);
   if (!humano) {
     return Response.json({ erro: "Falha na verificação anti-bot." }, { status: 400 });
   }

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  />
+
+  <title>
+    Consultar reserva | Atelier by Rita
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/css/tailwind.css"
+  />
+</head>
+
+<body
+  class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink"
+>
+  <a
+    href="#conteudo-principal"
+    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
+  >
+    Saltar para o conteúdo
+  </a>
+
+  <header
+    class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md"
+  >
+    <div
+      class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6"
+    >
+      <a
+        href="/"
+        class="inline-flex min-h-11 items-center"
+        aria-label="Rita Camoesas — página inicial"
+      >
+        <img
+          src="/images/rita.svg"
+          alt="Rita Camoesas"
+          width="150"
+          height="42"
+          class="h-10 w-auto"
+        />
+      </a>
+
+      <a
+        href="/eventos"
+        class="inline-flex min-h-11 items-center text-sm font-bold text-ink/70 hover:text-amber"
+      >
+        Ver eventos
+      </a>
+    </div>
+  </header>
+
+  <main
+    id="conteudo-principal"
+    class="mx-auto grid max-w-[1180px] gap-10 px-4 py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(24rem,1.2fr)] lg:px-6 lg:py-24"
+  >
+    <section aria-labelledby="titulo-consulta">
+      <p
+        class="text-xs font-bold uppercase tracking-[0.18em] text-amber"
+      >
+        A tua inscrição
+      </p>
+
+      <h1
+        id="titulo-consulta"
+        class="mt-3 max-w-2xl font-display text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.04em]"
+      >
+        Consultar reserva
+      </h1>
+
+      <p class="mt-6 max-w-xl text-ink/70">
+        Introduz o código recebido no email e o
+        mesmo endereço de email usado na reserva.
+      </p>
+
+      <form
+        id="form-consulta-reserva"
+        class="mt-10 grid max-w-xl gap-5 bg-paper p-6 shadow-soft sm:p-8"
+      >
+        <div>
+          <label
+            for="codigo"
+            class="block text-sm font-bold"
+          >
+            Código da reserva
+          </label>
+
+          <input
+            type="text"
+            id="codigo"
+            name="codigo"
+            required
+            maxlength="9"
+            pattern="RB-[23456789ABCDEFGHJKMNPQRSTUVWXYZ]{6}"
+            autocomplete="off"
+            placeholder="RB-ABC234"
+            class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 uppercase tracking-widest outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+          />
+        </div>
+
+        <div>
+          <label
+            for="email"
+            class="block text-sm font-bold"
+          >
+            Email da reserva
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 py-2 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex min-h-12 items-center justify-center bg-ink px-6 py-3 text-sm font-extrabold text-cream hover:bg-amber disabled:cursor-wait disabled:opacity-50"
+        >
+          Consultar reserva
+        </button>
+
+        <p
+          id="erro-consulta"
+          class="border border-danger/30 bg-danger/10 p-4 text-sm font-semibold text-danger"
+          role="alert"
+          tabindex="-1"
+          hidden
+        ></p>
+      </form>
+    </section>
+
+    <section
+      id="resultado-consulta"
+      class="bg-paper p-6 shadow-raised sm:p-8"
+      aria-labelledby="titulo-resultado"
+      tabindex="-1"
+      hidden
+    >
+      <div
+        class="flex flex-wrap items-start justify-between gap-4 border-b border-ink/15 pb-6"
+      >
+        <div>
+          <p
+            class="text-xs font-bold uppercase tracking-[0.18em] text-amber"
+          >
+            Código
+          </p>
+
+          <h2
+            id="titulo-resultado"
+            class="mt-2 font-display text-3xl font-semibold"
+          >
+            <span id="reserva-codigo"></span>
+          </h2>
+        </div>
+
+        <p
+          id="reserva-estado"
+          class="bg-sand px-3 py-2 text-xs font-extrabold uppercase tracking-[0.08em]"
+        ></p>
+      </div>
+
+      <div class="py-7">
+        <p
+          class="text-xs font-bold uppercase tracking-[0.18em] text-amber"
+        >
+          Evento
+        </p>
+
+        <h3
+          id="reserva-evento"
+          class="mt-2 font-display text-2xl font-semibold"
+        ></h3>
+
+        <p
+          id="reserva-data"
+          class="mt-4 text-sm font-semibold"
+        ></p>
+
+        <p
+          id="reserva-local"
+          class="mt-2 text-sm text-ink/70"
+        ></p>
+      </div>
+
+      <dl
+        class="grid border-y border-ink/15 sm:grid-cols-2"
+      >
+        <div
+          class="border-b border-ink/15 py-5 sm:border-b-0 sm:border-r sm:pr-5"
+        >
+          <dt
+            class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55"
+          >
+            Responsável
+          </dt>
+
+          <dd
+            id="reserva-nome"
+            class="mt-2 font-semibold"
+          ></dd>
+        </div>
+
+        <div class="py-5 sm:pl-5">
+          <dt
+            class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55"
+          >
+            Número de pessoas
+          </dt>
+
+          <dd
+            id="reserva-pessoas"
+            class="mt-2 font-semibold"
+          ></dd>
+        </div>
+
+        <div
+          class="border-y border-ink/15 py-5 sm:border-b-0 sm:border-r sm:pr-5"
+        >
+          <dt
+            class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55"
+          >
+            Pagamento
+          </dt>
+
+          <dd
+            id="reserva-pagamento"
+            class="mt-2 font-semibold"
+          ></dd>
+        </div>
+
+        <div
+          class="border-t border-ink/15 py-5 sm:pl-5"
+        >
+          <dt
+            class="text-xs font-bold uppercase tracking-[0.12em] text-ink/55"
+          >
+            Valor total
+          </dt>
+
+          <dd
+            id="reserva-total"
+            class="mt-2 font-semibold"
+          ></dd>
+        </div>
+      </dl>
+
+      <div
+        id="aviso-pagamento"
+        class="mt-7 border border-warning/30 bg-warning/10 p-4 text-sm text-warning"
+        hidden
+      >
+        <strong>Pagamento pendente.</strong>
+        Conclui o pagamento até
+        <span
+          id="reserva-prazo"
+          class="font-bold"
+        ></span>
+        e usa o código da reserva na descrição.
+      </div>
+    </section>
+  </main>
+
+  <footer
+    class="border-t border-ink/15 bg-ink text-cream"
+  >
+    <div
+      class="mx-auto flex max-w-[1180px] flex-col gap-5 px-4 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-6"
+    >
+      <p class="text-sm text-cream/70">
+        &copy; 2026 Atelier by Rita. Todos os
+        direitos reservados.
+      </p>
+
+      <a
+        href="/suporte"
+        class="inline-flex min-h-11 items-center text-sm font-semibold text-cream/75 hover:text-sand"
+      >
+        Precisas de ajuda?
+      </a>
+    </div>
+  </footer>
+
+  <script
+    src="/js/main.js"
+    defer
+  ></script>
+
+  <script
+    src="/js/reserva-consultar.js"
+    defer
+  ></script>
+</body>
+</html>

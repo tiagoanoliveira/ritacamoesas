@@ -52,43 +52,176 @@ function moldura(conteudoHtml) {
  * Email enviado imediatamente após criação de reserva (RN02).
  * Contém: dados de pagamento, código único obrigatório e prazo de 24h.
  */
-export async function enviarEmailConfirmacaoReserva(env, { destinatario, nome, codigo, evento, numPessoas, metodoPagamento, prazoPagamento }) {
-  const dataFormatada = new Date(evento.data_evento).toLocaleString("pt-PT", {
-    dateStyle: "full", timeStyle: "short",
-  });
-  const prazoFormatado = new Date(prazoPagamento).toLocaleString("pt-PT", { dateStyle: "long", timeStyle: "short" });
-  const precoTotal = ((evento.preco_centimos * numPessoas) / 100).toLocaleString("pt-PT", { style: "currency", currency: "EUR" });
+export async function enviarEmailConfirmacaoReserva(
+  env,
+  {
+    destinatario,
+    nome,
+    codigo,
+    evento,
+    numPessoas,
+    metodoPagamento,
+    prazoPagamento,
+  }
+) {
+  const nomeSeguro = escaparHtml(nome);
+  const codigoSeguro = escaparHtml(codigo);
+  const tituloSeguro = escaparHtml(evento.titulo);
+  const localSeguro = escaparHtml(
+    evento.localizacao
+  );
 
-  const dadosPagamento = metodoPagamento === "mbway"
-    ? `<p><strong>Método:</strong> MB WAY<br><strong>Número:</strong> [PREENCHER NÚMERO MB WAY DO ATELIER]</p>`
-    : `<p><strong>Método:</strong> Transferência bancária<br>
-       <strong>IBAN:</strong> [PREENCHER IBAN]<br><strong>Titular:</strong> [PREENCHER NOME DO TITULAR]</p>`;
+  const dataFormatada = new Date(
+    evento.data_evento
+  ).toLocaleString("pt-PT", {
+    dateStyle: "full",
+    timeStyle: "short",
+  });
+
+  const prazoFormatado = new Date(
+    prazoPagamento
+  ).toLocaleString("pt-PT", {
+    dateStyle: "long",
+    timeStyle: "short",
+  });
+
+  const precoTotal = (
+    (evento.preco_centimos * numPessoas) /
+    100
+  ).toLocaleString("pt-PT", {
+    style: "currency",
+    currency: "EUR",
+  });
+
+  const siteUrl = String(
+    env.SITE_URL ||
+      "https://ritacamoesas.pt"
+  ).replace(/\/$/, "");
+
+  const urlConsulta =
+    `${siteUrl}/reserva/consultar.html` +
+    `?codigo=${encodeURIComponent(codigo)}`;
+
+  let dadosPagamento;
+
+  if (metodoPagamento === "mbway") {
+    if (!env.PAYMENT_MBWAY_PHONE) {
+      throw new Error(
+        "PAYMENT_MBWAY_PHONE não está configurado."
+      );
+    }
+
+    dadosPagamento = `
+      <p>
+        <strong>Método:</strong> MB WAY<br>
+        <strong>Número:</strong>
+        ${escaparHtml(env.PAYMENT_MBWAY_PHONE)}
+      </p>
+    `;
+  } else {
+    if (
+      !env.PAYMENT_IBAN ||
+      !env.PAYMENT_ACCOUNT_HOLDER
+    ) {
+      throw new Error(
+        "PAYMENT_IBAN/PAYMENT_ACCOUNT_HOLDER não estão configurados."
+      );
+    }
+
+    dadosPagamento = `
+      <p>
+        <strong>Método:</strong>
+        Transferência bancária<br>
+        <strong>IBAN:</strong>
+        ${escaparHtml(env.PAYMENT_IBAN)}<br>
+        <strong>Titular:</strong>
+        ${escaparHtml(
+          env.PAYMENT_ACCOUNT_HOLDER
+        )}
+      </p>
+    `;
+  }
 
   const html = moldura(`
-    <h2 style="color:#3B2314;">A sua reserva está quase confirmada, ${nome}!</h2>
-    <p>Reservou <strong>${numPessoas}</strong> vaga(s) para:</p>
-    <p style="font-size:18px; font-weight:bold; color:#3B2314;">${evento.titulo}</p>
-    <p>📅 ${dataFormatada}<br>📍 ${evento.localizacao}</p>
+    <h2 style="color:#3B2314;">
+      A sua reserva está quase confirmada,
+      ${nomeSeguro}!
+    </h2>
+
+    <p>
+      Reservou <strong>${numPessoas}</strong>
+      vaga(s) para:
+    </p>
+
+    <p style="font-size:18px; font-weight:bold; color:#3B2314;">
+      ${tituloSeguro}
+    </p>
+
+    <p>
+      Data: ${escaparHtml(dataFormatada)}<br>
+      Local: ${localSeguro}
+    </p>
 
     <div style="background:#F4E9DD; padding:16px; margin:16px 0; border-left:4px solid #A6612C;">
-      <p style="margin:0;"><strong>Código único de reserva:</strong></p>
-      <p style="font-size:22px; letter-spacing:2px; font-weight:bold; color:#A6612C; margin:4px 0;">${codigo}</p>
-      <p style="margin:0; font-size:13px;">⚠️ Este código tem de ser incluído na <strong>descrição do pagamento</strong>, sem exceção.</p>
+      <p style="margin:0;">
+        <strong>Código único de reserva:</strong>
+      </p>
+
+      <p style="font-size:22px; letter-spacing:2px; font-weight:bold; color:#A6612C; margin:4px 0;">
+        ${codigoSeguro}
+      </p>
+
+      <p style="margin:0; font-size:13px;">
+        Inclua este código na
+        <strong>descrição do pagamento</strong>.
+      </p>
     </div>
 
     ${dadosPagamento}
-    <p><strong>Valor total a pagar:</strong> ${precoTotal}</p>
 
-    <p style="color:#A23B2E;"><strong>Prazo de pagamento:</strong> até ${prazoFormatado} (24 horas).
-    Caso o pagamento não seja confirmado até esta data, a reserva poderá ser cancelada e a vaga
-    disponibilizada novamente.</p>
+    <p>
+      <strong>Valor total a pagar:</strong>
+      ${escaparHtml(precoTotal)}
+    </p>
+
+    <p style="color:#A23B2E;">
+      <strong>Prazo de pagamento:</strong>
+      até ${escaparHtml(prazoFormatado)}.
+      Se o pagamento não for confirmado até esta
+      data, a reserva poderá ser cancelada e a vaga
+      disponibilizada novamente.
+    </p>
+
+    <p>
+      <a
+        href="${escaparHtml(urlConsulta)}"
+        style="display:inline-block; background:#3B2314; color:#FFFDF9; padding:12px 18px; text-decoration:none; font-weight:bold;"
+      >
+        Consultar reserva
+      </a>
+    </p>
+
+    <p style="font-size:12px; color:#8C5A3C;">
+      Na página de consulta será também necessário
+      indicar o email usado na reserva.
+    </p>
   `);
 
   return enviarEmail(env, {
     destinatario,
-    assunto: `Reserva ${codigo} — dados para pagamento`,
+    assunto:
+      `Reserva ${codigo} — dados para pagamento`,
     html,
   });
+}
+
+function escaparHtml(valor) {
+  return String(valor ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 /** Email enviado quando o Admin confirma o pagamento da reserva. */
