@@ -15,33 +15,31 @@
   <link rel="stylesheet" href="/css/tailwind.css" />
 </head>
 
-<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
-  <a
-    href="#conteudo"
-    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
-  >
-    Saltar para o conteúdo
-  </a>
-
-  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+<body class="min-h-screen overflow-x-hidden bg-champagne-mist/35 font-sans text-base leading-relaxed text-dusty-taupe antialiased selection:bg-almond-silk selection:text-dusty-taupe">
+  
+  <header class="sticky top-0 z-50 border-b-2 border-dusty-taupe-dark bg-dusty-taupe backdrop-blur-md">
     <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
-      <a
-        href="/"
-        class="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
-        aria-label="Rita Camoesas — página inicial"
-      >
-        <img
-          src="/images/rita.svg"
-          alt="Rita Camoesas"
-          width="150"
-          height="42"
-          class="h-10 w-auto"
-        />
-      </a>
-
+      <div class="flex gap-4">
+        <a
+          href="/"
+          class="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
+          aria-label="Rita Camoesas — página inicial"
+        >
+          <img
+            src="/images/ritac.jpg"
+            alt="Rita Camoesas"
+            width="52"
+            height="52"
+            class="sm:h-13 h-10 w-auto rounded-2xl"
+          />
+        </a>
+        <h2 class="flex items-center border-b border-dusty-taupe text-base text-floral-white font-extrabold md:border-0">
+          Rita Camoesas
+      </h2>
+      </div>
       <button
         type="button"
-        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-cream active:bg-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:hidden"
+        class="inline-flex size-11 items-center justify-center rounded-xl text-floral-white transition-colors hover:bg-dusty-taupe-dark hover:text-floral-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:hidden"
         aria-expanded="false"
         aria-controls="navegacao-principal"
         aria-label="Abrir menu"
@@ -62,35 +60,35 @@
 
       <nav
         id="navegacao-principal"
-        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        class="absolute inset-x-0 top-full hidden border-b border-dusty-taupe/10 bg-floral-white px-4 pb-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
         aria-label="Navegação principal"
       >
         <a
-          href="/#historia"
-          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+          href="/#sobre-mim"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
         >
-          Percurso
+          Sobre mim
         </a>
 
         <a
-          href="/atelier"
-          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+          href="/atelier.html"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm  md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
         >
           Atelier
         </a>
 
         <a
           href="/eventos"
-          class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold transition-colors hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:border-0"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm  md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
         >
           Eventos &amp; Workshops
         </a>
 
         <a
-          href="/orcamento"
-          class="mt-3 inline-flex min-h-11 items-center justify-center bg-ink px-5 py-2.5 text-sm font-bold text-cream transition-colors hover:bg-amber active:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber md:mt-0"
+          href="/orcamento.html"
+          class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-dusty-taupe-extra-dark px-5 py-2.5 text-sm font-bold text-floral-white transition-colors hover:bg-champagne-mist hover:text-dusty-taupe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:mt-0"
         >
-          Pedir orçamento
+          Eventos Privados
         </a>
       </nav>
     </div>
@@ -98,68 +96,69 @@
 
   <main id="conteudo">
     <section
-      class="mx-auto grid min-h-[calc(100svh-4.5rem)] max-w-[1180px] items-center gap-10 px-4 py-14 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-6 lg:py-20"
+      class="mx-auto grid h-100vh max-w-7xl items-center gap-10 px-4 py-14 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-6 lg:py-20"
       aria-labelledby="hero-titulo"
     >
-      <div class="max-w-xl md:pr-6">
-        <p class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-amber">
-          Finalista MasterChef Portugal 2022
-        </p>
-
-        <h1
-          id="hero-titulo"
-          class="font-display text-[clamp(3.5rem,9vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.055em]"
-        >
-          Rita<br />Camoesas
-        </h1>
-
-        <p class="mt-7 max-w-[55ch] text-base leading-8 text-ink/75">
-          Da cozinha de família ao MasterChef, até à criação do Atelier by
-          Rita — um lugar onde se cozinha, aprende e celebra à volta da mesa.
-        </p>
-
-        <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <a
-            href="/eventos"
-            class="inline-flex min-h-11 items-center justify-center bg-ink px-6 py-3 text-sm font-bold text-cream transition-colors hover:bg-amber active:bg-terracotta focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
-          >
-            Ver próximos workshops
-          </a>
-
-          <a
-            href="#historia"
-            class="inline-flex min-h-11 items-center border-b border-ink/40 text-sm font-bold transition-colors hover:border-amber hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
-          >
-            Conhecer a história
-            <span aria-hidden="true" class="ml-2">→</span>
-          </a>
-        </div>
-      </div>
-
-      <figure class="relative md:-mr-6">
+      <figure class="relative mx-auto md:m-4 mr-2">
         <div
-          class="absolute -bottom-4 -left-4 h-1/2 w-1/2 bg-sand"
+          class="absolute -bottom-4 -right-4 h-1/2 w-1/2 bg-rosy-taupe rounded-xl"
           aria-hidden="true"
         ></div>
 
         <img
           src="/images/atelier-hero.webp"
           alt="Rita Camoesas no Atelier by Rita"
-          width="760"
-          height="920"
+          width="1200"
+          height="675"
           fetchpriority="high"
           decoding="async"
-          class="relative aspect-[4/5] w-full bg-sand object-cover"
+          class="relative aspect-16/9 bg-almond-silk  max-h-[70vh] rounded-2xl object-cover"
         />
       </figure>
+      <div class="max-w-xl md:pr-6">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-dusty-taupe">
+          Finalista MasterChef Portugal 2022
+        </p>
+
+        <h1
+          id="hero-titulo"
+          class="font-display text-[clamp(3.5rem,9vw,7.5rem)] text-dusty-taupe-extra-dark font-semibold leading-[0.88] tracking-[-0.055em]"
+        >
+          Rita Camoesas
+        </h1>
+
+        <p class="mt-7 max-w-[55ch] text-base font-medium leading-8 text-dusty-taupe">
+          Da cozinha de família ao MasterChef, até à abertura do Atelier by
+          Rita — um lugar onde se cozinha, aprende e se celebra à volta da mesa.
+        </p>
+
+        <div class="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <a
+            href="/eventos"
+            class="inline-flex min-h-11 items-center justify-center bg-dusty-taupe px-6 py-3 text-sm font-bold text-floral-white transition-colors hover:bg-pale-oak focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
+          >
+            Ver próximos workshops
+          </a>
+
+          <a
+            href="#sobre-mim"
+            class="inline-flex min-h-11 items-center border-b-2 border-dusty-taupe text-sm font-bold transition-colors hover:border-pale-oak hover:text-camel focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
+          >
+            Sobre mim
+            <span aria-hidden="true" class="ml-2">→</span>
+          </a>
+        </div>
+      </div>
+
+      
     </section>
 
     <section
-      id="historia"
+      id="sobre-mim"
       class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28"
       aria-labelledby="titulo-percurso"
     >
-      <div class="grid gap-6 border-b border-ink/15 pb-8 md:grid-cols-[1fr_1.2fr] md:items-end">
+      <div class="grid gap-6 border-b border-dusty-taupe/15 pb-8 md:grid-cols-[1fr_1.2fr] md:items-end">
         <h2
           id="titulo-percurso"
           class="font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]"
@@ -167,7 +166,7 @@
           O percurso
         </h2>
 
-        <p class="max-w-xl text-base leading-7 text-ink/70 md:justify-self-end">
+        <p class="max-w-xl text-base leading-7 text-dusty-taupe/70 md:justify-self-end">
           Uma relação com a cozinha construída entre memória, curiosidade e
           vontade de reunir pessoas.
         </p>
@@ -182,10 +181,10 @@
             height="760"
             loading="lazy"
             decoding="async"
-            class="aspect-[4/5] w-full bg-sand object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+            class="aspect-[4/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
           />
 
-          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-amber">
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
             Primeiro capítulo
           </p>
 
@@ -193,7 +192,7 @@
             As raízes
           </h3>
 
-          <p class="mt-3 leading-7 text-ink/70">
+          <p class="mt-3 leading-7 text-dusty-taupe/70">
             [Texto sobre a infância, a tradição familiar e as primeiras
             memórias vividas na cozinha.]
           </p>
@@ -207,10 +206,10 @@
             height="650"
             loading="lazy"
             decoding="async"
-            class="aspect-[7/5] w-full bg-sand object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+            class="aspect-[7/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
           />
 
-          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-amber">
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
             2022
           </p>
 
@@ -218,15 +217,15 @@
             MasterChef Portugal
           </h3>
 
-          <p class="mt-3 max-w-2xl leading-7 text-ink/70">
+          <p class="mt-3 max-w-2xl leading-7 text-dusty-taupe/70">
             [Texto sobre o percurso no concurso, as aprendizagens e a chegada
             à final.]
           </p>
         </article>
 
-        <article class="grid gap-8 border-t border-ink/15 pt-10 md:col-span-12 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+        <article class="grid gap-8 border-t border-dusty-taupe/15 pt-10 md:col-span-12 md:grid-cols-[0.8fr_1.2fr] md:items-center">
           <div>
-            <p class="text-xs font-bold uppercase tracking-[0.16em] text-amber">
+            <p class="text-xs font-bold uppercase tracking-[0.16em] text-camel">
               Um lugar próprio
             </p>
 
@@ -234,14 +233,14 @@
               O nascimento do Atelier
             </h3>
 
-            <p class="mt-4 max-w-xl leading-7 text-ink/70">
+            <p class="mt-4 max-w-xl leading-7 text-dusty-taupe/70">
               [Texto sobre a vontade de criar o Atelier by Rita e sobre aquilo
               que o espaço representa hoje.]
             </p>
 
             <a
               href="/atelier"
-              class="mt-6 inline-flex min-h-11 items-center border-b border-ink/40 text-sm font-bold hover:border-amber hover:text-amber"
+              class="mt-6 inline-flex min-h-11 items-center border-b border-dusty-taupe/40 text-sm font-bold hover:border-camel hover:text-camel"
             >
               Conhecer o Atelier
               <span aria-hidden="true" class="ml-2">→</span>
@@ -255,17 +254,17 @@
             height="600"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] w-full bg-sand object-cover"
+            class="aspect-[3/2] w-full bg-almond-silk object-cover"
           />
         </article>
       </div>
     </section>
 
-    <section class="bg-ink text-cream" aria-labelledby="titulo-servicos">
+    <section class="bg-dusty-taupe text-floral-white" aria-labelledby="titulo-servicos">
       <div class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-24">
         <div class="grid gap-10 md:grid-cols-12">
           <div class="md:col-span-7">
-            <p class="text-xs font-bold uppercase tracking-[0.18em] text-sand">
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-almond-silk">
               À volta da mesa
             </p>
 
@@ -278,27 +277,27 @@
           </div>
 
           <div class="grid gap-0 md:col-span-5">
-            <article class="border-t border-cream/20 py-6">
+            <article class="border-t border-floral-white/20 py-6">
               <h3 class="text-lg font-bold">
                 Workshops abertos ao público
               </h3>
-              <p class="mt-2 leading-7 text-cream/70">
+              <p class="mt-2 leading-7 text-floral-white/70">
                 Experiências gastronómicas no Atelier, em grupos pequenos e
                 com vagas limitadas.
               </p>
             </article>
 
-            <article class="border-t border-cream/20 py-6">
+            <article class="border-t border-floral-white/20 py-6">
               <h3 class="text-lg font-bold">Eventos privados</h3>
-              <p class="mt-2 leading-7 text-cream/70">
+              <p class="mt-2 leading-7 text-floral-white/70">
                 Jantares e momentos preparados à medida, no Atelier ou no
                 espaço do cliente.
               </p>
             </article>
 
-            <article class="border-y border-cream/20 py-6">
+            <article class="border-y border-floral-white/20 py-6">
               <h3 class="text-lg font-bold">Conteúdo e parcerias</h3>
-              <p class="mt-2 leading-7 text-cream/70">
+              <p class="mt-2 leading-7 text-floral-white/70">
                 Desenvolvimento de receitas, colaborações de marca e presença
                 em eventos.
               </p>
@@ -312,9 +311,9 @@
       class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28"
       aria-labelledby="titulo-proximos"
     >
-      <div class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div class="flex flex-col gap-5 border-b border-dusty-taupe/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
             Agenda
           </p>
 
@@ -328,7 +327,7 @@
 
         <a
           href="/eventos"
-          class="inline-flex min-h-11 items-center text-sm font-bold hover:text-amber"
+          class="inline-flex min-h-11 items-center text-sm font-bold hover:text-camel"
         >
           Consultar agenda
           <span aria-hidden="true" class="ml-2">→</span>
@@ -341,26 +340,26 @@
         data-limite="3"
         aria-live="polite"
       >
-        <p class="col-span-full border-y border-ink/15 py-12 text-center text-ink/60">
+        <p class="col-span-full border-y border-dusty-taupe/15 py-12 text-center text-dusty-taupe/60">
           A carregar próximos eventos…
         </p>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-ink/15 bg-ink text-cream">
+  <footer class="border-t border-dusty-taupe/15 bg-dusty-taupe text-floral-white">
     <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
       <div>
         <img
-          src="/images/rita.svg"
+          src="/images/ritac.jpg"
           alt="Rita Camoesas"
           width="150"
           height="42"
           loading="lazy"
-          class="h-10 w-auto brightness-0 invert"
+          class="h-10 w-auto rounded-xl"
         />
 
-        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">
+        <p class="mt-4 max-w-sm text-sm leading-6 text-floral-white/70">
           Workshops, eventos e experiências gastronómicas pensados à volta da
           mesa.
         </p>
@@ -370,17 +369,17 @@
         class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3"
         aria-label="Rodapé legal"
       >
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/suporte">Suporte</a>
       </nav>
     </div>
 
-    <div class="border-t border-cream/10">
-      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+    <div class="border-t border-floral-white/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-floral-white/55 lg:px-6">
         &copy; 2026 Atelier by Rita. Todos os direitos reservados.
       </p>
     </div>
@@ -389,10 +388,10 @@
   <template id="template-cartao-evento">
     <article class="cartao-evento group min-w-0">
       <a
-        class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber"
+        class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
         href="#"
       >
-        <div class="relative overflow-hidden bg-sand">
+        <div class="relative overflow-hidden bg-almond-silk">
           <img
             loading="lazy"
             decoding="async"
@@ -402,17 +401,17 @@
             class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]"
           />
 
-          <span class="etiqueta-tematica absolute left-3 top-3 bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ink"></span>
+          <span class="etiqueta-tematica absolute left-3 top-3 bg-floral-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-dusty-taupe"></span>
         </div>
 
         <div class="pt-5">
           <h3 class="cartao-evento-titulo font-display text-2xl font-semibold leading-tight"></h3>
-          <p class="cartao-evento-data mt-3 text-sm font-semibold text-ink/75"></p>
-          <p class="cartao-evento-local mt-1 text-sm text-ink/60"></p>
+          <p class="cartao-evento-data mt-3 text-sm font-semibold text-dusty-taupe/75"></p>
+          <p class="cartao-evento-local mt-1 text-sm text-dusty-taupe/60"></p>
 
-          <div class="mt-5 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
+          <div class="mt-5 flex items-center justify-between gap-4 border-t border-dusty-taupe/15 pt-4">
             <span class="cartao-evento-preco text-lg font-extrabold"></span>
-            <span class="cartao-evento-vagas text-right text-xs font-bold text-olive"></span>
+            <span class="cartao-evento-vagas text-right text-xs font-bold text-dry-sage"></span>
           </div>
         </div>
       </a>

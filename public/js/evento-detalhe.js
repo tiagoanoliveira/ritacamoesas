@@ -160,7 +160,7 @@ el.form.addEventListener("submit", async (evento) => {
       ).toLocaleString("pt-PT")}</strong>
       para concluir o pagamento.
       <a
-        class="mt-4 inline-flex min-h-11 items-center font-bold text-amber underline"
+        class="mt-4 inline-flex min-h-11 items-center font-bold text-camel underline"
         href="/reserva/consultar.html?codigo=${encodeURIComponent(
           resultado.codigo
         )}"

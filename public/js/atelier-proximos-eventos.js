@@ -10,7 +10,7 @@
   if (!grid || !template) return;
 
   const classeEstado =
-    "col-span-full border-y border-ink/15 py-12 text-center text-ink/60";
+    "col-span-full border-y border-dusty-taupe/15 py-12 text-center text-dusty-taupe/60";
 
   function formatarPreco(centimos) {
     const valor = Number(centimos);
@@ -55,7 +55,7 @@
     const vagas = Number(vagasDisponiveis);
 
     elemento.classList.remove(
-      "text-olive",
+      "text-dry-sage",
       "text-warning",
       "text-danger",
     );
@@ -75,7 +75,7 @@
     }
 
     elemento.textContent = `${vagas} vagas disponíveis`;
-    elemento.classList.add("text-olive");
+    elemento.classList.add("text-dry-sage");
   }
 
   function criarCartao(evento) {

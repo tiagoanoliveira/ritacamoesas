@@ -40,10 +40,10 @@
   };
 
   const classeEstado =
-    "col-span-full border-y border-ink/15 py-12 text-center text-ink/60";
+    "col-span-full border-y border-dusty-taupe/15 py-12 text-center text-dusty-taupe/60";
 
   const classeBotaoPaginacao =
-    "inline-flex min-h-11 items-center justify-center border border-ink/20 px-5 py-2 text-sm font-bold text-ink transition-colors hover:border-amber hover:text-amber active:bg-sand disabled:cursor-not-allowed disabled:opacity-35";
+    "inline-flex min-h-11 items-center justify-center border border-dusty-taupe/20 px-5 py-2 text-sm font-bold text-dusty-taupe transition-colors hover:border-camel hover:text-camel active:bg-almond-silk disabled:cursor-not-allowed disabled:opacity-35";
 
   let debounceId = null;
   let controladorPedido = null;
@@ -92,7 +92,7 @@
     const vagas = Number(vagasDisponiveis);
 
     elemento.classList.remove(
-      "text-olive",
+      "text-dry-sage",
       "text-warning",
       "text-danger",
     );
@@ -112,7 +112,7 @@
     }
 
     elemento.textContent = `${vagas} vagas disponíveis`;
-    elemento.classList.add("text-olive");
+    elemento.classList.add("text-dry-sage");
   }
 
   function criarCartao(evento) {

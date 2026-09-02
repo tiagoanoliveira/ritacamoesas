@@ -15,45 +15,84 @@
   <link rel="stylesheet" href="/css/tailwind.css" />
 </head>
 
-<body class="min-h-screen overflow-x-hidden bg-cream font-sans text-base leading-relaxed text-ink antialiased selection:bg-sand selection:text-ink">
-  <a
-    href="#conteudo"
-    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
-  >
-    Saltar para o conteúdo
-  </a>
-
-  <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur-md">
+<body class="min-h-screen overflow-x-hidden bg-floral-white font-sans text-base leading-relaxed text-dusty-taupe antialiased selection:bg-almond-silk selection:text-dusty-taupe">
+  <header class="sticky top-0 z-50 border-b-2 border-dusty-taupe-dark bg-dusty-taupe backdrop-blur-md">
     <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
-      <a href="/" class="inline-flex min-h-11 items-center" aria-label="Rita Camoesas — página inicial">
-        <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" class="h-10 w-auto" />
-      </a>
-
+      <div class="flex gap-4">
+        <a
+          href="/"
+          class="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
+          aria-label="Rita Camoesas — página inicial"
+        >
+          <img
+            src="/images/atelier-logo.png"
+            alt="Rita Camoesas"
+            width="52"
+            height="52"
+            class="sm:h-13 h-10 w-auto rounded-2xl"
+          />
+        </a>
+        <h2 class="flex items-center border-b border-dusty-taupe text-base text-floral-white font-extrabold md:border-0">
+          Atelier by Rita
+      </h2>
+      </div>
       <button
         type="button"
-        class="inline-flex size-11 items-center justify-center border border-ink/15 text-ink hover:bg-ink hover:text-cream active:bg-amber md:hidden"
+        class="inline-flex size-11 items-center justify-center rounded-xl text-floral-white transition-colors hover:bg-dusty-taupe-dark hover:text-floral-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:hidden"
         aria-expanded="false"
         aria-controls="navegacao-principal"
         aria-label="Abrir menu"
         data-menu-button
       >
-        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <svg
+          aria-hidden="true"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+        >
           <path d="M4 7h16M4 12h16M4 17h16" />
         </svg>
       </button>
 
       <nav
         id="navegacao-principal"
-        class="absolute inset-x-0 top-full hidden border-b border-ink/10 bg-cream px-4 py-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+        class="absolute inset-x-0 top-full hidden border-b border-dusty-taupe/10 bg-floral-white px-4 pb-4 shadow-soft md:static md:flex md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
         aria-label="Navegação principal"
       >
-        <a href="/#historia" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Percurso</a>
-        <a href="/atelier" aria-current="page" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold text-amber md:border-0">Atelier</a>
-        <a href="/eventos" class="flex min-h-11 items-center border-b border-ink/10 text-sm font-semibold hover:text-amber md:border-0">Eventos &amp; Workshops</a>
-        <a href="/orcamento" class="mt-3 inline-flex min-h-11 items-center justify-center bg-ink px-5 py-2.5 text-sm font-bold text-cream hover:bg-amber md:mt-0">Pedir orçamento</a>
+        <a
+          href="/#sobre-mim"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
+        >
+          Sobre mim
+        </a>
+
+        <a
+          href="/atelier.html"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm  md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
+        >
+          Atelier
+        </a>
+
+        <a
+          href="/eventos"
+          class="flex min-h-11 items-center border-b border-dusty-taupe/10 text-sm  md:text-floral-white font-semibold transition-colors text-dusty-taupe-dark hover:text-champagne-mist focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:border-0"
+        >
+          Eventos &amp; Workshops
+        </a>
+
+        <a
+          href="/orcamento.html"
+          class="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-dusty-taupe-extra-dark px-5 py-2.5 text-sm font-bold text-floral-white transition-colors hover:bg-champagne-mist hover:text-dusty-taupe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-camel md:mt-0"
+        >
+          Eventos Privados
+        </a>
       </nav>
     </div>
   </header>
+
 
   <main id="conteudo">
     <section class="mx-auto grid max-w-[1180px] items-end gap-8 px-4 py-12 md:grid-cols-[1.25fr_0.75fr] lg:px-6 lg:py-20">
@@ -65,12 +104,12 @@
           height="720"
           fetchpriority="high"
           decoding="async"
-          class="aspect-[5/4] w-full bg-sand object-cover"
+          class="aspect-[5/4] w-full bg-almond-silk object-cover"
         />
       </div>
 
-      <div class="md:row-start-1 md:-ml-20 md:bg-cream md:p-10">
-        <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+      <div class="md:row-start-1 md:-ml-20 md:bg-floral-white md:p-10">
+        <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
           O espaço
         </p>
 
@@ -78,7 +117,7 @@
           Atelier<br />by Rita
         </h1>
 
-        <p class="mt-6 max-w-lg leading-8 text-ink/70">
+        <p class="mt-6 max-w-lg leading-8 text-dusty-taupe/70">
           Um espaço pensado para reunir pessoas à volta da mesa — para
           aprender, provar e criar. [Morada completa, código postal, cidade].
         </p>
@@ -94,11 +133,11 @@
           height="620"
           loading="lazy"
           decoding="async"
-          class="aspect-[5/4] w-full bg-sand object-cover"
+          class="aspect-[5/4] w-full bg-almond-silk object-cover"
         />
 
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
             A casa
           </p>
 
@@ -106,14 +145,14 @@
             O que é o Atelier
           </h2>
 
-          <p class="mt-6 max-w-xl leading-8 text-ink/70">
+          <p class="mt-6 max-w-xl leading-8 text-dusty-taupe/70">
             [Descrição do espaço físico, da cozinha equipada, da sala de
             workshops, da capacidade e da filosofia do projeto.]
           </p>
         </div>
       </article>
 
-      <article class="grid items-start gap-10 border-t border-ink/15 pt-16 md:grid-cols-2 md:gap-16">
+      <article class="grid items-start gap-10 border-t border-dusty-taupe/15 pt-16 md:grid-cols-2 md:gap-16">
         <img
           src="/images/placeholder-atelier-2.jpg"
           alt=""
@@ -121,11 +160,11 @@
           height="620"
           loading="lazy"
           decoding="async"
-          class="aspect-[5/4] w-full bg-sand object-cover md:order-2"
+          class="aspect-[5/4] w-full bg-almond-silk object-cover md:order-2"
         />
 
         <div class="md:order-1">
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
             A programação
           </p>
 
@@ -133,22 +172,22 @@
             O que acontece aqui
           </h2>
 
-          <p class="mt-6 leading-8 text-ink/70">
+          <p class="mt-6 leading-8 text-dusty-taupe/70">
             [Texto sobre workshops temáticos, jantares privados, produção de
             conteúdos, colaborações e experiências para grupos.]
           </p>
 
-          <ul class="mt-8 border-t border-ink/15">
-            <li class="border-b border-ink/15 py-4">Workshops abertos ao público, com vagas limitadas</li>
-            <li class="border-b border-ink/15 py-4">Eventos privados e jantares por encomenda</li>
-            <li class="border-b border-ink/15 py-4">Experiências para empresas e equipas</li>
-            <li class="border-b border-ink/15 py-4">Produção de conteúdo e colaborações de marca</li>
+          <ul class="mt-8 border-t border-dusty-taupe/15">
+            <li class="border-b border-dusty-taupe/15 py-4">Workshops abertos ao público, com vagas limitadas</li>
+            <li class="border-b border-dusty-taupe/15 py-4">Eventos privados e jantares por encomenda</li>
+            <li class="border-b border-dusty-taupe/15 py-4">Experiências para empresas e equipas</li>
+            <li class="border-b border-dusty-taupe/15 py-4">Produção de conteúdo e colaborações de marca</li>
           </ul>
         </div>
       </article>
     </section>
 
-    <section class="bg-ink px-4 py-20 text-cream lg:py-28" aria-labelledby="titulo-galeria">
+    <section class="bg-dusty-taupe px-4 py-20 text-floral-white lg:py-28" aria-labelledby="titulo-galeria">
       <div class="mx-auto max-w-[1180px]">
         <h2 id="titulo-galeria" class="font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]">
           O espaço em imagens
@@ -162,7 +201,7 @@
             height="900"
             loading="lazy"
             decoding="async"
-            class="col-span-2 row-span-2 aspect-square h-full w-full bg-terracotta object-cover"
+            class="col-span-2 row-span-2 aspect-square h-full w-full bg-terracotta-clay object-cover"
           />
 
           <img
@@ -172,7 +211,7 @@
             height="400"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] h-full w-full bg-terracotta object-cover"
+            class="aspect-[3/2] h-full w-full bg-terracotta-clay object-cover"
           />
 
           <img
@@ -182,7 +221,7 @@
             height="400"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] h-full w-full bg-terracotta object-cover"
+            class="aspect-[3/2] h-full w-full bg-terracotta-clay object-cover"
           />
 
           <img
@@ -192,16 +231,16 @@
             height="400"
             loading="lazy"
             decoding="async"
-            class="col-span-2 aspect-[3/1] h-full w-full bg-terracotta object-cover"
+            class="col-span-2 aspect-[3/1] h-full w-full bg-terracotta-clay object-cover"
           />
         </div>
       </div>
     </section>
 
     <section id="proximos-eventos" class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28">
-      <div class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
+      <div class="flex flex-col gap-5 border-b border-dusty-taupe/15 pb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-amber">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
             Agenda
           </p>
 
@@ -210,12 +249,12 @@
           </h2>
         </div>
 
-        <a href="/eventos" class="inline-flex min-h-11 items-center text-sm font-bold hover:text-amber">
+        <a href="/eventos" class="inline-flex min-h-11 items-center text-sm font-bold hover:text-camel">
           Ver todos <span aria-hidden="true" class="ml-2">→</span>
         </a>
       </div>
 
-      <p class="mt-6 max-w-2xl leading-7 text-ink/70">
+      <p class="mt-6 max-w-2xl leading-7 text-dusty-taupe/70">
         Consulte as próximas datas com inscrições abertas e reserve diretamente
         na página de cada evento.
       </p>
@@ -226,16 +265,16 @@
         data-limite="3"
         aria-live="polite"
       >
-        <p class="col-span-full border-y border-ink/15 py-12 text-center text-ink/60">
+        <p class="col-span-full border-y border-dusty-taupe/15 py-12 text-center text-dusty-taupe/60">
           A carregar próximos eventos…
         </p>
       </div>
     </section>
 
-    <section class="bg-sand">
+    <section class="bg-almond-silk">
       <div class="mx-auto grid max-w-[1180px] gap-8 px-4 py-16 md:grid-cols-[1fr_auto] md:items-end lg:px-6 lg:py-20">
         <div>
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-terracotta-clay">
             Experiências privadas
           </p>
 
@@ -243,38 +282,38 @@
             Uma mesa pensada para o seu grupo.
           </h2>
 
-          <p class="mt-5 max-w-2xl leading-7 text-ink/70">
+          <p class="mt-5 max-w-2xl leading-7 text-dusty-taupe/70">
             Jantares, aniversários, encontros de equipa ou workshops preparados
             de acordo com o contexto e o número de participantes.
           </p>
         </div>
 
-        <a href="/orcamento" class="inline-flex min-h-12 items-center justify-center bg-ink px-6 py-3 text-sm font-bold text-cream hover:bg-amber">
+        <a href="/orcamento" class="inline-flex min-h-12 items-center justify-center bg-dusty-taupe px-6 py-3 text-sm font-bold text-floral-white hover:bg-camel">
           Pedir orçamento
         </a>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-ink/15 bg-ink text-cream">
+  <footer class="border-t border-dusty-taupe/15 bg-dusty-taupe text-floral-white">
     <div class="mx-auto grid max-w-[1180px] gap-10 px-4 py-12 md:grid-cols-[1fr_2fr] lg:px-6">
       <div>
         <img src="/images/rita.svg" alt="Rita Camoesas" width="150" height="42" loading="lazy" class="h-10 w-auto brightness-0 invert" />
-        <p class="mt-4 max-w-sm text-sm leading-6 text-cream/70">Workshops, eventos e experiências gastronómicas pensados à volta da mesa.</p>
+        <p class="mt-4 max-w-sm text-sm leading-6 text-floral-white/70">Workshops, eventos e experiências gastronómicas pensados à volta da mesa.</p>
       </div>
 
       <nav class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-3" aria-label="Rodapé legal">
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/termos-e-condicoes">Termos e Condições</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/privacidade">Política de Privacidade</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/cookies">Política de Cookies</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/ral">Resolução de Litígios</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/legal/aviso-legal">Aviso Legal</a>
-        <a class="min-h-11 py-2 text-cream/75 hover:text-sand" href="/suporte">Suporte</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/termos-e-condicoes">Termos e Condições</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/privacidade">Política de Privacidade</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/cookies">Política de Cookies</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/ral">Resolução de Litígios</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/legal/aviso-legal">Aviso Legal</a>
+        <a class="min-h-11 py-2 text-floral-white/75 hover:text-almond-silk" href="/suporte">Suporte</a>
       </nav>
     </div>
 
-    <div class="border-t border-cream/10">
-      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-cream/55 lg:px-6">
+    <div class="border-t border-floral-white/10">
+      <p class="mx-auto max-w-[1180px] px-4 py-5 text-xs text-floral-white/55 lg:px-6">
         &copy; 2026 Atelier by Rita. Todos os direitos reservados.
       </p>
     </div>
@@ -282,20 +321,20 @@
 
   <template id="template-cartao-evento">
     <article class="cartao-evento group min-w-0">
-      <a class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber" href="#">
-        <div class="relative overflow-hidden bg-sand">
+      <a class="cartao-evento-link block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel" href="#">
+        <div class="relative overflow-hidden bg-almond-silk">
           <img loading="lazy" decoding="async" width="640" height="480" alt="" class="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]" />
-          <span class="etiqueta-tematica absolute left-3 top-3 bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ink"></span>
+          <span class="etiqueta-tematica absolute left-3 top-3 bg-floral-white px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-dusty-taupe"></span>
         </div>
 
         <div class="pt-5">
           <h3 class="cartao-evento-titulo font-display text-2xl font-semibold leading-tight"></h3>
-          <p class="cartao-evento-data mt-3 text-sm font-semibold text-ink/75"></p>
-          <p class="cartao-evento-local mt-1 text-sm text-ink/60"></p>
+          <p class="cartao-evento-data mt-3 text-sm font-semibold text-dusty-taupe/75"></p>
+          <p class="cartao-evento-local mt-1 text-sm text-dusty-taupe/60"></p>
 
-          <div class="mt-5 flex items-center justify-between gap-4 border-t border-ink/15 pt-4">
+          <div class="mt-5 flex items-center justify-between gap-4 border-t border-dusty-taupe/15 pt-4">
             <span class="cartao-evento-preco text-lg font-extrabold"></span>
-            <span class="cartao-evento-vagas text-right text-xs font-bold text-olive"></span>
+            <span class="cartao-evento-vagas text-right text-xs font-bold text-dry-sage"></span>
           </div>
         </div>
       </a>

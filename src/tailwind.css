@@ -21,20 +21,31 @@
   --font-display: "Fraunces Variable", Georgia, serif;
   --font-sans: "Manrope Variable", "Segoe UI", sans-serif;
 
-  --color-ink: #3b2314;
-  --color-terracotta: #8c5a3c;
-  --color-cream: #f4e9dd;
-  --color-amber: #a6612c;
-  --color-sand: #e8c79e;
-  --color-olive: #5b6b4a;
-  --color-sage: #c7d3b8;
-  --color-paper: #fbf7f1;
+  --color-dusty-taupe: #a58b71;
+  --color-dusty-taupe-dark: #7c6650;
+  --color-camel: #c19a6b;
+  --color-tan: #deb887;
+  --color-pale-oak: #e8cdab;
+  --color-pale-oak-dark: #503616;
+  --color-champagne-mist: #edd9bf;
+  --color-dusty-dry-sage-dark: #7a816c;
+  --color-dusty-dry-sage: #818263;
+  --color-dry-sage: #c2c395;
+  --color-green-beige: #ddddb8;
+  --color-floral-white: #fffaf2;
+  --color-terracotta-clay: #ae6965;
+  --color-rosy-taupe-dark: #c89893;
+  --color-rosy-taupe: #d1a9a5;
+  --color-almond-silk-dark: #e69fb3;
+  --color-almond-silk: #f0d8d1;
   --color-white: #ffffff;
 
   --color-success: #4c7a47;
   --color-warning: #9a6a20;
   --color-danger: #a23b2e;
-
+ 
+  --color-dusty-taupe-extra-dark: #44382C;
+  
   --shadow-soft:
     0 1px 2px rgb(59 35 20 / 0.06),
     0 8px 24px rgb(59 35 20 / 0.07);
