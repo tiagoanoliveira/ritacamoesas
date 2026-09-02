@@ -1,6 +1,7 @@
 node_modules/
 .dev.vars
 .wrangler/
+.vscode/
 .DS_Store
 
 # Resultado do build Tailwind
