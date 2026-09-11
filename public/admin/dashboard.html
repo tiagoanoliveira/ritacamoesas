@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Rita Camõesas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="/js/admin/admin-guard.js"></script>
+</head>
+<body class="bg-stone-50">
+  <!-- Header -->
+  <header class="bg-stone-900 text-stone-100 py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-serif">Rita Camõesas</h1>
+      <nav class="space-x-4">
+        <a href="/admin/dashboard.html" class="hover:text-amber-400">Dashboard</a>
+        <a href="/admin/eventos.html" class="hover:text-amber-400">Eventos</a>
+        <a href="/admin/orcamentos.html" class="hover:text-amber-400">Orçamentos</a>
+        <a href="/admin/reservas.html" class="hover:text-amber-400">Reservas</a>
+        <button id="logoutBtn" class="hover:text-amber-400">
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-serif text-stone-800 mb-8">Dashboard</h2>
+    
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Eventos Ativos -->
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-amber-500">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-stone-500 text-sm">Eventos Ativos</p>
+            <p class="text-3xl font-bold text-stone-800" id="eventosAtivos">-</p>
+          </div>
+          <div class="text-amber-500 text-4xl">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reservas Pendentes -->
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-stone-500 text-sm">Reservas Pendentes</p>
+            <p class="text-3xl font-bold text-stone-800" id="reservasPendentes">-</p>
+          </div>
+          <div class="text-blue-500 text-4xl">
+            <i class="fas fa-clock"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orçamentos por Responder -->
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-stone-500 text-sm">Orçamentos Pendentes</p>
+            <p class="text-3xl font-bold text-stone-800" id="orcamentosPendentes">-</p>
+          </div>
+          <div class="text-green-500 text-4xl">
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reservas Confirmadas (mês) -->
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-stone-500 text-sm">Reservas este Mês</p>
+            <p class="text-3xl font-bold text-stone-800" id="reservasMes">-</p>
+          </div>
+          <div class="text-purple-500 text-4xl">
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Últimas Reservas -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-serif text-stone-800 mb-4">Últimas Reservas</h3>
+        <div id="ultimasReservas" class="space-y-3">
+          <p class="text-stone-500">A carregar...</p>
+        </div>
+      </div>
+
+      <!-- Últimos Orçamentos -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-serif text-stone-800 mb-4">Últimos Orçamentos</h3>
+        <div id="ultimosOrcamentos" class="space-y-3">
+          <p class="text-stone-500">A carregar...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch('/api/admin/auth/logout', { method: 'POST' });
+      localStorage.removeItem('adminToken');
+      window.location.href = '/admin/login.html';
+    });
+
+    // Fetch dashboard data
+    async function loadDashboard() {
+      try {
+        // Fetch eventos
+        const eventosRes = await fetch('/api/admin/eventos');
+        const eventos = await eventosRes.json();
+        const eventosAtivos = eventos.filter(e => e.ativo !== false).length;
+        document.getElementById('eventosAtivos').textContent = eventosAtivos;
+
+        // Fetch reservas
+        const reservasRes = await fetch('/api/admin/reservas');
+        const reservas = await reservasRes.json();
+        const pendentes = reservas.filter(r => r.estado === 'pendente').length;
+        document.getElementById('reservasPendentes').textContent = pendentes;
+
+        // Fetch orcamentos (quando existir endpoint)
+        document.getElementById('orcamentosPendentes').textContent = '-';
+
+        // Reservas este mês
+        const now = new Date();
+        const thisMonth = reservas.filter(r => {
+          const d = new Date(r.data_evento);
+          return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+        }).length;
+        document.getElementById('reservasMes').textContent = thisMonth;
+
+        // Últimas reservas
+        const ultimasReservas = reservas.slice(0, 5);
+        const reservasContainer = document.getElementById('ultimasReservas');
+        if (ultimasReservas.length === 0) {
+          reservasContainer.innerHTML = '<p class="text-stone-500">Sem reservas recentes</p>';
+        } else {
+          reservasContainer.innerHTML = ultimasReservas.map(r => `
+            <div class="flex justify-between items-center py-2 border-b border-stone-200">
+              <div>
+                <p class="font-medium text-stone-800">${r.nome_cliente}</p>
+                <p class="text-sm text-stone-500">${new Date(r.data_evento).toLocaleDateString('pt-PT')}</p>
+              </div>
+              <span class="px-2 py-1 text-xs rounded ${
+                r.estado === 'confirmada' ? 'bg-green-100 text-green-800' :
+                r.estado === 'pendente' ? 'bg-blue-100 text-blue-800' :
+                'bg-stone-100 text-stone-800'
+              }">${r.estado}</span>
+            </div>
+          `).join('');
+        }
+
+        // Últimos orçamentos (placeholder)
+        document.getElementById('ultimosOrcamentos').innerHTML = '<p class="text-stone-500">Sem orçamentos recentes</p>';
+
+      } catch (error) {
+        console.error('Erro ao carregar dashboard:', error);
+      }
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>
