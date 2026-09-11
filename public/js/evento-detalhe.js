@@ -61,7 +61,8 @@ function renderizarEvento(evento) {
   el.data.textContent = `📅 ${formatarData(evento.data_evento)}`;
   el.duracao.textContent = `⏱ Duração aproximada: ${evento.duracao_minutos} minutos`;
   el.local.textContent = `📍 ${evento.localizacao}`;
-  el.descricao.innerHTML = evento.descricao.replace(/\n/g, "<br>"); // descrição vem de campo de texto controlado pelo admin
+  el.descricao.textContent = evento.descricao;
+  el.descricao.classList.add("whitespace-pre-line");
   el.preco.textContent = formatarPreco(evento.preco_centimos);
   el.eventoIdInput.value = evento.id;
   el.numPessoas.max = evento.vagas_disponiveis;

@@ -22,8 +22,11 @@ const SELECT_EVENTO = `
     e.slug,
     e.titulo,
     e.descricao,
+    e.tematica,
+    e.duracao_minutos,
     e.data_evento,
     e.localizacao,
+    e.localizacao_excecao,
     e.preco_centimos,
     e.vagas_max,
     e.vagas_ocupadas,
@@ -183,8 +186,11 @@ export async function onRequestPut({
           SET slug = ?,
               titulo = ?,
               descricao = ?,
+              tematica = ?,
+              duracao_minutos = ?,
               data_evento = ?,
               localizacao = ?,
+              localizacao_excecao = ?,
               preco_centimos = ?,
               vagas_max = ?,
               imagem_url = ?,
@@ -192,21 +198,24 @@ export async function onRequestPut({
               reservas_abrem_em = ?,
               reservas_fecham_em = ?,
               atualizado_em = datetime('now')
-        WHERE id = ?`
+        WHERE id = ?`,
     )
       .bind(
         dados.slug,
         dados.titulo,
         dados.descricao,
+        dados.tematica,
+        dados.duracao_minutos,
         dados.data_evento,
         dados.localizacao,
+        dados.localizacao_excecao,
         dados.preco_centimos,
         dados.vagas_max,
         dados.imagem_url,
         dados.estado,
         dados.reservas_abrem_em,
         dados.reservas_fecham_em,
-        id
+        id,
       )
       .run();
 
@@ -273,93 +282,80 @@ export async function onRequestDelete({
   env,
   params,
 }) {
-  const sessao = await exigirSessaoAdmin(
-    request,
-    env
-  );
+  const sessao = await exigirSessaoAdmin(request, env);
 
   if (!sessao) {
-    return respostaErro(
-      "Sessão inválida ou expirada.",
-      401
-    );
+    return respostaErro("Sessão inválida ou expirada.", 401);
   }
 
   if (!pedidoMesmoSite(request)) {
-    return respostaErro(
-      "Origem do pedido não autorizada.",
-      403
-    );
+    return respostaErro("Origem do pedido não autorizada.", 403);
   }
 
   const id = obterId(params.id);
 
   if (!id) {
-    return respostaErro(
-      "Identificador inválido.",
-      400
-    );
+    return respostaErro("Identificador inválido.", 400);
   }
 
   const evento = await env.DB.prepare(
-    `SELECT
-       e.id,
-       e.imagem_url,
-       (
-         SELECT COUNT(*)
-           FROM reservas r
-          WHERE r.evento_id = e.id
-       ) AS total_reservas
-     FROM eventos e
-     WHERE e.id = ?
-     LIMIT 1`
+    `SELECT id, estado
+       FROM eventos
+      WHERE id = ?
+      LIMIT 1`,
   )
     .bind(id)
     .first();
 
   if (!evento) {
+    return respostaErro("Evento não encontrado.", 404);
+  }
+
+  if (evento.estado === "cancelado") {
+    return respostaJson({
+      sucesso: true,
+      evento_estado: "cancelado",
+      reservas_canceladas: 0,
+    });
+  }
+
+  try {
+    const resultados = await env.DB.batch([
+      env.DB.prepare(
+        `UPDATE eventos
+            SET estado = 'cancelado',
+                atualizado_em = datetime('now')
+          WHERE id = ?`,
+      ).bind(id),
+
+      env.DB.prepare(
+        `UPDATE reservas
+            SET estado = 'cancelada',
+                atualizado_em = datetime('now')
+          WHERE evento_id = ?
+            AND estado <> 'cancelada'`,
+      ).bind(id),
+    ]);
+
+    return respostaJson({
+      sucesso: true,
+      evento_estado: "cancelado",
+      reservas_canceladas:
+        resultados[1]?.meta?.changes ?? 0,
+    });
+  } catch (error) {
+    console.error("Erro ao cancelar evento:", {
+      message: error?.message,
+      cause: error?.cause?.message,
+      stack: error?.stack,
+    });
+
     return respostaErro(
-      "Evento não encontrado.",
-      404
+      "Não foi possível cancelar o evento.",
+      500,
     );
   }
-
-  if (evento.total_reservas > 0) {
-    return respostaErro(
-      "Este evento possui reservas e não pode ser eliminado. Altera o estado para arquivado.",
-      409
-    );
-  }
-
-  await env.DB.prepare(
-    `DELETE FROM eventos
-      WHERE id = ?`
-  )
-    .bind(id)
-    .run();
-
-  const chaveImagem = extrairChaveImagem(
-    evento.imagem_url
-  );
-
-  if (chaveImagem && env.MEDIA) {
-    try {
-      await env.MEDIA.delete(
-        chaveImagem
-      );
-    } catch (error) {
-      console.error(
-        "Evento eliminado, mas a imagem não foi removida:",
-        error
-      );
-    }
-  }
-
-  return respostaJson({
-    sucesso: true,
-  });
 }
-
 function obterId(valor) {
   const id = Number(valor);
 

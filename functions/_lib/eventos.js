@@ -3,75 +3,64 @@
 export const ESTADOS_EVENTO = new Set([
   "rascunho",
   "publicado",
-  "arquivado",
+  "cancelado",
+  "concluido",
 ]);
-
-export function normalizarDadosEvento(body) {
+export function normalizarDadosEvento(body = {}) {
   const erros = [];
 
   const titulo = limparTexto(body.titulo, 160);
-  const descricao = limparTexto(
-    body.descricao,
-    10_000
-  );
-  const localizacao = limparTexto(
-    body.localizacao,
-    300
-  );
-
+  const descricao = limparTexto(body.descricao, 10_000);
+  const tematica = limparTexto(body.tematica, 120) || null;
+  const localizacao = limparTexto(body.localizacao, 300);
   const slugBase = limparTexto(body.slug, 180);
   const slug = slugificar(slugBase || titulo);
 
-  const precoCentimos = Number(
-    body.preco_centimos
-  );
-
+  const duracaoMinutos = Number(body.duracao_minutos);
+  const precoCentimos = Number(body.preco_centimos);
   const vagasMax = Number(body.vagas_max);
 
-  const estado = limparTexto(
-    body.estado,
-    30
-  ).toLowerCase();
+  const localizacaoExcecao =
+    body.localizacao_excecao === true ||
+    body.localizacao_excecao === 1 ||
+    body.localizacao_excecao === "1" ||
+    body.localizacao_excecao === "true" ||
+    body.localizacao_excecao === "on"
+      ? 1
+      : 0;
 
-  const imagemUrl =
-    limparTexto(body.imagem_url, 2048) || null;
+  const estado = limparTexto(body.estado, 30).toLowerCase();
+  const imagemUrl = limparTexto(body.imagem_url, 2048) || null;
 
   const dataEvento = normalizarData(
     body.data_evento,
     "A data do evento é obrigatória.",
-    erros
+    erros,
   );
 
-  const reservasAbremEm =
-    normalizarDataOpcional(
-      body.reservas_abrem_em,
-      "A data de abertura das reservas é inválida.",
-      erros
-    );
+  const reservasAbremEm = normalizarDataOpcional(
+    body.reservas_abrem_em,
+    "A data de abertura das reservas é inválida.",
+    erros,
+  );
 
-  const reservasFechamEm =
-    normalizarDataOpcional(
-      body.reservas_fecham_em,
-      "A data de encerramento das reservas é inválida.",
-      erros
-    );
+  const reservasFechamEm = normalizarDataOpcional(
+    body.reservas_fecham_em,
+    "A data de encerramento das reservas é inválida.",
+    erros,
+  );
 
-  if (!titulo) {
-    erros.push("O título é obrigatório.");
-  }
+  if (!titulo) erros.push("O título é obrigatório.");
+  if (!slug) erros.push("Não foi possível criar um slug válido.");
+  if (!descricao) erros.push("A descrição é obrigatória.");
+  if (!localizacao) erros.push("A localização é obrigatória.");
 
-  if (!slug) {
-    erros.push(
-      "Não foi possível criar um slug válido."
-    );
-  }
-
-  if (!descricao) {
-    erros.push("A descrição é obrigatória.");
-  }
-
-  if (!localizacao) {
-    erros.push("A localização é obrigatória.");
+  if (
+    !Number.isInteger(duracaoMinutos) ||
+    duracaoMinutos < 1 ||
+    duracaoMinutos > 10_080
+  ) {
+    erros.push("A duração do evento é inválida.");
   }
 
   if (
@@ -87,9 +76,7 @@ export function normalizarDadosEvento(body) {
     vagasMax < 1 ||
     vagasMax > 10_000
   ) {
-    erros.push(
-      "O número máximo de vagas deve estar entre 1 e 10 000."
-    );
+    erros.push("O número máximo de vagas deve estar entre 1 e 10 000.");
   }
 
   if (!ESTADOS_EVENTO.has(estado)) {
@@ -98,9 +85,7 @@ export function normalizarDadosEvento(body) {
 
   if (
     imagemUrl &&
-    !imagemUrl.startsWith(
-      "/media/eventos/"
-    ) &&
+    !imagemUrl.startsWith("/media/eventos/") &&
     !/^https:\/\/[^\s]+$/i.test(imagemUrl)
   ) {
     erros.push("O endereço da imagem é inválido.");
@@ -109,22 +94,20 @@ export function normalizarDadosEvento(body) {
   if (
     reservasAbremEm &&
     reservasFechamEm &&
-    new Date(reservasAbremEm) >=
-      new Date(reservasFechamEm)
+    new Date(reservasAbremEm) >= new Date(reservasFechamEm)
   ) {
     erros.push(
-      "O encerramento das reservas tem de ser posterior à abertura."
+      "O encerramento das reservas tem de ser posterior à abertura.",
     );
   }
 
   if (
     reservasFechamEm &&
     dataEvento &&
-    new Date(reservasFechamEm) >
-      new Date(dataEvento)
+    new Date(reservasFechamEm) > new Date(dataEvento)
   ) {
     erros.push(
-      "As reservas não podem encerrar depois do início do evento."
+      "As reservas não podem encerrar depois do início do evento.",
     );
   }
 
@@ -134,8 +117,11 @@ export function normalizarDadosEvento(body) {
       titulo,
       slug,
       descricao,
+      tematica,
+      duracao_minutos: duracaoMinutos,
       data_evento: dataEvento,
       localizacao,
+      localizacao_excecao: localizacaoExcecao,
       preco_centimos: precoCentimos,
       vagas_max: vagasMax,
       imagem_url: imagemUrl,

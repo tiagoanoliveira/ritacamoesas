@@ -24,76 +24,77 @@
 </head>
 
 <body
-  class="min-h-screen bg-cream font-sans text-base leading-relaxed text-ink antialiased"
+  class="min-h-screen bg-floral-white font-sans text-base leading-relaxed text-dusty-taupe-extra-dark antialiased"
 >
   <a
     href="#conteudo"
-    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
+    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-dusty-taupe-extra-dark px-4 py-3 text-sm font-bold text-floral-white transition-transform focus:translate-y-0"
   >
     Saltar para o conteúdo
   </a>
 
   <div class="min-h-screen lg:grid lg:grid-cols-[16rem_1fr]">
     <aside
-      class="border-b border-ink/10 bg-ink text-cream lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:border-b-0 lg:border-r lg:border-cream/10"
+      class="border-b border-dusty-taupe-dark/10 bg-dusty-taupe-extra-dark text-floral-white lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:border-b-0 lg:border-r lg:border-floral-white/10"
     >
       <div class="flex min-h-full flex-col">
         <div
-          class="flex min-h-20 items-center justify-between gap-4 px-5"
+          class="flex items-center justify-between gap-4 px-5"
         >
-          <a
-            href="/admin/eventos.html"
-            class="inline-flex min-h-11 items-center"
-          >
-            <img
-              src="/images/rita.svg"
-              alt="Rita Camoesas"
-              width="140"
-              height="40"
-              class="h-9 w-auto brightness-0 invert"
-            />
-          </a>
+        <a
+          href="/admin/"
+          class="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-camel"
+          aria-label="Rita Camoesas — Gestão de eventos"
+        >
+          <img
+            src="/images/ritac.jpg"
+            alt="Rita Camoesas"
+            width="52"
+            height="52"
+            class="sm:h-13 h-10 w-auto rounded-2xl"
+          />
+        </a>
 
           <span
-            class="text-xs font-bold uppercase tracking-[0.15em] text-cream/50"
+            class="text-xs font-bold uppercase tracking-[0.15em] text-floral-white/50"
           >
             Admin
           </span>
         </div>
 
         <nav
-          class="flex gap-2 overflow-x-auto border-t border-cream/10 px-4 py-4 lg:flex-1 lg:flex-col"
+          class="flex gap-2 overflow-x-auto border-t border-floral-white/10 px-4 py-4 lg:flex-1 lg:flex-col"
           aria-label="Administração"
         >
           <a
             href="/admin/eventos.html"
             aria-current="page"
-            class="inline-flex min-h-11 shrink-0 items-center bg-cream px-4 text-sm font-bold text-ink"
+            class="inline-flex min-h-11 shrink-0 items-center bg-floral-white px-4 text-sm font-bold text-dusty-taupe-extra-dark"
           >
             Eventos
           </a>
 
           <span
-            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-cream/40"
+            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-floral-white/40"
           >
-            Reservas — próxima fase
+            Reservas — dentro de cada evento
           </span>
 
           <span
-            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-cream/40"
+            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-floral-white/40"
           >
             Orçamentos — próxima fase
           </span>
         </nav>
 
         <div
-          class="hidden border-t border-cream/10 p-4 lg:block"
+          class="hidden border-t border-floral-white/10 p-4 lg:block"
         >
           <a
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex min-h-11 items-center text-sm font-semibold text-cream/70 hover:text-cream"
+            class="inline-flex min-h-11 items-center text-sm font-semibold text-floral-white/70 hover:text-floral-white"
           >
             Abrir website
           </a>
@@ -103,7 +104,7 @@
 
     <div class="lg:col-start-2">
       <header
-        class="sticky top-0 z-40 border-b border-ink/10 bg-cream/95 backdrop-blur-md"
+        class="sticky top-0 z-40 border-b border-dusty-taupe-dark/10 bg-floral-white/95 backdrop-blur-md"
       >
         <div
           class="flex min-h-18 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
@@ -118,14 +119,14 @@
 
             <p
               id="admin-email"
-              class="text-xs text-ink/55"
+              class="text-xs text-dusty-taupe-extra-dark/55"
             ></p>
           </div>
 
           <button
             id="botao-logout"
             type="button"
-            class="inline-flex min-h-11 items-center border border-ink/20 px-4 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+            class="inline-flex min-h-11 items-center border border-dusty-taupe-dark/20 px-4 text-sm font-bold hover:border-dusty-taupe-dark hover:bg-dusty-taupe-extra-dark hover:text-floral-white"
           >
             Terminar sessão
           </button>
@@ -140,11 +141,11 @@
           class="mx-auto max-w-[1400px]"
         >
           <div
-            class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between"
+            class="flex flex-col gap-5 border-b border-dusty-taupe-dark/15 pb-8 sm:flex-row sm:items-end sm:justify-between"
           >
             <div>
               <p
-                class="text-xs font-bold uppercase tracking-[0.16em] text-amber"
+                class="text-xs font-bold uppercase tracking-[0.16em] text-camel"
               >
                 Dashboard
               </p>
@@ -155,7 +156,7 @@
                 Gestão de eventos
               </h1>
 
-              <p class="mt-3 max-w-2xl text-ink/65">
+              <p class="mt-3 max-w-2xl text-dusty-taupe-extra-dark/65">
                 Cria, publica, edita ou arquiva os
                 eventos e gere a respetiva imagem.
               </p>
@@ -164,14 +165,14 @@
             <button
               id="botao-novo-evento"
               type="button"
-              class="inline-flex min-h-12 items-center justify-center bg-ink px-6 text-sm font-extrabold text-cream hover:bg-amber"
+              class="inline-flex min-h-12 items-center justify-center bg-dusty-taupe-extra-dark px-6 text-sm font-extrabold text-floral-white hover:bg-camel"
             >
               Criar evento
             </button>
           </div>
 
           <section
-            class="mt-8 bg-paper p-4 shadow-soft sm:p-5"
+            class="mt-8 bg-white p-4 shadow-soft sm:p-5"
             aria-label="Filtros de eventos"
           >
             <form
@@ -190,7 +191,7 @@
                   id="filtro-pesquisa"
                   type="search"
                   placeholder="Título, localização ou slug"
-                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                  class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
                 />
               </div>
 
@@ -204,7 +205,7 @@
 
                 <select
                   id="filtro-estado"
-                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                  class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
                 >
                   <option value="">
                     Todos
@@ -215,15 +216,18 @@
                   <option value="rascunho">
                     Rascunhos
                   </option>
-                  <option value="arquivado">
-                    Arquivados
+                  <option value="cancelado">
+                    Cancelados
+                  </option>
+                  <option value="concluido">
+                    Concluídos
                   </option>
                 </select>
               </div>
 
               <button
                 type="submit"
-                class="min-h-11 self-end border border-ink/20 px-5 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+                class="min-h-11 self-end border border-dusty-taupe-dark/20 px-5 text-sm font-bold hover:border-dusty-taupe-dark hover:bg-dusty-taupe-extra-dark hover:text-floral-white"
               >
                 Filtrar
               </button>
@@ -254,7 +258,7 @@
 
               <p
                 id="total-eventos"
-                class="text-sm tabular-nums text-ink/55"
+                class="text-sm tabular-nums text-dusty-taupe-extra-dark/55"
               ></p>
             </div>
 
@@ -264,13 +268,13 @@
               aria-label="A carregar eventos"
             >
               <div
-                class="h-72 animate-pulse bg-ink/5"
+                class="h-72 animate-pulse bg-dusty-taupe-extra-dark/5"
               ></div>
               <div
-                class="h-72 animate-pulse bg-ink/5"
+                class="h-72 animate-pulse bg-dusty-taupe-extra-dark/5"
               ></div>
               <div
-                class="h-72 animate-pulse bg-ink/5"
+                class="h-72 animate-pulse bg-dusty-taupe-extra-dark/5"
               ></div>
             </div>
 
@@ -282,7 +286,7 @@
 
             <div
               id="estado-vazio"
-              class="mt-5 border border-dashed border-ink/25 bg-paper px-6 py-16 text-center"
+              class="mt-5 border border-dashed border-dusty-taupe-dark/25 bg-white px-6 py-16 text-center"
               hidden
             >
               <h3
@@ -292,7 +296,7 @@
               </h3>
 
               <p
-                class="mx-auto mt-3 max-w-md text-ink/60"
+                class="mx-auto mt-3 max-w-md text-dusty-taupe-extra-dark/60"
               >
                 Cria o primeiro evento para começar
                 a receber reservas.
@@ -301,7 +305,7 @@
               <button
                 id="botao-vazio-criar"
                 type="button"
-                class="mt-6 inline-flex min-h-12 items-center justify-center bg-ink px-6 text-sm font-extrabold text-cream hover:bg-amber"
+                class="mt-6 inline-flex min-h-12 items-center justify-center bg-dusty-taupe-extra-dark px-6 text-sm font-extrabold text-floral-white hover:bg-camel"
               >
                 Criar evento
               </button>
@@ -314,7 +318,7 @@
 
   <dialog
     id="dialogo-evento"
-    class="m-auto max-h-[92vh] w-[min(70rem,calc(100%-2rem))] overflow-y-auto bg-cream p-0 text-ink shadow-raised backdrop:bg-ink/70"
+    class="m-auto max-h-[92vh] w-[min(70rem,calc(100%-2rem))] overflow-y-auto bg-floral-white p-0 text-dusty-taupe-extra-dark shadow-raised backdrop:bg-dusty-taupe-extra-dark/70"
   >
     <form
       id="form-evento"
@@ -331,11 +335,11 @@
       />
 
       <header
-        class="sticky top-0 z-10 flex items-center justify-between gap-5 border-b border-ink/15 bg-cream/95 px-5 py-4 backdrop-blur-md sm:px-8"
+        class="sticky top-0 z-10 flex items-center justify-between gap-5 border-b border-dusty-taupe-dark/15 bg-floral-white/95 px-5 py-4 backdrop-blur-md sm:px-8"
       >
         <div>
           <p
-            class="text-xs font-bold uppercase tracking-[0.16em] text-amber"
+            class="text-xs font-bold uppercase tracking-[0.16em] text-camel"
           >
             Evento
           </p>
@@ -351,7 +355,7 @@
         <button
           id="botao-fechar-dialogo"
           type="button"
-          class="inline-flex min-h-11 min-w-11 items-center justify-center border border-ink/20 text-xl hover:bg-ink hover:text-cream"
+          class="inline-flex min-h-11 min-w-11 items-center justify-center border border-dusty-taupe-dark/20 text-xl hover:bg-dusty-taupe-extra-dark hover:text-floral-white"
           aria-label="Fechar formulário"
         >
           ×
@@ -376,7 +380,7 @@
               type="text"
               required
               maxlength="160"
-              class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+              class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
             />
           </div>
 
@@ -395,10 +399,10 @@
               maxlength="180"
               pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
               placeholder="workshop-pao-artesanal"
-              class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+              class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
             />
 
-            <p class="mt-2 text-xs text-ink/55">
+            <p class="mt-2 text-xs text-dusty-taupe-extra-dark/55">
               É usado no endereço público do evento.
             </p>
           </div>
@@ -417,10 +421,46 @@
               required
               maxlength="10000"
               rows="9"
-              class="mt-2 w-full resize-y border border-ink/20 bg-white/60 px-3 py-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+              class="mt-2 w-full resize-y border border-dusty-taupe-dark/20 bg-white/60 px-3 py-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
             ></textarea>
           </div>
+          
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="tematica" class="block text-sm font-bold">
+                Temática
+              </label>
+              <input
+              id="tematica"
+              name="tematica"
+              type="text"
+              maxlength="120"
+              placeholder="Ex.: Pastelaria, pão ou cozinha sazonal"
+              class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+            />
+            </div>
 
+          <div>
+            <label for="duracao-minutos" class="block text-sm font-bold">
+              Duração aproximada
+            </label>
+            <div class="relative mt-2">
+              <input
+                id="duracao-minutos"
+                name="duracao_minutos"
+                type="number"
+                required
+                min="1"
+                max="10080"
+                step="1"
+                class="min-h-11 w-full border border-ink/20 bg-white/60 px-3 pr-20 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+              />
+              <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-ink/55">
+                minutos
+              </span>
+            </div>
+          </div>
+        </div>
           <div
             class="grid gap-5 sm:grid-cols-2"
           >
@@ -437,7 +477,7 @@
                 name="data_evento"
                 type="datetime-local"
                 required
-                class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
               />
             </div>
 
@@ -449,13 +489,23 @@
                 Localização
               </label>
 
+              <label class="flex min-h-11 items-center gap-3 text-sm sm:col-span-2">
+                <input
+                  id="localizacao-excecao"
+                  name="localizacao_excecao"
+                  type="checkbox"
+                  class="h-5 w-5 accent-amber"
+                />
+                Este evento decorre fora da localização habitual
+              </label>
+
               <input
                 id="localizacao"
                 name="localizacao"
                 type="text"
                 required
                 maxlength="300"
-                class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
               />
             </div>
           </div>
@@ -480,11 +530,11 @@
                   min="0"
                   max="100000"
                   step="0.01"
-                  class="min-h-11 w-full border border-ink/20 bg-white/60 px-3 pr-10 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                  class="min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 pr-10 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
                 />
 
                 <span
-                  class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-ink/55"
+                  class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-dusty-taupe-extra-dark/55"
                 >
                   €
                 </span>
@@ -507,19 +557,19 @@
                 min="1"
                 max="10000"
                 step="1"
-                class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
               />
 
               <p
                 id="informacao-ocupadas"
-                class="mt-2 text-xs text-ink/55"
+                class="mt-2 text-xs text-dusty-taupe-extra-dark/55"
                 hidden
               ></p>
             </div>
           </div>
 
           <fieldset
-            class="border border-ink/15 p-5"
+            class="border border-dusty-taupe-dark/15 p-5"
           >
             <legend
               class="px-2 text-sm font-extrabold"
@@ -542,7 +592,7 @@
                   id="reservas-abrem"
                   name="reservas_abrem_em"
                   type="datetime-local"
-                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                  class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
                 />
               </div>
 
@@ -558,7 +608,7 @@
                   id="reservas-fecham"
                   name="reservas_fecham_em"
                   type="datetime-local"
-                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                  class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
                 />
               </div>
             </div>
@@ -578,7 +628,7 @@
               id="estado"
               name="estado"
               required
-              class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+              class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
             >
               <option value="rascunho">
                 Rascunho
@@ -586,14 +636,17 @@
               <option value="publicado">
                 Publicado
               </option>
-              <option value="arquivado">
-                Arquivado
+              <option value="cancelado">
+                Cancelado
+              </option>
+              <option value="concluido">
+                Concluído
               </option>
             </select>
           </div>
 
           <section
-            class="border border-ink/15 bg-paper p-5"
+            class="border border-dusty-taupe-dark/15 bg-white p-5"
             aria-labelledby="titulo-imagem"
           >
             <h3
@@ -605,7 +658,7 @@
 
             <div
               id="contentor-preview"
-              class="mt-4 aspect-[4/3] overflow-hidden bg-ink/5"
+              class="mt-4 aspect-[4/3] overflow-hidden bg-dusty-taupe-extra-dark/5"
             >
               <img
                 id="preview-imagem"
@@ -616,7 +669,7 @@
 
               <div
                 id="preview-vazio"
-                class="flex h-full items-center justify-center px-5 text-center text-sm text-ink/45"
+                class="flex h-full items-center justify-center px-5 text-center text-sm text-dusty-taupe-extra-dark/45"
               >
                 Nenhuma imagem selecionada
               </div>
@@ -634,10 +687,10 @@
               name="imagem"
               type="file"
               accept="image/jpeg,image/png,image/webp,image/avif"
-              class="mt-2 block w-full text-sm file:mr-3 file:min-h-11 file:border-0 file:bg-ink file:px-4 file:text-sm file:font-bold file:text-cream"
+              class="mt-2 block w-full text-sm file:mr-3 file:min-h-11 file:border-0 file:bg-dusty-taupe-extra-dark file:px-4 file:text-sm file:font-bold file:text-floral-white"
             />
 
-            <p class="mt-2 text-xs text-ink/55">
+            <p class="mt-2 text-xs text-dusty-taupe-extra-dark/55">
               JPEG, PNG, WebP ou AVIF, até 5 MB.
             </p>
 
@@ -649,19 +702,68 @@
               <input
                 id="remover-imagem"
                 type="checkbox"
-                class="h-5 w-5 accent-amber"
+                class="h-5 w-5 accent-camel"
               />
 
               Remover a imagem atual
             </label>
           </section>
+          
+          <section
+          id="painel-reservas"
+          class="border border-ink/15 bg-paper p-5"
+          aria-labelledby="titulo-reservas-evento"
+          hidden
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 id="titulo-reservas-evento" class="text-sm font-extrabold">
+                Reservas deste evento
+              </h3>
+              <p id="resumo-reservas" class="mt-1 text-xs text-ink/55"></p>
+            </div>
+            <button
+              id="botao-atualizar-reservas"
+              type="button"
+              class="min-h-11 border border-ink/20 px-3 text-xs font-bold hover:bg-ink hover:text-cream"
+            >
+              Atualizar
+            </button>
+          </div>
+
+          <label for="filtro-reservas-estado" class="mt-4 block text-xs font-bold">
+            Filtrar reservas
+          </label>
+          <select
+            id="filtro-reservas-estado"
+            class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 text-sm outline-none focus:border-amber"
+          >
+            <option value="">Todas</option>
+            <option value="pendente">Pendentes</option>
+            <option value="confirmada">Confirmadas</option>
+            <option value="sem_pagamento">Sem pagamento</option>
+            <option value="cancelada">Canceladas</option>
+          </select>
+
+          <p
+            id="mensagem-reservas"
+            class="mt-4 border p-3 text-sm font-semibold"
+            role="status"
+            hidden
+          ></p>
+
+          <div
+            id="lista-reservas"
+            class="mt-4 grid max-h-[32rem] gap-3 overflow-y-auto pr-1"
+          ></div>
+        </section>
 
           <a
             id="ligacao-evento-publico"
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex min-h-11 items-center justify-center border border-ink/20 px-4 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+            class="inline-flex min-h-11 items-center justify-center border border-dusty-taupe-dark/20 px-4 text-sm font-bold hover:border-dusty-taupe-dark hover:bg-dusty-taupe-extra-dark hover:text-floral-white"
             hidden
           >
             Ver página pública
@@ -678,7 +780,7 @@
       ></p>
 
       <footer
-        class="sticky bottom-0 flex flex-col-reverse gap-3 border-t border-ink/15 bg-cream/95 px-5 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-8"
+        class="sticky bottom-0 flex flex-col-reverse gap-3 border-t border-dusty-taupe-dark/15 bg-floral-white/95 px-5 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-8"
       >
         <button
           id="botao-eliminar-evento"
@@ -686,7 +788,7 @@
           class="min-h-11 border border-danger/40 px-5 text-sm font-bold text-danger hover:bg-danger hover:text-white"
           hidden
         >
-          Eliminar evento
+          Cancelar evento
         </button>
 
         <div
@@ -695,7 +797,7 @@
           <button
             id="botao-cancelar"
             type="button"
-            class="min-h-11 border border-ink/20 px-5 text-sm font-bold hover:border-ink"
+            class="min-h-11 border border-dusty-taupe-dark/20 px-5 text-sm font-bold hover:border-dusty-taupe-dark"
           >
             Cancelar
           </button>
@@ -703,7 +805,7 @@
           <button
             id="botao-guardar"
             type="submit"
-            class="min-h-11 bg-ink px-6 text-sm font-extrabold text-cream hover:bg-amber disabled:cursor-wait disabled:opacity-50"
+            class="min-h-11 bg-dusty-taupe-extra-dark px-6 text-sm font-extrabold text-floral-white hover:bg-camel disabled:cursor-wait disabled:opacity-50"
           >
             Guardar evento
           </button>

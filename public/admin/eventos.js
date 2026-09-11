@@ -167,6 +167,32 @@ const elementos = {
     document.getElementById(
       "linha-remover-imagem"
     ),
+    
+  tematica: document.getElementById("tematica"),
+
+  duracaoMinutos:
+    document.getElementById("duracao-minutos"),
+
+  localizacaoExcecao:
+    document.getElementById("localizacao-excecao"),
+
+  painelReservas:
+    document.getElementById("painel-reservas"),
+
+  resumoReservas:
+    document.getElementById("resumo-reservas"),
+
+  filtroReservas:
+    document.getElementById("filtro-reservas-estado"),
+
+  atualizarReservas:
+    document.getElementById("botao-atualizar-reservas"),
+
+  mensagemReservas:
+    document.getElementById("mensagem-reservas"),
+
+  listaReservas:
+    document.getElementById("lista-reservas"),
 
   publico:
     document.getElementById(
@@ -304,6 +330,20 @@ function registarEventos() {
       }
     }
   );
+    elementos.filtroReservas.addEventListener(
+    "change",
+    () => carregarReservas(),
+  );
+
+    elementos.atualizarReservas.addEventListener(
+    "click",
+    () => carregarReservas(),
+  );
+
+    elementos.listaReservas.addEventListener(
+    "click",
+    alterarEstadoReserva,
+  );
 }
 
 async function carregarEventos() {
@@ -382,13 +422,13 @@ function criarCartaoEvento(evento) {
   );
 
   article.className =
-    "group flex min-h-full flex-col overflow-hidden bg-paper shadow-soft";
+    "group flex min-h-full flex-col overflow-hidden bg-white shadow-soft";
 
   const imagemContainer =
     document.createElement("div");
 
   imagemContainer.className =
-    "aspect-[4/3] overflow-hidden bg-ink/5";
+    "aspect-[4/3] overflow-hidden bg-dusty-taupe-extra-dark/5";
 
   if (evento.imagem_url) {
     const imagem = document.createElement(
@@ -455,14 +495,14 @@ function criarCartaoEvento(evento) {
 
   const local = document.createElement("p");
   local.className =
-    "mt-1 text-sm text-ink/60";
+    "mt-1 text-sm text-dusty-taupe-extra-dark/60";
   local.textContent = evento.localizacao;
 
   const estatisticas =
     document.createElement("dl");
 
   estatisticas.className =
-    "mt-5 grid grid-cols-3 border-y border-ink/10 text-sm";
+    "mt-5 grid grid-cols-3 border-y border-dusty-taupe-dark/10 text-sm";
 
   adicionarEstatistica(
     estatisticas,
@@ -494,8 +534,8 @@ function criarCartaoEvento(evento) {
   editar.dataset.action = "editar";
   editar.dataset.id = String(evento.id);
   editar.className =
-    "inline-flex min-h-11 flex-1 items-center justify-center bg-ink px-4 text-sm font-extrabold text-cream hover:bg-amber";
-  editar.textContent = "Editar";
+    "inline-flex min-h-11 flex-1 items-center justify-center bg-dusty-taupe-extra-dark px-4 text-sm font-extrabold text-floral-white hover:bg-camel";
+  editar.textContent = "Gerir Evento";
 
   const ver = document.createElement("a");
   ver.href =
@@ -504,7 +544,7 @@ function criarCartaoEvento(evento) {
   ver.target = "_blank";
   ver.rel = "noopener noreferrer";
   ver.className =
-    "inline-flex min-h-11 items-center justify-center border border-ink/20 px-4 text-sm font-bold hover:border-ink";
+    "inline-flex min-h-11 items-center justify-center border border-dusty-taupe-dark/20 px-4 text-sm font-bold hover:border-dusty-taupe-dark";
   ver.textContent = "Ver";
 
   acoes.append(editar, ver);
@@ -531,7 +571,7 @@ function criarPlaceholderImagem() {
   );
 
   placeholder.className =
-    "flex h-full items-center justify-center px-5 text-center text-sm text-ink/40";
+    "flex h-full items-center justify-center px-5 text-center text-sm text-dusty-taupe-extra-dark/40";
 
   placeholder.textContent =
     "Evento sem imagem";
@@ -546,11 +586,11 @@ function adicionarEstatistica(
 ) {
   const div = document.createElement("div");
   div.className =
-    "border-r border-ink/10 py-3 pr-2 last:border-r-0 last:pl-2";
+    "border-r border-dusty-taupe-dark/10 py-3 pr-2 last:border-r-0 last:pl-2";
 
   const dt = document.createElement("dt");
   dt.className =
-    "text-xs text-ink/50";
+    "text-xs text-dusty-taupe-extra-dark/50";
   dt.textContent = rotulo;
 
   const dd = document.createElement("dd");
@@ -563,23 +603,22 @@ function adicionarEstatistica(
 }
 
 function aplicarEstado(elemento, estado) {
-  const configuracao = {
+    const configuracao = {
     publicado: {
       texto: "Publicado",
-      classes:
-        "bg-success/10 text-success",
+      classes: "bg-success/10 text-success",
     },
-
     rascunho: {
       texto: "Rascunho",
-      classes:
-        "bg-warning/10 text-warning",
+      classes: "bg-warning/10 text-warning",
     },
-
-    arquivado: {
-      texto: "Arquivado",
-      classes:
-        "bg-ink/10 text-ink/60",
+    cancelado: {
+      texto: "Cancelado",
+      classes: "bg-danger/10 text-danger",
+    },
+    concluido: {
+      texto: "Concluído",
+      classes: "bg-dusty-taupe-extra-dark/10 text-dusty-taupe-extra-dark/60",
     },
   };
 
@@ -618,12 +657,15 @@ function abrirNovoEvento() {
 
   elementos.estado.value = "rascunho";
   elementos.vagasMax.value = "12";
+  elementos.duracaoMinutos.value = "180";
 
   elementos.eliminar.hidden = true;
   elementos.ocupadas.hidden = true;
   elementos.publico.hidden = true;
   elementos.linhaRemover.hidden = true;
-
+  elementos.painelReservas.hidden = true;
+  elementos.listaReservas.replaceChildren();
+  elementos.resumoReservas.textContent = "";
   slugAlteradoManualmente = false;
 
   elementos.dialogo.showModal();
@@ -641,12 +683,15 @@ function abrirEditarEvento(evento) {
   elementos.slug.value = evento.slug;
   elementos.descricao.value =
     evento.descricao || "";
-
+  elementos.tematica.value = evento.tematica || "";
+  elementos.duracaoMinutos.value = evento.duracao_minutos || "";
   elementos.dataEvento.value =
     paraDatetimeLocal(evento.data_evento);
 
   elementos.localizacao.value =
     evento.localizacao;
+  elementos.localizacaoExcecao.checked =
+    Number(evento.localizacao_excecao) === 1;
 
   elementos.preco.value = (
     evento.preco_centimos / 100
@@ -690,6 +735,9 @@ function abrirEditarEvento(evento) {
   slugAlteradoManualmente = true;
 
   elementos.dialogo.showModal();
+  elementos.filtroReservas.value = "";
+  elementos.painelReservas.hidden = false;
+  carregarReservas(evento.id);
   elementos.titulo.focus();
 }
 
@@ -749,12 +797,21 @@ async function guardarEvento(event) {
       slug: elementos.slug.value,
       descricao: elementos.descricao.value,
 
+      tematica: elementos.tematica.value,
+
+      duracao_minutos: Number(
+        elementos.duracaoMinutos.value,
+      ),
+
       data_evento: converterParaIso(
         elementos.dataEvento.value
       ),
 
       localizacao:
         elementos.localizacao.value,
+
+      localizacao_excecao:
+      elementos.localizacaoExcecao.checked ? 1 : 0,
 
       preco_centimos: Math.round(
         preco * 100
@@ -871,52 +928,214 @@ async function eliminarUploadTemporario(
 async function eliminarEvento() {
   const id = Number(elementos.id.value);
 
-  if (!id) {
-    return;
-  }
+  if (!id) return;
 
-  const titulo =
-    elementos.titulo.value.trim();
-
+  const titulo = elementos.titulo.value.trim();
   const confirmado = window.confirm(
-    `Eliminar definitivamente “${titulo}”? Esta ação não pode ser anulada.`
+    `Cancelar “${titulo}”? O evento e as reservas serão preservados. As reservas associadas passarão ao estado “cancelada”.`,
   );
 
-  if (!confirmado) {
-    return;
-  }
+  if (!confirmado) return;
 
   elementos.eliminar.disabled = true;
-  elementos.eliminar.textContent =
-    "A eliminar…";
+  elementos.eliminar.textContent = "A cancelar…";
 
   try {
-    await pedirJson(
+    const resultado = await pedirJson(
       `/api/admin/eventos/${id}`,
-      {
-        method: "DELETE",
-      }
+      { method: "DELETE" },
     );
 
     fecharDialogo();
 
+    const total = Number(resultado.reservas_canceladas || 0);
     mostrarMensagemPagina(
-      "Evento eliminado com sucesso.",
-      "sucesso"
+      total > 0
+        ? `Evento cancelado. ${total} reserva(s) foram também canceladas, sem apagar o histórico.`
+        : "Evento cancelado sem apagar o histórico.",
+      "sucesso",
     );
 
     await carregarEventos();
   } catch (error) {
     mostrarMensagemFormulario(
-      error.message ||
-        "Não foi possível eliminar o evento.",
-      "erro"
+      error.message || "Não foi possível cancelar o evento.",
+      "erro",
     );
   } finally {
     elementos.eliminar.disabled = false;
-    elementos.eliminar.textContent =
-      "Eliminar evento";
+    elementos.eliminar.textContent = "Cancelar evento";
   }
+}
+
+async function carregarReservas(
+  eventoId = Number(elementos.id.value),
+) {
+  if (!eventoId) return;
+
+  elementos.listaReservas.replaceChildren();
+  elementos.resumoReservas.textContent = "A carregar…";
+  esconderMensagem(elementos.mensagemReservas);
+
+  const params = new URLSearchParams({
+    evento_id: String(eventoId),
+  });
+
+  if (elementos.filtroReservas.value) {
+    params.set("estado", elementos.filtroReservas.value);
+  }
+
+  try {
+    const dados = await pedirJson(
+      `/api/admin/reservas?${params.toString()}`,
+    );
+
+    renderizarReservas(dados.reservas || []);
+  } catch (error) {
+    elementos.resumoReservas.textContent = "";
+    mostrarMensagem(
+      elementos.mensagemReservas,
+      error.message || "Não foi possível carregar as reservas.",
+      "erro",
+    );
+  }
+}
+
+function renderizarReservas(reservas) {
+  elementos.listaReservas.replaceChildren();
+
+  const participantes = reservas.reduce(
+    (total, reserva) => total + Number(reserva.num_pessoas || 0),
+    0,
+  );
+
+  elementos.resumoReservas.textContent =
+    `${reservas.length} reserva(s) · ${participantes} participante(s)`;
+
+  if (!reservas.length) {
+    const vazio = document.createElement("p");
+    vazio.className = "border border-dashed border-ink/20 p-4 text-sm text-ink/55";
+    vazio.textContent = "Não existem reservas com este filtro.";
+    elementos.listaReservas.append(vazio);
+    return;
+  }
+
+  const fragmento = document.createDocumentFragment();
+
+  reservas.forEach((reserva) => {
+    const artigo = document.createElement("article");
+    artigo.className = "border border-ink/15 bg-cream p-4";
+
+    const topo = document.createElement("div");
+    topo.className = "flex items-start justify-between gap-3";
+
+    const identidade = document.createElement("div");
+    const nome = document.createElement("h4");
+    nome.className = "text-sm font-extrabold";
+    nome.textContent = reserva.nome;
+
+    const codigo = document.createElement("p");
+    codigo.className = "mt-1 text-xs text-ink/55";
+    codigo.textContent = `${reserva.codigo} · ${reserva.num_pessoas} pessoa(s)`;
+    identidade.append(nome, codigo);
+
+    const estado = document.createElement("span");
+    estado.className = "shrink-0 bg-ink/10 px-2 py-1 text-[0.68rem] font-bold uppercase";
+    estado.textContent = formatarEstadoReserva(reserva.estado);
+    topo.append(identidade, estado);
+
+    const contactos = document.createElement("p");
+    contactos.className = "mt-3 break-words text-xs text-ink/65";
+    contactos.textContent = `${reserva.email} · ${reserva.telefone}`;
+
+    const pagamento = document.createElement("p");
+    pagamento.className = "mt-1 text-xs text-ink/55";
+    pagamento.textContent = `Pagamento: ${reserva.metodo_pagamento || "não indicado"}`;
+
+    const acoes = document.createElement("div");
+    acoes.className = "mt-3 flex flex-wrap gap-2";
+
+    if (reserva.estado === "pendente") {
+      acoes.append(
+        criarBotaoEstadoReserva(reserva.id, "confirmada", "Confirmar"),
+        criarBotaoEstadoReserva(reserva.id, "sem_pagamento", "Sem pagamento"),
+        criarBotaoEstadoReserva(reserva.id, "cancelada", "Cancelar"),
+      );
+    } else if (reserva.estado === "confirmada") {
+      acoes.append(
+        criarBotaoEstadoReserva(reserva.id, "cancelada", "Cancelar"),
+      );
+    }
+
+    artigo.append(topo, contactos, pagamento);
+    if (acoes.childElementCount) artigo.append(acoes);
+    fragmento.append(artigo);
+  });
+
+  elementos.listaReservas.append(fragmento);
+}
+
+function criarBotaoEstadoReserva(id, estado, texto) {
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.dataset.reservaId = String(id);
+  botao.dataset.estado = estado;
+  botao.className =
+    estado === "cancelada"
+      ? "min-h-10 border border-danger/30 px-3 text-xs font-bold text-danger hover:bg-danger hover:text-white"
+      : "min-h-10 border border-ink/20 px-3 text-xs font-bold hover:bg-ink hover:text-cream";
+  botao.textContent = texto;
+  return botao;
+}
+
+async function alterarEstadoReserva(event) {
+  const botao = event.target.closest(
+    "[data-reserva-id][data-estado]",
+  );
+
+  if (!botao) return;
+
+  const reservaId = Number(botao.dataset.reservaId);
+  const estado = botao.dataset.estado;
+
+  if (
+    estado === "cancelada" &&
+    !window.confirm("Cancelar esta reserva sem apagar o respetivo histórico?")
+  ) {
+    return;
+  }
+
+  botao.disabled = true;
+
+  try {
+    await pedirJson(`/api/admin/reservas/${reservaId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ estado }),
+    });
+
+    await Promise.all([
+      carregarReservas(),
+      carregarEventos(),
+    ]);
+  } catch (error) {
+    mostrarMensagem(
+      elementos.mensagemReservas,
+      error.message || "Não foi possível atualizar a reserva.",
+      "erro",
+    );
+  } finally {
+    botao.disabled = false;
+  }
+}
+
+function formatarEstadoReserva(estado) {
+  return {
+    pendente: "Pendente",
+    confirmada: "Confirmada",
+    sem_pagamento: "Sem pagamento",
+    cancelada: "Cancelada",
+  }[estado] || estado;
 }
 
 async function terminarSessao() {

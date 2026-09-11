@@ -20,8 +20,11 @@ const SELECT_EVENTO = `
     e.slug,
     e.titulo,
     e.descricao,
+    e.tematica,
+    e.duracao_minutos,
     e.data_evento,
     e.localizacao,
+    e.localizacao_excecao,
     e.preco_centimos,
     e.vagas_max,
     e.vagas_ocupadas,
@@ -169,14 +172,17 @@ export async function onRequestPost({
   );
 
   try {
-    const resultado = await env.DB.prepare(
+     const resultado = await env.DB.prepare(
       `INSERT INTO eventos
          (
            slug,
            titulo,
            descricao,
+           tematica,
+           duracao_minutos,
            data_evento,
            localizacao,
+           localizacao_excecao,
            preco_centimos,
            vagas_max,
            vagas_ocupadas,
@@ -188,21 +194,24 @@ export async function onRequestPost({
            atualizado_em
          )
        VALUES
-         (?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?,
-          datetime('now'), datetime('now'))`
+         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?,
+          datetime('now'), datetime('now'))`,
     )
       .bind(
         dados.slug,
         dados.titulo,
         dados.descricao,
+        dados.tematica,
+        dados.duracao_minutos,
         dados.data_evento,
         dados.localizacao,
+        dados.localizacao_excecao,
         dados.preco_centimos,
         dados.vagas_max,
         dados.imagem_url,
         dados.estado,
         dados.reservas_abrem_em,
-        dados.reservas_fecham_em
+        dados.reservas_fecham_em,
       )
       .run();
 
