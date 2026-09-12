@@ -483,30 +483,37 @@
 
             <div>
               <label
-                for="localizacao"
-                class="block text-sm font-bold"
-              >
-                Localização
+              for="localizacao"
+              class="block text-sm font-bold"
+            >
+              Morada do evento
               </label>
 
-              <label class="flex min-h-11 items-center gap-3 text-sm sm:col-span-2">
-                <input
-                  id="localizacao-excecao"
-                  name="localizacao_excecao"
-                  type="checkbox"
-                  class="h-5 w-5 accent-amber"
-                />
-                Este evento decorre fora da localização habitual
+              <label
+              class="flex min-h-11 items-center gap-3 text-sm sm:col-span-2"
+            >
+              <input
+                id="localizacao-excecao"
+                name="localizacao_excecao"
+                type="checkbox"
+                class="h-5 w-5 accent-amber"
+              />
+              Este evento decorre num local diferente do Atelier by Rita
               </label>
 
               <input
                 id="localizacao"
                 name="localizacao"
                 type="text"
-                required
                 maxlength="300"
                 class="mt-2 min-h-11 w-full border border-dusty-taupe-dark/20 bg-white/60 px-3 outline-none focus:border-camel focus:ring-2 focus:ring-camel/20"
               />
+              <p
+              id="ajuda-localizacao"
+              class="mt-2 text-xs text-ink/55"
+              >
+              Por omissão, será usada a localização habitual do Atelier by Rita.
+            </p>
             </div>
           </div>
 

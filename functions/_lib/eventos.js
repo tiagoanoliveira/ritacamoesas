@@ -1,6 +1,8 @@
 // functions/_lib/eventos.js
 
 export const ESTADOS_EVENTO = new Set([
+  export const LOCALIZACAO_HABITUAL =
+  "Atelier by Rita — Praceta de Évora 85, 2775-540 Carcavelos";
   "rascunho",
   "publicado",
   "cancelado",
@@ -12,7 +14,6 @@ export function normalizarDadosEvento(body = {}) {
   const titulo = limparTexto(body.titulo, 160);
   const descricao = limparTexto(body.descricao, 10_000);
   const tematica = limparTexto(body.tematica, 120) || null;
-  const localizacao = limparTexto(body.localizacao, 300);
   const slugBase = limparTexto(body.slug, 180);
   const slug = slugificar(slugBase || titulo);
 
@@ -28,6 +29,15 @@ export function normalizarDadosEvento(body = {}) {
     body.localizacao_excecao === "on"
       ? 1
       : 0;
+
+   const localizacaoIndicada = limparTexto(
+    body.localizacao,
+    300,
+  );
+
+  const localizacao = localizacaoExcecao
+    ? localizacaoIndicada
+    : LOCALIZACAO_HABITUAL;
 
   const estado = limparTexto(body.estado, 30).toLowerCase();
   const imagemUrl = limparTexto(body.imagem_url, 2048) || null;
@@ -53,7 +63,11 @@ export function normalizarDadosEvento(body = {}) {
   if (!titulo) erros.push("O título é obrigatório.");
   if (!slug) erros.push("Não foi possível criar um slug válido.");
   if (!descricao) erros.push("A descrição é obrigatória.");
-  if (!localizacao) erros.push("A localização é obrigatória.");
+  if (localizacaoExcecao && !localizacaoIndicada) {
+      erros.push(
+        "Indica a morada do evento quando a localização é diferente do Atelier.",
+      );
+    }
 
   if (
     !Number.isInteger(duracaoMinutos) ||

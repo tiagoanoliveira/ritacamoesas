@@ -111,10 +111,14 @@ const elementos = {
       "data-evento"
     ),
 
-  localizacao:
-    document.getElementById(
-      "localizacao"
-    ),
+   localizacao:
+    document.getElementById("localizacao"),
+
+  localizacaoExcecao:
+    document.getElementById("localizacao-excecao"),
+
+  ajudaLocalizacao:
+    document.getElementById("ajuda-localizacao"),
 
   preco:
     document.getElementById("preco"),
@@ -343,6 +347,10 @@ function registarEventos() {
     elementos.listaReservas.addEventListener(
     "click",
     alterarEstadoReserva,
+  );
+    elementos.localizacaoExcecao.addEventListener(
+    "change",
+    atualizarCampoLocalizacao,
   );
 }
 
@@ -649,6 +657,22 @@ function tratarAcaoLista(event) {
   }
 }
 
+function atualizarCampoLocalizacao() {
+  const eExcecao =
+    elementos.localizacaoExcecao.checked;
+
+  elementos.localizacao.required = eExcecao;
+  elementos.localizacao.disabled = !eExcecao;
+
+  if (!eExcecao) {
+    elementos.localizacao.value = "";
+  }
+
+  elementos.ajudaLocalizacao.textContent = eExcecao
+    ? "Indica a morada completa onde este evento vai decorrer."
+    : "Será usada automaticamente a localização habitual do Atelier by Rita.";
+}
+
 function abrirNovoEvento() {
   limparFormulario();
 
@@ -670,6 +694,8 @@ function abrirNovoEvento() {
 
   elementos.dialogo.showModal();
   elementos.titulo.focus();
+  elementos.localizacaoExcecao.checked = false;
+  atualizarCampoLocalizacao();
 }
 
 function abrirEditarEvento(evento) {
@@ -690,8 +716,13 @@ function abrirEditarEvento(evento) {
 
   elementos.localizacao.value =
     evento.localizacao;
-  elementos.localizacaoExcecao.checked =
+  elementos.localizacaoExcecao.checked = false
     Number(evento.localizacao_excecao) === 1;
+    atualizarCampoLocalizacao();
+
+    if (Number(evento.localizacao_excecao) === 1) {
+    elementos.localizacao.value = evento.localizacao || "";
+  }
 
   elementos.preco.value = (
     evento.preco_centimos / 100
