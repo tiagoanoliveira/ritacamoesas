@@ -1,13 +1,14 @@
 // functions/_lib/eventos.js
 
 export const ESTADOS_EVENTO = new Set([
-  export const LOCALIZACAO_HABITUAL =
-  "Atelier by Rita — Praceta de Évora 85, 2775-540 Carcavelos";
-  "rascunho",
+   "rascunho",
   "publicado",
   "cancelado",
   "concluido",
 ]);
+export const LOCALIZACAO_HABITUAL =
+  "Atelier by Rita — Praceta de Évora 85, 2775-540 Carcavelos";
+ 
 export function normalizarDadosEvento(body = {}) {
   const erros = [];
 
