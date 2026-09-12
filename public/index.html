@@ -96,14 +96,14 @@
 
   <main id="conteudo">
     <section
-      class="mx-auto grid h-100vh max-w-7xl items-center gap-10 px-4 py-14 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-6 lg:py-20"
+      class="mx-auto grid max-w-[1180px] items-center gap-10 px-4 py-12 md:grid-cols-2 lg:px-6 lg:py-16"
       aria-labelledby="hero-titulo"
     >
-      <figure class="relative mx-auto md:m-4 mr-2">
+      <figure class="relative mx-auto md:ml-0 md:mr-auto mr-2 w-full max-w-[440px]">
         <div
           class="absolute -bottom-4 -right-4 h-1/2 w-1/2 bg-rosy-taupe rounded-xl"
-          aria-hidden="true"
-        ></div>
+          aria-hidden="true">
+      </div>
 
         <img
           src="/images/atelier-hero.webp"
@@ -112,11 +112,12 @@
           height="675"
           fetchpriority="high"
           decoding="async"
-          class="relative aspect-16/9 bg-almond-silk  max-h-[70vh] rounded-2xl object-cover"
+          class="relative aspect-16/9 bg-almond-silk max-h-[60vh] rounded-2xl object-cover w-full"
         />
       </figure>
-      <div class="max-w-xl md:pr-6">
-        <p class="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-dusty-taupe">
+      
+      <div class="max-w-xl md:justify-self-end">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-dusty-taupe">
           Finalista MasterChef Portugal 2022
         </p>
 
@@ -149,115 +150,119 @@
           </a>
         </div>
       </div>
-
-      
     </section>
 
     <section
       id="sobre-mim"
-      class="mx-auto max-w-[1180px] px-4 py-20 lg:px-6 lg:py-28"
-      aria-labelledby="titulo-percurso"
+      class="mx-auto max-w-[1180px] px-4"
+      aria-labelledby="titulo-sobremim"
     >
-      <div class="grid gap-6 border-b border-dusty-taupe/15 pb-8 md:grid-cols-[1fr_1.2fr] md:items-end">
+      
+      <div class="w-full border-t border-dusty-taupe/15 mb-14"></div>
+
+      <div 
+        class="grid gap-6 border-b border-dusty-taupe/15 pb-12 md:grid-cols-[1fr_1.2fr] md:items-center"
+        style="margin-top: 40px; padding-top: 0;"
+      >
         <h2
-          id="titulo-percurso"
+          id="titulo-sobremim"
           class="font-display text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-none tracking-[-0.035em]"
         >
-          O percurso
+          Sobre mim
         </h2>
-
+        
         <p class="max-w-xl text-base leading-7 text-dusty-taupe/70 md:justify-self-end">
-          Uma relação com a cozinha construída entre memória, curiosidade e
-          vontade de reunir pessoas.
+          Nasci no seio de uma família ligada à restauração, a minha ligação à cozinha começou muito antes de manusear as minhas primeiras facas profissionais. Crescer entre as dinâmicas de serviço e os aromas dos bastidores dos restaurantes dos meus pais aguçou-me o paladar e a curiosidade, mas foi a minha própria determinação que me fez traçar um caminho singular.
         </p>
       </div>
 
-      <div class="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-12">
-        <article class="group md:col-span-5">
+      <div class="mt-6 grid md:grid-cols-2" style="gap: 64px; margin-bottom: 16px;">
+        
+        <article class="group w-full">
           <img
-            src="/images/placeholder-percurso-1.jpg"
-            alt=""
+            src="/images/ritac.jpg"
+            alt="Rita Camoesas - As Raízes"
             width="640"
             height="760"
             loading="lazy"
             decoding="async"
             class="aspect-[4/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
           />
-
           <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
             Primeiro capítulo
           </p>
-
           <h3 class="mt-2 font-display text-3xl font-semibold">
             As raízes
           </h3>
-
           <p class="mt-3 leading-7 text-dusty-taupe/70">
-            [Texto sobre a infância, a tradição familiar e as primeiras
-            memórias vividas na cozinha.]
+            Cresci entre as panelas e os bastidores dos restaurantes dos meus pais, mas foi a paixão genuína por transformar ingredientes simples em momentos felizes que me guiou até aqui.
           </p>
         </article>
 
-        <article class="group md:col-span-7 md:pt-24">
+        <article class="group w-full">
           <img
-            src="/images/placeholder-percurso-2.jpg"
-            alt=""
-            width="900"
-            height="650"
+            src="/images/masterchef.jpg"
+            alt="Rita Camoesas no MasterChef Portugal"
+            width="640"
+            height="760"
             loading="lazy"
             decoding="async"
-            class="aspect-[7/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+            class="aspect-[4/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
           />
-
           <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
             2022
           </p>
-
           <h3 class="mt-2 font-display text-3xl font-semibold">
             MasterChef Portugal
           </h3>
-
-          <p class="mt-3 max-w-2xl leading-7 text-dusty-taupe/70">
-            [Texto sobre o percurso no concurso, as aprendizagens e a chegada
-            à final.]
+          <p class="mt-3 leading-7 text-dusty-taupe/70">
+            Em 2022, com apenas 18 anos decidi testar os meus limites e entrei na cozinha mais famosa do país: o Masterchef Portugal. Ao longo de semanas de intensa competição, consegui destacar-me pela minha criatividade, foco e uma incrível capacidade de improviso. O meu percurso consistente levou-me à Grande Final do Masterchef Portugal 2022.
           </p>
         </article>
 
-        <article class="grid gap-8 border-t border-dusty-taupe/15 pt-10 md:col-span-12 md:grid-cols-[0.8fr_1.2fr] md:items-center">
-          <div>
+      </div>
+
+      <div class="mt-8 md:mt-14 border-t border-dusty-taupe/15 pt-8 md:pt-14 pb-12 md:pb-0">
+        
+        <article class="group" style="display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); align-items: start;">
+          
+          <div class="w-full">
             <p class="text-xs font-bold uppercase tracking-[0.16em] text-camel">
               Um lugar próprio
             </p>
-
             <h3 class="mt-2 font-display text-4xl font-semibold">
               O nascimento do Atelier
             </h3>
-
-            <p class="mt-4 max-w-xl leading-7 text-dusty-taupe/70">
-              [Texto sobre a vontade de criar o Atelier by Rita e sobre aquilo
-              que o espaço representa hoje.]
+            <p class="mt-4 leading-7 text-dusty-taupe/70">
+              Depois de partilhar o meu amor pela cozinha no ecrã do MasterChef Portugal, percebi que o meu verdadeiro propósito era descomplicar a gastronomia para quem está em casa.
+              Hoje, convido-vos a entrar no meu mundo através do Atelier by Rita, o meu próprio espaço físico onde realizo workshops presenciais dinâmicos — desde a doçura dos bombons à precisão das massas frescas — e onde continuo a criar os conteúdos que chegam até ao vosso ecrã. Para além da formação, levo a minha paixão diretamente a eventos e jantares através de serviços privados personalizados. Sejam bem-vindos à minha cozinha! 
             </p>
-
-            <a
-              href="/atelier"
-              class="mt-6 inline-flex min-h-11 items-center border-b border-dusty-taupe/40 text-sm font-bold hover:border-camel hover:text-camel"
-            >
-              Conhecer o Atelier
-              <span aria-hidden="true" class="ml-2">→</span>
-            </a>
+            
+            <div class="mt-6">
+              <a
+                href="/atelier"
+                class="inline-flex min-h-11 items-center border-b border-dusty-taupe/40 text-sm font-bold hover:border-camel hover:text-camel"
+              >
+                Conhecer o Atelier
+                <span aria-hidden="true" class="ml-2">→</span>
+              </a>
+            </div>
           </div>
 
-          <img
-            src="/images/placeholder-percurso-3.jpg"
-            alt=""
-            width="900"
-            height="600"
-            loading="lazy"
-            decoding="async"
-            class="aspect-[3/2] w-full bg-almond-silk object-cover"
-          />
+          <div class="w-full">
+            <img
+              src="/images/atelierpreview.jpg"
+              alt="Atelier by Rita"
+              width="900"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              class="aspect-[3/2] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+            />
+          </div>
+          
         </article>
-      </div>
+        </div>
     </section>
 
     <section class="bg-dusty-taupe text-floral-white" aria-labelledby="titulo-servicos">

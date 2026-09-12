@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="/css/tailwind.css" />
 </head>
 
-<body class="min-h-screen overflow-x-hidden bg-floral-white font-sans text-base leading-relaxed text-dusty-taupe antialiased selection:bg-almond-silk selection:text-dusty-taupe">
+<body class="min-h-screen overflow-x-hidden bg-champagne-mist/35 font-sans text-base leading-relaxed text-dusty-taupe antialiased selection:bg-almond-silk selection:text-dusty-taupe">
+  
   <header class="sticky top-0 z-50 border-b-2 border-dusty-taupe-dark bg-dusty-taupe backdrop-blur-md">
     <div class="mx-auto flex min-h-18 max-w-[1180px] items-center justify-between gap-6 px-4 lg:px-6">
       <div class="flex gap-4">
@@ -95,96 +96,99 @@
 
 
   <main id="conteudo">
-    <section class="mx-auto grid max-w-[1180px] items-end gap-8 px-4 py-12 md:grid-cols-[1.25fr_0.75fr] lg:px-6 lg:py-20">
-      <div class="md:row-start-1">
+    <section 
+    class="mx-auto grid max-w-[1180px] items-center gap-10 px-4 py-12 md:grid-cols-2 lg:px-6 lg:py-16" 
+    aria-labelledby="hero-titulo"
+>
+   <figure class="relative mx-auto md:ml-0 md:mr-auto mr-2 w-full max-w-[440px]">
+        <div
+          class="absolute -bottom-4 -right-4 h-1/2 w-1/2 bg-rosy-taupe rounded-xl"
+          aria-hidden="true">
+        </div>
+
         <img
           src="/images/atelier-hero.webp"
           alt="Interior do Atelier by Rita"
-          width="920"
-          height="720"
+          width="1200"
+          height="675"
           fetchpriority="high"
           decoding="async"
-          class="aspect-[5/4] w-full bg-almond-silk object-cover"
+          class="relative aspect-16/9 bg-almond-silk max-h-[60vh] rounded-2xl object-cover w-full"
         />
-      </div>
-
-      <div class="md:row-start-1 md:-ml-20 md:bg-floral-white md:p-10">
-        <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
+   </figure>
+      <div class="max-w-xl md:justify-self-end">
+        <p class="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-dusty-taupe">
           O espaço
         </p>
 
-        <h1 class="mt-3 font-display text-[clamp(3.2rem,7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
-          Atelier<br />by Rita
+        <h1 
+          id="hero-titulo"
+          class="font-display text-[clamp(3.5rem,9vw,7.5rem)] text-dusty-taupe-extra-dark font-semibold leading-[0.88] tracking-[-0.055em]"
+          >
+          Atelier by Rita
         </h1>
 
-        <p class="mt-6 max-w-lg leading-8 text-dusty-taupe/70">
+        <p class="mt-7 max-w-[55ch] text-base font-medium leading-8 text-dusty-taupe">
           Um espaço pensado para reunir pessoas à volta da mesa — para
           aprender, provar e criar. [Morada completa, código postal, cidade].
         </p>
       </div>
     </section>
 
-    <section class="mx-auto max-w-[1180px] space-y-24 px-4 py-20 lg:px-6 lg:py-28">
-      <article class="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-        <img
-          src="/images/placeholder-atelier-1.jpg"
-          alt=""
-          width="760"
-          height="620"
-          loading="lazy"
-          decoding="async"
-          class="aspect-[5/4] w-full bg-almond-silk object-cover"
-        />
-
-        <div>
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
-            A casa
+    <section 
+    id: O que é o Atelier
+    class="mx-auto max-w-[1180px] px-4"  aria-labelledby="o-que-e-o-atelier"
+>     <div class="mt-6 grid md:grid-cols-2" style="gap: 64px; margin-bottom: 16px;">
+        <article class="group w-full">
+          <img
+            src="/images/placeholder-atelier-1.jpg"
+            alt=""
+            width="640"
+            height="760"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+          />
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
+            A CASA
           </p>
-
-          <h2 class="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]">
+          <h3 class="mt-2 font-display text-3xl font-semibold">
             O que é o Atelier
-          </h2>
-
-          <p class="mt-6 max-w-xl leading-8 text-dusty-taupe/70">
+          </h3>
+          <p class="mt-3 leading-7 text-dusty-taupe/70">
             [Descrição do espaço físico, da cozinha equipada, da sala de
             workshops, da capacidade e da filosofia do projeto.]
-          </p>
-        </div>
-      </article>
-
-      <article class="grid items-start gap-10 border-t border-dusty-taupe/15 pt-16 md:grid-cols-2 md:gap-16">
-        <img
-          src="/images/placeholder-atelier-2.jpg"
-          alt=""
-          width="760"
-          height="620"
-          loading="lazy"
-          decoding="async"
-          class="aspect-[5/4] w-full bg-almond-silk object-cover md:order-2"
-        />
-
-        <div class="md:order-1">
-          <p class="text-xs font-bold uppercase tracking-[0.18em] text-camel">
+          </p>        
+        </article>
+         
+        <article class="group w-full">
+          <img
+            src="/images/placeholder-atelier-2.jpg"
+            alt=""
+            width="640"
+            height="760"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/5] w-full bg-almond-silk object-cover transition-transform duration-500 motion-safe:group-hover:-translate-y-1"
+          />
+          <p class="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-camel">
             A programação
           </p>
-
-          <h2 class="mt-3 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-none tracking-[-0.035em]">
+          <h3 class="mt-2 font-display text-3xl font-semibold">
             O que acontece aqui
-          </h2>
-
-          <p class="mt-6 leading-8 text-dusty-taupe/70">
+          </h3>
+          <p class="mt-3 leading-7 text-dusty-taupe/70">
             [Texto sobre workshops temáticos, jantares privados, produção de
             conteúdos, colaborações e experiências para grupos.]
           </p>
-
           <ul class="mt-8 border-t border-dusty-taupe/15">
             <li class="border-b border-dusty-taupe/15 py-4">Workshops abertos ao público, com vagas limitadas</li>
             <li class="border-b border-dusty-taupe/15 py-4">Eventos privados e jantares por encomenda</li>
             <li class="border-b border-dusty-taupe/15 py-4">Experiências para empresas e equipas</li>
             <li class="border-b border-dusty-taupe/15 py-4">Produção de conteúdo e colaborações de marca</li>
           </ul>
-        </div>
-      </article>
+        </article>
+      </div>
     </section>
 
     <section class="bg-dusty-taupe px-4 py-20 text-floral-white lg:py-28" aria-labelledby="titulo-galeria">
