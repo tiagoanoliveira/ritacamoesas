@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  />
+  <title>Reservas | Atelier by Rita</title>
+  <link
+    rel="stylesheet"
+    href="/css/tailwind.css"
+  />
+</head>
+
+<body
+  class="min-h-screen bg-cream font-sans text-base leading-relaxed text-ink antialiased"
+>
+  <a
+    href="#conteudo"
+    class="fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-3 text-sm font-bold text-cream transition-transform focus:translate-y-0"
+  >
+    Saltar para o conteúdo
+  </a>
+
+  <div class="min-h-screen lg:grid lg:grid-cols-[16rem_1fr]">
+    <aside
+      class="border-b border-ink/10 bg-ink text-cream lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:border-b-0 lg:border-r lg:border-cream/10"
+    >
+      <div class="flex min-h-full flex-col">
+        <div
+          class="flex min-h-20 items-center justify-between gap-4 px-5"
+        >
+          <a
+            href="/admin/dashboard.html"
+            class="inline-flex min-h-11 items-center"
+          >
+            <img
+              src="/images/rita.svg"
+              alt="Rita Camoesas"
+              width="140"
+              height="40"
+              class="h-9 w-auto brightness-0 invert"
+            />
+          </a>
+
+          <span
+            class="text-xs font-bold uppercase tracking-[0.15em] text-cream/50"
+          >
+            Admin
+          </span>
+        </div>
+
+        <nav
+          class="flex gap-2 overflow-x-auto border-t border-cream/10 px-4 py-4 lg:flex-1 lg:flex-col"
+          aria-label="Administração"
+        >
+          <a
+            href="/admin/dashboard.html"
+            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-cream/70 hover:bg-cream/10 hover:text-cream"
+          >
+            Resumo
+          </a>
+
+          <a
+            href="/admin/eventos.html"
+            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-cream/70 hover:bg-cream/10 hover:text-cream"
+          >
+            Eventos
+          </a>
+
+          <a
+            href="/admin/reservas.html"
+            aria-current="page"
+            class="inline-flex min-h-11 shrink-0 items-center bg-cream px-4 text-sm font-bold text-ink"
+          >
+            Reservas
+          </a>
+
+          <a
+            href="/admin/orcamentos.html"
+            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-cream/70 hover:bg-cream/10 hover:text-cream"
+          >
+            Orçamentos
+          </a>
+        </nav>
+
+        <div class="hidden border-t border-cream/10 p-4 lg:block">
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-11 items-center text-sm font-semibold text-cream/70 hover:text-cream"
+          >
+            Abrir website
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="lg:col-start-2">
+      <header
+        class="sticky top-0 z-40 border-b border-ink/10 bg-cream/95 backdrop-blur-md"
+      >
+        <div
+          class="flex min-h-18 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+        >
+          <div>
+            <p
+              id="admin-nome"
+              class="text-sm font-semibold"
+            >
+              Área administrativa
+            </p>
+
+            <p
+              id="admin-email"
+              class="text-xs text-ink/55"
+            ></p>
+          </div>
+
+          <button
+            id="botao-logout"
+            type="button"
+            class="inline-flex min-h-11 items-center border border-ink/20 px-4 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+          >
+            Terminar sessão
+          </button>
+        </div>
+      </header>
+
+      <main
+        id="conteudo"
+        class="px-4 py-8 sm:px-6 lg:px-8 lg:py-10"
+      >
+        <div class="mx-auto max-w-[1400px]">
+          <div
+            class="flex flex-col gap-5 border-b border-ink/15 pb-8 sm:flex-row sm:items-end sm:justify-between"
+          >
+            <div>
+              <p
+                class="text-xs font-bold uppercase tracking-[0.16em] text-amber"
+              >
+                Operação diária
+              </p>
+
+              <h1
+                class="mt-2 font-display text-4xl font-semibold tracking-tight"
+              >
+                Reservas
+              </h1>
+
+              <p class="mt-3 max-w-2xl text-ink/65">
+                Confirma pagamentos, acompanha prazos
+                e preserva o histórico de cada reserva.
+              </p>
+            </div>
+
+            <a
+              href="/admin/eventos.html"
+              class="inline-flex min-h-12 items-center justify-center border border-ink/20 px-6 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+            >
+              Gerir eventos
+            </a>
+          </div>
+
+          <section
+            class="mt-8 bg-paper p-4 shadow-soft sm:p-5"
+            aria-label="Filtros de reservas"
+          >
+            <form
+              id="form-filtros"
+              class="grid gap-4 lg:grid-cols-[minmax(15rem,1fr)_13rem_auto]"
+            >
+              <div>
+                <label
+                  for="filtro-pesquisa"
+                  class="block text-sm font-bold"
+                >
+                  Pesquisar
+                </label>
+
+                <input
+                  id="filtro-pesquisa"
+                  type="search"
+                  placeholder="Código, pessoa, email, telefone ou evento"
+                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="filtro-estado"
+                  class="block text-sm font-bold"
+                >
+                  Estado
+                </label>
+
+                <select
+                  id="filtro-estado"
+                  class="mt-2 min-h-11 w-full border border-ink/20 bg-white/60 px-3 outline-none focus:border-amber focus:ring-2 focus:ring-amber/20"
+                >
+                  <option value="">Todos</option>
+                  <option value="pendente">Pendentes</option>
+                  <option value="confirmada">Confirmadas</option>
+                  <option value="sem_pagamento">
+                    Sem pagamento
+                  </option>
+                  <option value="cancelada">Canceladas</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                class="min-h-11 self-end border border-ink/20 px-5 text-sm font-bold hover:border-ink hover:bg-ink hover:text-cream"
+              >
+                Aplicar filtros
+              </button>
+            </form>
+          </section>
+
+          <p
+            id="mensagem-pagina"
+            class="mt-6 border p-4 text-sm font-semibold"
+            role="status"
+            tabindex="-1"
+            hidden
+          ></p>
+
+          <section
+            class="mt-8"
+            aria-labelledby="titulo-lista"
+          >
+            <div
+              class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <h2
+                id="titulo-lista"
+                class="text-lg font-extrabold"
+              >
+                Todas as reservas
+              </h2>
+
+              <p
+                id="total-reservas"
+                class="text-sm tabular-nums text-ink/55"
+              ></p>
+            </div>
+
+            <div
+              id="carregamento"
+              class="mt-5 grid gap-4"
+              aria-label="A carregar reservas"
+            >
+              <div class="h-40 animate-pulse bg-ink/5"></div>
+              <div class="h-40 animate-pulse bg-ink/5"></div>
+              <div class="h-40 animate-pulse bg-ink/5"></div>
+            </div>
+
+            <div
+              id="lista-reservas"
+              class="mt-5 grid gap-4"
+              hidden
+            ></div>
+
+            <div
+              id="estado-vazio"
+              class="mt-5 border border-dashed border-ink/25 bg-paper px-6 py-16 text-center"
+              hidden
+            >
+              <h3 class="font-display text-2xl font-semibold">
+                Não foram encontradas reservas
+              </h3>
+
+              <p class="mt-3 text-ink/60">
+                Ajusta os filtros ou consulta outro estado.
+              </p>
+            </div>
+
+            <nav
+              id="paginacao"
+              class="mt-8 flex items-center justify-between gap-4"
+              aria-label="Paginação das reservas"
+              hidden
+            >
+              <button
+                id="botao-anterior"
+                type="button"
+                class="min-h-11 border border-ink/20 px-5 text-sm font-bold disabled:cursor-not-allowed disabled:opacity-40 hover:border-ink hover:bg-ink hover:text-cream"
+              >
+                Anterior
+              </button>
+
+              <p
+                id="texto-paginacao"
+                class="text-sm tabular-nums text-ink/60"
+              ></p>
+
+              <button
+                id="botao-seguinte"
+                type="button"
+                class="min-h-11 border border-ink/20 px-5 text-sm font-bold disabled:cursor-not-allowed disabled:opacity-40 hover:border-ink hover:bg-ink hover:text-cream"
+              >
+                Seguinte
+              </button>
+            </nav>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script
+    src="/admin/reservas.js"
+    defer
+  ></script>
+</body>
+</html>

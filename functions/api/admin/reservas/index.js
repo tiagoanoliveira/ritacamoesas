@@ -1,7 +1,16 @@
-// GET /api/admin/reservas?evento_id=&estado=
+// GET /api/admin/reservas
+// Filtros aceites:
+// ?evento_id=
+// ?estado=pendente|confirmada|sem_pagamento|cancelada
+// ?q=
+// ?pagina=
+// ?limite=
 
 import { exigirSessaoAdmin } from "../../../_lib/auth.js";
-import { respostaErro, respostaJson } from "../../../_lib/eventos.js";
+import {
+  respostaErro,
+  respostaJson,
+} from "../../../_lib/eventos.js";
 
 const ESTADOS_RESERVA = new Set([
   "pendente",
@@ -10,28 +19,133 @@ const ESTADOS_RESERVA = new Set([
   "cancelada",
 ]);
 
-export async function onRequestGet({ request, env }) {
-  const admin = await exigirSessaoAdmin(request, env);
+function numeroInteiro(
+  valor,
+  predefinido,
+  minimo,
+  maximo,
+) {
+  const numero = Number(valor);
+
+  if (!Number.isInteger(numero)) {
+    return predefinido;
+  }
+
+  return Math.min(
+    Math.max(numero, minimo),
+    maximo,
+  );
+}
+
+export async function onRequestGet({
+  request,
+  env,
+}) {
+  const admin = await exigirSessaoAdmin(
+    request,
+    env,
+  );
 
   if (!admin) {
-    return respostaErro("Sessão inválida ou expirada.", 401);
+    return respostaErro(
+      "Sessão inválida ou expirada.",
+      401,
+    );
   }
 
   const url = new URL(request.url);
-  const eventoId = Number(url.searchParams.get("evento_id"));
-  const estado = String(url.searchParams.get("estado") || "")
+
+  const estado = String(
+    url.searchParams.get("estado") || "",
+  )
     .trim()
     .toLowerCase();
 
-  if (!Number.isInteger(eventoId) || eventoId <= 0) {
-    return respostaErro("Evento inválido.", 422);
-  }
+  const eventoIdTexto = String(
+    url.searchParams.get("evento_id") || "",
+  ).trim();
+
+  const pesquisa = String(
+    url.searchParams.get("q") || "",
+  )
+    .trim()
+    .slice(0, 100);
+
+  const pagina = numeroInteiro(
+    url.searchParams.get("pagina"),
+    1,
+    1,
+    10_000,
+  );
+
+  const limite = numeroInteiro(
+    url.searchParams.get("limite"),
+    25,
+    1,
+    100,
+  );
+
+  const offset = (pagina - 1) * limite;
 
   if (estado && !ESTADOS_RESERVA.has(estado)) {
-    return respostaErro("Estado de reserva inválido.", 422);
+    return respostaErro(
+      "O estado da reserva é inválido.",
+      422,
+    );
   }
 
-  let query = `
+  const eventoId = eventoIdTexto
+    ? Number(eventoIdTexto)
+    : null;
+
+  if (
+    eventoIdTexto &&
+    (!Number.isInteger(eventoId) || eventoId <= 0)
+  ) {
+    return respostaErro(
+      "O identificador do evento é inválido.",
+      422,
+    );
+  }
+
+  const condicoes = [];
+  const valores = [];
+
+  if (eventoId) {
+    condicoes.push("r.evento_id = ?");
+    valores.push(eventoId);
+  }
+
+  if (estado) {
+    condicoes.push("r.estado = ?");
+    valores.push(estado);
+  }
+
+  if (pesquisa) {
+    condicoes.push(
+      `(r.codigo LIKE ?
+        OR r.nome LIKE ?
+        OR r.email LIKE ?
+        OR r.telefone LIKE ?
+        OR e.titulo LIKE ?)`,
+    );
+
+    const termo = `%${pesquisa}%`;
+
+    valores.push(
+      termo,
+      termo,
+      termo,
+      termo,
+      termo,
+    );
+  }
+
+  const where = condicoes.length
+    ? `WHERE ${condicoes.join(" AND ")}`
+    : "";
+
+  const consulta = `
     SELECT
       r.id,
       r.codigo,
@@ -44,32 +158,78 @@ export async function onRequestGet({ request, env }) {
       r.metodo_pagamento,
       r.estado,
       r.prazo_pagamento,
+      r.confirmado_por,
       r.criado_em,
-      r.atualizado_em
+      r.atualizado_em,
+
+      e.titulo AS evento_titulo,
+      e.data_evento AS evento_data,
+
+      a.nome AS confirmado_por_nome
+
     FROM reservas r
-    WHERE r.evento_id = ?
+
+    INNER JOIN eventos e
+            ON e.id = r.evento_id
+
+    LEFT JOIN admins a
+           ON a.id = r.confirmado_por
+
+    ${where}
+
+    ORDER BY
+      CASE r.estado
+        WHEN 'pendente' THEN 1
+        WHEN 'confirmada' THEN 2
+        WHEN 'sem_pagamento' THEN 3
+        WHEN 'cancelada' THEN 4
+        ELSE 5
+      END,
+      datetime(r.prazo_pagamento) ASC,
+      datetime(r.criado_em) DESC,
+      r.id DESC
+
+    LIMIT ? OFFSET ?
   `;
 
-  const bindings = [eventoId];
-
-  if (estado) {
-    query += ` AND r.estado = ?`;
-    bindings.push(estado);
-  }
-
-  query += ` ORDER BY datetime(r.criado_em) DESC, r.id DESC`;
+  const consultaTotal = `
+    SELECT COUNT(*) AS total
+      FROM reservas r
+      INNER JOIN eventos e
+              ON e.id = r.evento_id
+    ${where}
+  `;
 
   try {
-    const { results = [] } = await env.DB.prepare(query)
-      .bind(...bindings)
-      .all();
+    const [
+      resultado,
+      totalResultado,
+    ] = await env.DB.batch([
+      env.DB.prepare(consulta)
+        .bind(...valores, limite, offset),
+
+      env.DB.prepare(consultaTotal)
+        .bind(...valores),
+    ]);
+
+    const total =
+      totalResultado.results?.[0]?.total || 0;
 
     return respostaJson({
       sucesso: true,
-      reservas: results,
+      reservas: resultado.results || [],
+      paginacao: {
+        pagina,
+        limite,
+        total,
+        total_paginas: Math.max(
+          1,
+          Math.ceil(total / limite),
+        ),
+      },
     });
   } catch (error) {
-    console.error("Erro ao listar reservas do evento:", {
+    console.error("Erro ao listar reservas:", {
       message: error?.message,
       cause: error?.cause?.message,
       stack: error?.stack,

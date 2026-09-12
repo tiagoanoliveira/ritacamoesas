@@ -1,4 +1,5 @@
-/// PATCH /api/admin/reservas/:id
+// PATCH /api/admin/reservas/:id
+// Alteração segura do estado de uma reserva.
 
 import { exigirSessaoAdmin } from "../../../_lib/auth.js";
 import {
@@ -7,14 +8,19 @@ import {
   respostaJson,
 } from "../../../_lib/eventos.js";
 
-const TRANSICOES = {
+const TRANSICOES_PERMITIDAS = {
   pendente: new Set([
     "confirmada",
     "sem_pagamento",
     "cancelada",
   ]),
-  confirmada: new Set(["cancelada"]),
+
+  confirmada: new Set([
+    "cancelada",
+  ]),
+
   sem_pagamento: new Set([]),
+
   cancelada: new Set([]),
 };
 
@@ -23,20 +29,32 @@ export async function onRequestPatch({
   env,
   params,
 }) {
-  const admin = await exigirSessaoAdmin(request, env);
+  const admin = await exigirSessaoAdmin(
+    request,
+    env,
+  );
 
   if (!admin) {
-    return respostaErro("Sessão inválida ou expirada.", 401);
+    return respostaErro(
+      "Sessão inválida ou expirada.",
+      401,
+    );
   }
 
   if (!pedidoMesmoSite(request)) {
-    return respostaErro("Origem do pedido não autorizada.", 403);
+    return respostaErro(
+      "Origem do pedido não autorizada.",
+      403,
+    );
   }
 
   const id = Number(params.id);
 
   if (!Number.isInteger(id) || id <= 0) {
-    return respostaErro("Reserva inválida.", 400);
+    return respostaErro(
+      "Identificador de reserva inválido.",
+      400,
+    );
   }
 
   let body;
@@ -44,7 +62,10 @@ export async function onRequestPatch({
   try {
     body = await request.json();
   } catch {
-    return respostaErro("O pedido não contém JSON válido.", 400);
+    return respostaErro(
+      "O corpo do pedido não contém JSON válido.",
+      400,
+    );
   }
 
   const novoEstado = String(body.estado || "")
@@ -52,19 +73,30 @@ export async function onRequestPatch({
     .toLowerCase();
 
   const reserva = await env.DB.prepare(
-    `SELECT id, evento_id, estado
-       FROM reservas
-      WHERE id = ?
-      LIMIT 1`,
+    `SELECT
+       id,
+       evento_id,
+       estado,
+       num_pessoas
+     FROM reservas
+     WHERE id = ?
+     LIMIT 1`,
   )
     .bind(id)
     .first();
 
   if (!reserva) {
-    return respostaErro("Reserva não encontrada.", 404);
+    return respostaErro(
+      "Reserva não encontrada.",
+      404,
+    );
   }
 
-  if (!TRANSICOES[reserva.estado]?.has(novoEstado)) {
+  if (
+    !TRANSICOES_PERMITIDAS[
+      reserva.estado
+    ]?.has(novoEstado)
+  ) {
     return respostaErro(
       `Não é possível alterar uma reserva ${reserva.estado} para ${novoEstado || "esse estado"}.`,
       409,
@@ -79,13 +111,19 @@ export async function onRequestPatch({
               atualizado_em = datetime('now')
         WHERE id = ?`,
     )
-      .bind(novoEstado, admin.id, id)
+      .bind(
+        novoEstado,
+        admin.id,
+        reserva.id,
+      )
       .run();
 
     return respostaJson({
       sucesso: true,
-      novo_estado: novoEstado,
+      reserva_id: reserva.id,
       evento_id: reserva.evento_id,
+      estado_anterior: reserva.estado,
+      novo_estado: novoEstado,
     });
   } catch (error) {
     console.error("Erro ao atualizar reserva:", {

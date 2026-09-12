@@ -30,7 +30,6 @@
     href="#conteudo"
     class="fixed left-4 top-4 z-[100] -translate-y-24 bg-dusty-taupe-extra-dark px-4 py-3 text-sm font-bold text-floral-white transition-transform focus:translate-y-0"
   >
-    Saltar para o conteúdo
   </a>
 
   <div class="min-h-screen lg:grid lg:grid-cols-[16rem_1fr]">
@@ -67,24 +66,33 @@
           aria-label="Administração"
         >
           <a
-            href="/admin/eventos.html"
-            aria-current="page"
-            class="inline-flex min-h-11 shrink-0 items-center bg-floral-white px-4 text-sm font-bold text-dusty-taupe-extra-dark"
-          >
-            Eventos
-          </a>
+          href="/admin/dashboard.html"
+          class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-cream/70 hover:bg-cream/10 hover:text-cream"
+        >
+          Resumo
+        </a>
 
-          <span
-            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-floral-white/40"
-          >
-            Reservas — dentro de cada evento
-          </span>
+        <a
+          href="/admin/eventos.html"
+          aria-current="page"
+          class="inline-flex min-h-11 shrink-0 items-center bg-floral-white px-4 text-sm font-bold text-dusty-taupe-extra-dark"
+        >
+          Eventos
+        </a>
 
-          <span
-            class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm text-floral-white/40"
-          >
-            Orçamentos — próxima fase
-          </span>
+        <a
+          href="/admin/reservas.html"
+          class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-cream/70 hover:bg-floral-white/10 hover:text-floral-white"
+        >
+          Reservas
+        </a>
+
+        <a
+          href="/admin/orcamentos.html"
+          class="inline-flex min-h-11 shrink-0 items-center px-4 text-sm font-semibold text-floral-white/70 hover:bg-floral-white/10 hover:text-floral-white"
+        >
+          Orçamentos
+        </a>
         </nav>
 
         <div
